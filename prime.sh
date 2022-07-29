@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 echo
-# Mac Prime
-echo 'Mac Prime'
+echo 'Mac Primer'
 echo
 
 # Packages

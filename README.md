@@ -1,19 +1,19 @@
-# Mac Prime
+# Mac Primer
 
-I use **Mac Prime** to automatically set up my Mac. Feel free to use this as a base for your own setup.
+I use **Mac Primer** to automatically set up my Mac. Feel free to use this as a base for your own setup.
 
 ## Overview
 
-- [`packages`](https://github.com/barryanders/mac-prime/tree/master/packages): Lists of installable apps and packages
-- [`dotfiles`](https://github.com/barryanders/mac-prime/tree/master/dotfiles): Commands and configurations
-- [`preferences`](https://github.com/barryanders/mac-prime/tree/master/preferences): Presets for System Preferences
-- [`dock`](https://github.com/barryanders/mac-prime/tree/master/dock): Customize your Dock
+- [`packages`](https://github.com/barryanders/mac-primer/tree/master/packages): Lists of installable apps and packages
+- [`dotfiles`](https://github.com/barryanders/mac-primer/tree/master/dotfiles): Commands and configurations
+- [`preferences`](https://github.com/barryanders/mac-primer/tree/master/preferences): Presets for System Preferences
+- [`dock`](https://github.com/barryanders/mac-primer/tree/master/dock): Customize your Dock
 
 ## Packages
 
 ### Package Lists
 
-- [`brewfile`](https://github.com/barryanders/mac-prime/tree/master/packages/brewfile): An installable package list for [Brew](https://github.com/Homebrew/brew)
+- [`brewfile`](https://github.com/barryanders/mac-primer/tree/master/packages/brewfile): An installable package list for [Brew](https://github.com/Homebrew/brew)
 
 ### Install Packages
 
@@ -27,9 +27,9 @@ Run the following script to install all of my apps and programming tools.
 
 ### Install Dotfiles
 
-Run the following script to install my [`dotfiles`](https://github.com/barryanders/mac-prime/tree/master/dotfiles). This will create symlinks in your `$HOME` folder for each of the dotfiles. As you add or remove files, simply rerun this install script to sync your changes. Dead links get removed and new links get added.
+Run the following script to install my [`dotfiles`](https://github.com/barryanders/mac-primer/tree/master/dotfiles). This will create symlinks in your `$HOME` folder for each of the dotfiles. As you add or remove files, simply rerun this install script to sync your changes. Dead links get removed and new links get added.
 
-Note: Some of the files in [`dotfiles`](https://github.com/barryanders/mac-prime/tree/master/dotfiles) require [`packages`](https://github.com/barryanders/mac-prime/tree/master/packages) to be installed first. If you don't want to install my [`packages`](https://github.com/barryanders/mac-prime/tree/master/packages), then you at least need `stow` (ex. `brew install stow`) to successfully install [`dotfiles`](https://github.com/barryanders/mac-prime/tree/master/dotfiles).
+Note: Some of the files in [`dotfiles`](https://github.com/barryanders/mac-primer/tree/master/dotfiles) require [`packages`](https://github.com/barryanders/mac-primer/tree/master/packages) to be installed first. If you don't want to install my [`packages`](https://github.com/barryanders/mac-primer/tree/master/packages), then you at least need `stow` (ex. `brew install stow`) to successfully install [`dotfiles`](https://github.com/barryanders/mac-primer/tree/master/dotfiles).
 
 ```bash
 ~//dotfiles/install.sh
@@ -37,26 +37,26 @@ Note: Some of the files in [`dotfiles`](https://github.com/barryanders/mac-prime
 
 ### Customize Dotfiles
 
-#### [`.commands`](https://github.com/barryanders/mac-prime/tree/master/dotfiles/.commands) Folder
+#### [`.commands`](https://github.com/barryanders/mac-primer/tree/master/dotfiles/.commands) Folder
 
-The [`.commands`](https://github.com/barryanders/mac-prime/tree/master/dotfiles/.commands) folder is intended for you to add and remove custom commands in a categorical way. Cherry-pick what you want. Refer to the [`template`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/template) file for a basic example of how to create your own commands.
+The [`.commands`](https://github.com/barryanders/mac-primer/tree/master/dotfiles/.commands) folder is intended for you to add and remove custom commands in a categorical way. Cherry-pick what you want. Refer to the [`template`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/template) file for a basic example of how to create your own commands.
 
 Here's what I've got in there for you:
 
-- [`$`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/%24): Sensible Terminal defaults
-- [`dock`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/dock): Control your Dock
-- [`download`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/download): Download links, music, and videos
-- [`finder`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/finder): View files, get info, perform actions, extract, compress, etc.
-- [`images`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/images): Batch resizing images
-- [`mac`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/mac): A CLI for macOS - ex. Bluetooth, Spotlight, Wi-Fi, Gatekeeper
-- [`maintenance`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/maintenance): Common fixes and system maintenance
-- [`network`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/network): Get IP addresses and flush your dns
-- [`ringtone`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/ringtone): Turn any mp3 into a ringtone for your phone
-- [`text`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/text): Format text and encode/decode in base64, binary, hex, md5, and sha1
-- [`update`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/update): Update all the things
-- [`video`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.commands/video): Remux, encode, or merge videos
+- [`$`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/%24): Sensible Terminal defaults
+- [`dock`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/dock): Control your Dock
+- [`download`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/download): Download links, music, and videos
+- [`finder`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/finder): View files, get info, perform actions, extract, compress, etc.
+- [`images`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/images): Batch resizing images
+- [`mac`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/mac): A CLI for macOS - ex. Bluetooth, Spotlight, Wi-Fi, Gatekeeper
+- [`maintenance`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/maintenance): Common fixes and system maintenance
+- [`network`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/network): Get IP addresses and flush your dns
+- [`ringtone`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/ringtone): Turn any mp3 into a ringtone for your phone
+- [`text`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/text): Format text and encode/decode in base64, binary, hex, md5, and sha1
+- [`update`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/update): Update all the things
+- [`video`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.commands/video): Remux, encode, or merge videos
 
-#### [`.path`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.path) File
+#### [`.path`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.path) File
 
 Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin` to the `$PATH`.
 
@@ -88,11 +88,11 @@ git config --global user.signingkey "$GIT_SIGNING_KEY"
 
 #### Other Dotfiles
 
-There are several other files in [`dotfiles`](https://github.com/barryanders/mac-prime/tree/master/dotfiles) that set some reasonable defaults including [`.hushlogin`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.hushlogin), [`.wgetrc`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.wgetrc), [`.gitconfig`](https://github.com/barryanders/mac-prime/blob/master/dotfiles/.gitconfig), and more.
+There are several other files in [`dotfiles`](https://github.com/barryanders/mac-primer/tree/master/dotfiles) that set some reasonable defaults including [`.hushlogin`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.hushlogin), [`.wgetrc`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.wgetrc), [`.gitconfig`](https://github.com/barryanders/mac-primer/blob/master/dotfiles/.gitconfig), and more.
 
 ## Preferences
 
-Use [`preferences`](https://github.com/barryanders/mac-prime/blob/master/preferences) to make adjustments you would otherwise set in the System Preferences app. Define this file once and reuse it whenever you like. If your settings ever get messed up, this is a great way to reset them to the way you prefer.
+Use [`preferences`](https://github.com/barryanders/mac-primer/blob/master/preferences) to make adjustments you would otherwise set in the System Preferences app. Define this file once and reuse it whenever you like. If your settings ever get messed up, this is a great way to reset them to the way you prefer.
 
 ```bash
 ~//preferences
@@ -100,14 +100,14 @@ Use [`preferences`](https://github.com/barryanders/mac-prime/blob/master/prefere
 
 ## Dock
 
-Customize your Dock in the [`dock`](https://github.com/barryanders/mac-prime/blob/master/dock) file. Use these commands:
+Customize your Dock in the [`dock`](https://github.com/barryanders/mac-primer/blob/master/dock) file. Use these commands:
 
 - `dock add "Terminal"`: Add an application to the macOS Dock
 - `dock add:spacer`: Adds an empty space to macOS Dock
 - `dock clear`: Removes all persistent icons from macOS Dock
 - `dock reset`: Reset macOS Dock to default settings
 
-Once you're done, run [`dock`](https://github.com/barryanders/mac-prime/blob/master/dock) to apply the changes.
+Once you're done, run [`dock`](https://github.com/barryanders/mac-primer/blob/master/dock) to apply the changes.
 
 ```bash
 ~//dock
@@ -115,7 +115,7 @@ Once you're done, run [`dock`](https://github.com/barryanders/mac-prime/blob/mas
 
 ## Hosts
 
-Keep track of your hosts in the [`hosts`](https://github.com/barryanders/mac-prime/blob/master/resources/hosts) file. Use the following command to replace your system hosts file with this one.
+Keep track of your hosts in the [`hosts`](https://github.com/barryanders/mac-primer/blob/master/resources/hosts) file. Use the following command to replace your system hosts file with this one.
 
 ```bash
 update hosts
@@ -126,7 +126,7 @@ update hosts
 You can install everything with this one-liner.
 
 ```bash
-git clone https://github.com/barryanders/mac-prime.git ~/ && ~//prime.sh
+git clone https://github.com/barryanders/mac-primer.git ~/ && ~//prime.sh
 ```
 
 ## Author
