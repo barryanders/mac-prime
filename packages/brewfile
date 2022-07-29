@@ -1,0 +1,271 @@
+tap "cjbassi/ytop"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+# Core application library for C
+brew "glib"
+# Text processing scripting language
+brew "awk"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Programmable completion for Bash 4.2+
+brew "bash-completion@2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Fish completion for brew-cask
+brew "brew-cask-completion"
+# Console Matrix
+brew "cmatrix"
+# C library implementing the SSH2 protocol
+brew "libssh2"
+# Terminal visual disk space navigator
+brew "diskonaut"
+# More intuitive version of du in rust
+brew "dust"
+# Modern replacement for 'ls'
+brew "exa"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Generic library support script
+brew "libtool"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Secure Reliable Transport
+brew "srt"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
+# Database of common MIME types
+brew "shared-mime-info"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+brew "libheif"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.8"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Generate pixel-perfect macOS folder icons in the native style
+brew "folderify"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Command-line downloader for image-hosting site galleries and collections
+brew "gallery-dl"
+# Toolkit for image loading and pixel buffer manipulation
+brew "gdk-pixbuf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# GSettings schemas for desktop components
+brew "gsettings-desktop-schemas"
+# Network related modules for glib
+brew "glib-networking"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# Cryptographic library based on the code from GnuPG
+brew "libgcrypt"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Command-line hex viewer
+brew "hexyl"
+# Duplicate file finder and an enhanced fork of 'fdupes'
+brew "jdupes"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Network authentication protocol
+brew "krb5"
+# DNS library written in C
+brew "ldns"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Provides library functionality for FIDO U2F & FIDO 2.0, including USB
+brew "libfido2"
+# Library for Apple Binary- and XML-Property Lists
+brew "libplist"
+# USB multiplexor library for iOS devices
+brew "libusbmuxd"
+# Library to communicate with iOS devices natively
+brew "libimobiledevice"
+# Postgres C API library
+brew "libpq"
+# Framework for layout and rendering of i18n text
+brew "pango"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# GNOME XML library
+brew "libxml2"
+# Mac App Store command-line interface
+brew "mas"
+# Command-line client for Mega.co.nz
+brew "megatools"
+# Node version management
+brew "n"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Network Kanji code conversion Filter (NKF)
+brew "nkf"
+# Modern shell for the GitHub era
+brew "nushell"
+# OpenBSD freely-licensed SSH connectivity tools
+brew "openssh"
+# Multithreaded PNG optimizer written in Rust
+brew "oxipng"
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
+# Command-line tool to generate, analyze, convert and manipulate colors
+brew "pastel"
+# General-purpose scripting language
+brew "php"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Parse HTML at the command-line
+brew "pup"
+# Rsync for cloud storage
+brew "rclone"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Install various Ruby versions and implementations
+brew "ruby-build"
+# Safe, concurrent, practical language
+brew "rust"
+# Rust toolchain installer
+brew "rustup-init"
+# Substitute for classic 'make' tool with autoconf/automake functionality
+brew "scons"
+# Intuitive find & replace CLI
+brew "sd"
+# Tool to create intelligent and beautiful documentation
+brew "sphinx-doc"
+# Add a public key to a remote machine's authorized_keys file
+brew "ssh-copy-id", link: true
+# Cross-shell prompt for astronauts
+brew "starship"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# Version control system designed to be a better CVS
+brew "subversion"
+# Manipulate and query tags on macOS files
+brew "tag"
+# Internet file retriever
+brew "wget"
+# Command-line interface for WordPress
+brew "wp-cli"
+# Bash completion for Wpcli
+brew "wp-cli-completion"
+# JavaScript package manager
+brew "yarn"
+# Download YouTube videos from the command-line
+brew "youtube-dl"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# View, print, and comment on PDF documents
+cask "adobe-acrobat-reader"
+# Collection of apps and services for photography, design, video, web, and UX
+cask "adobe-creative-cloud"
+# Utility to clean up corrupted installations of Adobe software
+cask "adobe-creative-cloud-cleaner-tool"
+# Two-factor authentication software
+cask "authy"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Tool to remove unnecessary files and folders from disk
+cask "cleanmymac"
+# Server and cloud storage browser
+cask "cyberduck"
+# Scans for dylib hijacking
+cask "dhs"
+# Voice and text chat software
+cask "discord"
+# Emulator to play GameCube and Wii games
+cask "dolphin"
+# Web browser
+cask "firefox"
+cask "font-open-sans"
+# Elegant sans-serif font family, now 9 weights and italic style
+cask "font-raleway"
+# Disk space cleaner that finds and deletes duplicated and similar files
+cask "gemini"
+# Client for the Google Drive storage service
+cask "google-drive"
+# Open-source video transcoder
+cask "handbrake"
+# Backup data from a Synology NAS
+cask "hyperbackupexplorer"
+# Free and open-source media player
+cask "iina"
+cask "java"
+# File archiver
+cask "keka"
+# End-to-end encryption software
+cask "keybase"
+# Tool to show what is persistently installed on the computer
+cask "knockknock"
+# WordPress local development tool by Flywheel
+cask "local"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
+# Warns about malware, adware and spyware
+cask "malwarebytes"
+cask "massreplaceit"
+# Syncs files between computers and MEGA Cloud drives
+cask "megasync"
+# Network monitor
+cask "netiquette"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# Retro video game emulation
+cask "openemu"
+# Play PC games and connect with your friends
+cask "origin"
+# Home media player
+cask "plex"
+# Command-line shell and scripting language
+cask "powershell"
+# VPN client focusing on security
+cask "protonvpn"
+# Scans, detects, and monitors keyboard taps
+cask "reikey"
+# Video game digital distribution service
+cask "steam"
+# Git client
+cask "sublime-merge"
+# Text editor for code, markup and prose
+cask "sublime-text"
+# Application for inspecting installer packages
+cask "suspicious-package"
+# Tool to explore all the running tasks (processes)
+cask "taskexplorer"
+# Unpacks archive files
+cask "the-unarchiver"
+# Multimedia player
+cask "vlc"
+# Torrent streaming application
+cask "webtorrent"
+# Desktop client for Webull Financial LLC
+cask "webull"
+# Comic reader
+cask "yacreader"
+mas "Bitwarden", id: 1352778147
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft Word", id: 462054704
+mas "PiPer", id: 1421915518
+mas "Sasquatch", id: 1465346522
+mas "Step Two", id: 1448916662

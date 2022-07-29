@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+function dock() {
+  case "$1" in
+    "add")
+      shift 1
+      # `dock add "Terminal"` | Add an application to the macOS Dock
+      app_name="${1}"
+      launchservices_path="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
+      app_path=$(${launchservices_path} -dump | grep -o "/.*${app_name}.app" | grep -v -E "Backups|Caches|TimeMachine|Temporary|/Volumes/${app_name}" | uniq | sort | head -n1)
+      if open -Ra "${app_path}"; then
+        echo "$app_path added to the Dock."
+        defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app_path}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+      else
+        echo "ERROR: $1 not found." 1>&2
+      fi
+    ;;
+    # `dock add:spacer` | Adds an empty space to macOS Dock
+    "add:spacer") defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}' ;;
+    # `dock clear` | Removes all persistent icons from macOS Dock
+    "clear") defaults write com.apple.dock persistent-apps -array ;;
+    # `dock reset` | Reset macOS Dock to default settings
+    "reset") defaults write com.apple.dock; killall Dock ;;
+  esac
+}
+
+complete -W "add add:spacer clear reset" dock

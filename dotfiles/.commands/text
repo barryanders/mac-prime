@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+function text() {
+  case $1 in
+    # `text x` | Formatting
+    "black")         echo -e "\033[0;30m" ;;
+    "red")           echo -e "\033[0;31m" ;;
+    "green")         echo -e "\033[0;32m" ;;
+    "yellow")        echo -e "\033[0;33m" ;;
+    "blue")          echo -e "\033[0;34m" ;;
+    "magenta")       echo -e "\033[0;35m" ;;
+    "cyan")          echo -e "\033[0;36m" ;;
+    "white")         echo -e "\033[0;37m" ;;
+    "bold")          tput bold ;;
+    "underline")     tput smul ;;
+    "invert")        tput rev  ;;
+    # `text encode:base64 "x"` | Encoding
+    "encode:base64") shift 1; echo -n "$@" | openssl base64             ;;
+    "encode:binary") shift 1; echo -n "$@" | perl -lpe '$_=unpack"B*"'  ;;
+    "encode:hex")    shift 1; echo -n "$@" | xxd -p                     ;;
+    "encode:md5")    shift 1; echo -n "$@" | openssl md5                ;;
+    "encode:sha1")   shift 1; echo -n "$@" | openssl sha1               ;;
+    # `text decode:base64 "x"` | Decoding
+    "decode:base64") shift 1; echo -n "$@" | base64 --decode            ;;
+    "decode:binary") shift 1; echo -n "$@" | perl -lpe '$_=pack"B*",$_' ;;
+    "decode:hex")    shift 1; echo -n "0x$@" | xxd -r                   ;;
+    # Reset
+    "") echo -e "\033[0m" ;;
+  esac
+}
+
+complete -W "black red green yellow blue magenta cyan white bold underline invert encode:base64 encode:binary encode:hex encode:md5 encode:sha1 decode:base64 decode:binary decode:hex" text

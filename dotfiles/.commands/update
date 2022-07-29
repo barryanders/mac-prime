@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+
+function update() {
+  case "$1" in
+
+    # `update brew`
+    "brew")
+      brew upgrade; brew missing; brew cleanup; brew services cleanup
+      cd ~//packages/
+      brew bundle dump --force --describe
+      cd -
+    ;;
+
+    # `update dotfiles`
+    "dotfiles") ~//dotfiles/install.sh ;;
+
+    # `update hosts`
+    "hosts") sudo chmod -R o+rwx /etc/hosts; cp ~//resources/hosts /etc/hosts ;;
+
+    # `update links`
+    "links")
+      # Cloud links :: from computer to Google Drive
+      gd="/Volumes/GoogleDrive/My Drive"
+      if [ -d "$gd" ]; then
+        cd "$gd"
+        for src in Applications Documents Documents/Projects Games Music Pictures; do
+          cd "$gd/$src"
+          for dir in ./; do
+            run=(
+              stow --target ~/$src    # target directory
+                   --restow           # prunes dead links
+                   --verbose 1 "$dir" # options 0-5
+                   # --simulate       # use for testing
+            )
+            "${run[@]}"
+          done
+        done
+      fi
+
+      # NAS links :: from computer to NAS
+      adler="/Volumes/Adler"
+      if [ -d "$adler" ]; then
+        cd "$adler"
+        for src in Documents/Computer Games Pictures; do
+          cd "$adler/$src"
+          for dir in ./; do
+            run=(
+              stow --target ~/$src    # target directory
+                   --restow           # prunes dead links
+                   --verbose 1 "$dir" # options 0-5
+                   # --simulate       # use for testing
+            )
+            "${run[@]}"
+          done
+        done
+      fi
+
+      # Other links
+      ln -s /Applications/ ~/Applications/Mac
+    ;;
+
+    # `update` | Run all of the update and clean commands
+    "")
+      echo
+      echo ':update'
+      echo
+      sama
+      cd ~
+      echo
+      echo 'Links'
+      echo '················································································'
+      echo
+      echo 'Updating links…'
+      update links
+      update dotfiles
+      echo
+      echo 'App Store'
+      echo '················································································'
+      echo
+      echo 'Updating App Store apps…'
+      mas upgrade
+      echo
+      echo 'Homebrew'
+      echo '················································································'
+      echo
+      echo 'Updating Homebrew packages…'
+      update brew
+      echo
+      echo 'Hosts'
+      echo '················································································'
+      echo
+      echo 'Updating hosts…'
+      update hosts
+      echo
+      echo 'macOS'
+      echo '················································································'
+      echo
+      echo 'Cleaning up…'
+      clean
+      # Remove unwanted apps that restore themselves after updates
+      sudo rm -rf /Applications/Google\ Docs.app
+      sudo rm -rf /Applications/Google\ Sheets.app
+      sudo rm -rf /Applications/Google\ Slides.app
+      # Dedupe ssh known hosts
+      cat ~//dotfiles/.ssh/known_hosts | uniq > ~//dotfiles/.ssh/known_hosts2; mv ~//dotfiles/.ssh/known_hosts2 ~//dotfiles/.ssh/known_hosts # add "| sort" to list in abc order
+      # Back up Sublime Text settings'
+      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Package\ Control.sublime-settings ~//resources/
+      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings ~//resources/
+      echo
+      echo 'Updating macOS…'
+      softwareupdate -i -a
+      echo
+      echo 'Updating Dock…'
+      ~//dock
+      echo
+      echo 'Updating system preferences…'
+      ~//preferences
+    ;;
+
+  esac
+}
+
+complete -W "brew dotfiles hosts links" update

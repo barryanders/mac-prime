@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+alias whereami="hostname"
+
+# `clear` or `c` | Same as ⌘K
+alias clear="printf '\033c\e[3J'"
+alias c="clear"
+
+# `reload` or `r` | Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
+alias r="reload"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# admin
+#-------#
+
+# `sudo` | Enable aliases to be sudoed
+alias sudo='sudo '
+# `sama` | Persistent sudo
+alias sama="sudo -v; while true; do sudo -n true; sleep 60; kill -0 \"$$\" || exit; done 2>/dev/null &"
+
+# preserve default commands
+#---------------------------#
+
+function shell() {
+  case "$1" in
+    "du") du ;;
+    "ls") ls ;;
+    "cat") cat ;;
+    "find") find ;;
+    "grep") grep ;;
+    "sed") sed ;;
+    "top") top ;;
+  esac
+}
+
+# rust replacements for default commands
+#----------------------------------------#
+
+alias du="dust"
+alias ls="exa"
+alias cat="bat"
+alias find="fd"
+alias sed="sd"
+alias tree="exa -T"
+
+# navigation
+#------------#
+
+# Easier navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+# `cd` | List directory contents with cd
+function cd() { builtin cd "$@" && ls; }
+# `mkcd` | Create a new directory and enter it
+function mkcd() { mkdir -p "$@" && cd "$_"; }
+# `mkdir` | Make directories recursively (ex. `my/tree` will make both folders)
+alias mkdir="mkdir -p"

@@ -1,0 +1,109 @@
+[alias]
+  # Switch to a branch, creating it if necessary
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+  # Show verbose output about tags, branches or remotes
+  tags = tag -l
+  branches = branch --all
+  remotes = remote --verbose
+
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
+
+  # Go back x numbers of commits
+  undo = "!f() { git reset --soft HEAD~$1; }; f"
+
+  # Remove all commits
+  squash = update-ref -d HEAD
+
+  # Fix HEAD branch issue
+  fix = "!f() { git commit -s -m "Publish." && git push --force; }; f"
+
+  # Force push
+  publish = push --force
+
+  # Show the user email for the current repository
+  whoami = config user.email
+
+[apply]
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
+
+[branch]
+  # Show most recently changed branches first
+  sort = -committerdate
+
+[color]
+  diff = auto
+  status = auto
+[color "branch"]
+  current = cyan
+  local = green
+  remote = red
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+[color "status"]
+  added = cyan
+  branch = cyan
+  changed = magenta
+  deleted = red
+  untracked = yellow
+
+[commit]
+	gpgsign = true
+
+[core]
+  editor = subl
+  # Use custom `.gitignore` and `.gitattributes`
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+
+  # Make `git rebase` safer on macOS
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
+
+  # Speed up commands involving untracked files such as `git status`
+  # https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
+
+[diff]
+  # Detect copies as well as renames
+  renames = copies
+
+  # Enable an experimental heuristic that shifts the hunk boundary in an
+  # attempt to make the resulting patch easier to read
+  compactionHeuristic = true
+  indentHeuristic = true
+
+[gpg]
+  # Path to GPG
+  program = /usr/local/bin/gpg
+
+[help]
+  # Automatically correct and execute mistyped commands
+  autocorrect = 1
+
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+  autostash = true
+
+[protocol "keybase"]
+  # Allow the kbfs filesystem
+  allow = always
+
+[push]
+  # https://git-scm.com/docs/git-config#git-config-pushdefault
+  default = simple
+
+[user]
+	name = $GIT_AUTHOR_NAME
+	email = $GIT_AUTHOR_EMAIL
+	signingkey = $GIT_SIGNING_KEY

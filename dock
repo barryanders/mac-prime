@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# refer to this file for available `dock` commands
+source ~//dotfiles/.commands/dock
+
+dock clear
+dock add "Firefox"
+dock add "Podcasts"
+dock add "Sasquatch"
+dock add "Sublime Text"
+dock add "Terminal"
+
+killall Dock

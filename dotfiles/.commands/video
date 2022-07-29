@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+function video() {
+  case "$1" in
+
+    # Video Encode Parameters: filetype, video codec, audio codec
+    # `video encode` | remux all videos in the current directory to mp4
+    # `video encode mkv libx265 aac` | encode all videos to mkv with x265 and aac codecs
+    "encode") shift 1
+      filetype=${1:-mp4}
+      video_codec=${2:-copy}
+      audio_codec=${3:-copy}
+      output=${4:-output}
+      mkdir -p $output
+      for i in *.mkv *.webm *.flv *.vob *.ogg *.ogv *.drc *gifv *.mng *.avi *.mov *.qt *.wmv *.yuv *.rm *.rmvb *.asf *.amv *.mp4 *.m4v *.mp *.m?v *.svi *.3gp *.flv *.f4v; do
+        if [ -f "$i" ]; then
+          if [ $1 = true ]
+          then
+            ffmpeg -i "$i" -map 0 -c:v $video_codec -c:a $audio_codec -y -nostats -loglevel 0 "./$output/${i/${i##*.}/$filetype}"
+          else
+            ffmpeg -i "$i" -c copy "./$output/${i/${i##*.}/$filetype}"
+          fi
+        fi
+      done
+    ;;
+
+    # `video merge mkv` | Combine all video files in the current directory into 1
+    "merge") shift 1; ffmpeg -f concat -safe 0 -i <(for f in *.mkv *.webm *.flv *.vob *.ogg *.ogv *.drc *gifv *.mng *.avi *.mov *.qt *.wmv *.yuv *.rm *.rmvb *.asf *.amv *.mp4 *.m4v *.mp *.m?v *.svi *.3gp *.flv *.f4v; do echo "file '$PWD/$f'"; done) -c copy "output.${1}" ;;
+
+  esac
+}
+
+complete -W "encode merge" video

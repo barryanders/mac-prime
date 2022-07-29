@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# function new_command() {
+#   case "$1" in
+#     "sub1") echo 'Hello world!' ;;
+#     "sub2") echo 'Hello sky!' ;;
+#   esac
+# }
+#
+# complete -W "sub1 sub2" new_command

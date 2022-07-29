@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# brew
+export PATH="/usr/local/sbin:$PATH"
+
+# rust
+export PATH="~/.cargo/bin:$PATH"
+
+# gnu-sed
+export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
+
+# python
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3

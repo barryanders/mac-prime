@@ -1,0 +1,10 @@
+dotfiles/.gitconfig
+dotfiles/.gnupg
+dotfiles/!.gnupg/gpg-agent.conf
+dotfiles/!.gnupg/gpg.conf
+dotfiles/.private
+dotfiles/.ssh
+dotfiles/.ssh/*_rsa*
+dotfiles/!.ssh/example_rsa*
+
+resources/hosts

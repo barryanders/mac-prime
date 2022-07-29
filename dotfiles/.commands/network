@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+function network() {
+  case "$1" in
+    # `network ip` | Get your public IP address or input a domain to get its IP
+    "ip") if [ -z $2 ]; then dig +short myip.opendns.com @resolver1.opendns.com; else shift 1; dig $1 +short; fi ;;
+    # `network ip:local` | Get your local IP address
+    "ip:local") ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' ;;
+    # `ipv6:off` | Turn off IPv6
+    "ipv6:off") networksetup -setv6off "$2" ;;
+    # `ipv6:on` | Turn on IPv6
+    "ipv6:on") networksetup -setv6automatic "$2" ;;
+    # `network dns:flush` or `flush` | Flush Directory Service cache
+    "dns:flush") sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache ;;
+    # `network speed` | Run a speedtest via fast.com's fast-cli
+    "speed") fast -u ;;
+  esac
+}
+
+alias flush="network dns:flush"
+
+complete -W "ip ip:local ipv6:off ipv6:on dns:flush speed" network

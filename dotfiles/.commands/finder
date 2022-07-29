@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+
+# todo: add `diskonaut` somewhere here
+
+# `quicklook x` or `ql x` | Open with macOS Quicklook Preview
+function quicklook() { qlmanage -p "$*" >& /dev/null; }
+alias ql="quicklook"
+complete quicklook ql
+
+# `finder` or `f`
+function finder() {
+  case "$1" in
+
+    # `finder` | Open the current folder in Finder
+    "") open -a Finder ./ ;;
+
+    # View
+    #------#
+    # `finder list` | List files in the current folder
+    "list") ls ;;
+    # `finder tree` | Display a subdirectory tree
+    "tree") tree ;;
+    # `finder count` | Count the files in the current folder
+    "count") ls | wc -l | sed 's/ //g' ;;
+
+    # Get Info
+    #----------#
+    # `finder size x` | Get the size of a file
+    "size") shift 1; if [ dust ]; then dust --depth 0 $1; else du -sh $1; fi ;;
+    # `file dimensions x` | Get dimensions of an image or video
+    "dimensions") shift 1
+      # if video
+      if [[ -z $(ffprobe -v quiet -select_streams v:0 -show_entries stream=codec_name -print_format csv=p=0 "$file") ]]; then
+        ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 $1
+      # not video
+      else
+        identify -ping -format '%w\x%h\n' $@
+      fi
+    ;;
+    # `file metadata x` or `meta x` | Get metadata
+    "metadata") shift 1; exiftool $1 ;;
+
+    # Actions
+    #---------#
+    # `finder new x` | Make a folder
+    "new") shift 1; mkdir "$1" ;;
+    # `finder remove x` | Remove a file
+    "remove") shift 1; rm -rf "$1" ;;
+    # `remove:empty` | Remove empty directories in current directory
+    "remove:empty") find . -type d -empty -delete ;;
+    # `rename:lower` | Make all files in folder lowercase
+    "rename:lower") shift 1; for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done ;;
+    # `file show x` | Show a symlink without hiding the destination or show a file
+    "show") shift 1; if [ -h "$1" ]; then chflags -h nohidden "$1"; else chflags nohidden "$1"; fi ;;
+    # `file hide x` | Hide a symlink without hiding the destination or hide a file
+    "hide") shift 1; if [ -h "$1" ]; then chflags -h hidden "$1"; else chflags hidden "$1"; fi ;;
+    # `file lock x` | Lock a file
+    "lock") shift 1; chflags uchg "$1" ;;
+    # `file unlock x` | Unlock a file
+    "unlock") shift 1; chflags nouchg "$1" ;;
+    # `finder show:all x` | Show file and subfiles
+    "show:all") shift 1; chflags -R nohidden "$1" ;;
+    # `finder hide:all x` | Hide file and subfiles
+    "hide:all") shift 1; chflags -R hidden "$1" ;;
+    # `finder lock:all x` | Lock file and subfiles
+    "lock:all") shift 1; chflags -R uchg "$1" ;;
+    # `finder unlock:all x` | Unlock file and subfiles
+    "unlock:all") shift 1; chflags -R nouchg "$1" ;;
+    # `finder zero x` | Replace file with a 0 byte file
+    "zero") shift 1; rm -rf "$1" && touch "$1" && chflags hidden "$1" ;;
+  esac
+}
+
+alias f="finder"
+alias meta="f metadata"
+alias show="f show"
+alias hide="f hide"
+alias lock="f lock"
+alias unlock="f unlock"
+
+complete -W "list tree count size dimensions metadata new remove remove:empty show hide lock unlock show:all hide:all lock:all unlock:all zero" finder f
+
+# `extract file.zip` | Extract most known archives with one command
+function extract() {
+  if [ -f $1 ]; then
+    case $1 in
+      *.tar.bz2) tar xvjf $1                                   ;;
+      *.tar.gz)  tar xvzf $1                                   ;;
+      *.tar.xz)  tar xvJf $1                                   ;;
+      *.lzma)    unlzma $1                                     ;;
+      *.bz2)     bunzip2 $1                                    ;;
+      *.rar)     unrar x -ad $1                                ;;
+      *.gz)      gunzip $1                                     ;;
+      *.tar)     tar xvf $1                                    ;;
+      *.tbz2)    tar xvjf $1                                   ;;
+      *.tgz)     tar xvzf $1                                   ;;
+      *.zip)     unzip $1                                      ;;
+      *.Z)       uncompress $1                                 ;;
+      *.7z)      7z x $1                                       ;;
+      *.xz)      unxz $1                                       ;;
+      *.exe)     cabextract $1                                 ;;
+      *)         echo "extract: '$1' - unknown archive method" ;;
+    esac
+  else
+    echo "$1 - file does not exist"
+  fi
+}
+
+complete extract
+
+# `compress folder` | Compress a folder using zip or 7zip
+function compress() {
+  if [ ! -z $2 ] && [ -d $2 ]; then
+    case "$1" in
+      # `compress dmg ~/src Name`
+      "dmg") hdiutil create -fs APFS -srcfolder "$1" -volname "$2" "$2.dmg" ;;
+      # `compress zip folder`
+      "zip") shift 1; zip -r "$1".zip "$1" ;;
+      # `compress 7zip folder` or `compress 7z folder`
+      "7zip" | "7z") shift 1; 7z a "$1" "$1"/* ;;
+    esac
+  else
+    # `compress folder`
+    zip -r "$1".zip "$1"
+  fi
+}
+
+complete compress
+
+# `codecs` | Return video and audio codecs
+function codecs() { ffprobe "$1" 2>&1 >/dev/null |grep Stream.*Video | sed -e 's/.*Video: //' -e 's/[, ].*//'; ffprobe "$1" 2>&1 >/dev/null |grep Stream.*Audio | sed -e 's/.*Audio: //' -e 's/[, ].*//'; }
+complete codecs
+
+# `mergepdf -o output.pdf input{1,2,3}.pdf` | Merge PDF files, preserving hyperlinks
+alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
+complete mergepdf

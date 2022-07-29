@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+# `download` or `dl`
+function download() {
+  if [ -z $3 ]; then params="$1"; else params="$1 $2"; fi
+  case "$params" in
+    # `download links ./x.txt` | Download a list of links from a file
+    "links") wget -r --no-remove-listing -i ;;
+
+    # `download music https://www.youtube.com/watch?v=id` | Download music
+    "music") shift 1; youtube-dl --extract-audio --audio-format mp3 -l "$1" ;;
+
+    # `download video https://www.youtube.com/watch?v=id` | Get mp4 with the best video and audio
+    "video") shift 1; youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' $1 ;;
+
+    # `download video range https://www.youtube.com/watch?v=id 00:15:00 00:45:00`
+    "video range") shift 2
+      # variables
+      vurl=$1
+      startTime=$2
+      endTime=$3
+      title="${4:-video}"
+      duration=$(($(local t1sec=$(local hh=${startTime%%:*}; local rest=${startTime#*:}; local mm=${rest%%:*}; local ss=${rest#*:}; printf "%s" $(bc <<< "$hh * 60 * 60 + $mm * 60 + $ss")); local t2sec=$(local hh=${endTime%%:*}; local rest=${endTime#*:}; local mm=${rest%%:*}; local ss=${rest#*:}; printf "%s" $(bc <<< "$hh * 60 * 60 + $mm * 60 + $ss")); printf "%s" $(bc <<< "$t2sec - $t1sec"))/60)) # duration in seconds
+      # start
+      range=(
+      ffmpeg
+      # URL
+      # input file url
+      -i $(youtube-dl -f 22 --get-url $vurl)
+      # Start Time
+      # Seeks in this input file to position.
+      # Note that in most formats it is not possible to seek exactly, so ffmpeg will seek to the closest seek point before position. When transcoding and -accurate_seek is enabled (the default), this extra segment between the seek point and position will be decoded and discarded. When doing stream copy or when -noaccurate_seek is used, it will be preserved.
+      -ss $startTime
+      # Duration
+      # Limit the duration of data read from the input file.
+      -t $duration
+      # Frames Per Second
+      # Set frame rate (Hz value, fraction or abbreviation).
+      -r 30
+      # Constant Rate Factor
+      # The range of the CRF scale is 0–51, where 0 is lossless, 23 is the default, and 51 is worst quality possible.
+      # A lower value generally leads to higher quality, and a subjectively sane range is 17–28. Consider 17 or 18 to be visually lossless or nearly so; it should look the same or nearly the same as the input but it isn't technically lossless.
+      -crf 15.0
+      # Video Codec
+      -vcodec libx264
+      # Audio Codec
+      -acodec aac
+      # Overwrite output files. (-y for yes, -n for no)
+      -n
+      # Output Dir
+      $title.mp4
+      )
+      "${range[@]}"
+    ;;
+
+    # `download https://google.com`
+    "") wget ;;
+  esac
+}
+
+alias dl="download"
+
+complete -W "links music video 'video range'" download dl
+
+alias mget="download music"
+alias vget="download video"
+complete mget vget

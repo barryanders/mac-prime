@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# `ringtone song.mp3` | Convert mp3 to m4r and change the length to 30 seconds
+function ringtone() { ffmpeg -i "$1" -t 30 -c:a aac -f ipod -b:a 96k "$(basename "$1" .mp3).m4r"; }
+complete -f -X '!*.mp3' ringtone

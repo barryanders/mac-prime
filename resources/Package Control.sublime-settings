@@ -1,0 +1,13 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Increment Decrement",
+		"Increment Selection",
+		"Package Control",
+		"Theme - Monokai Pro"
+	],
+}

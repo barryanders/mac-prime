@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function firefox() {
+  case "$1" in
+    # `firefox screenshot ~/x url 1280,720` | Take a screenshot
+    "screenshot") /Applications/Firefox.app/Contents/MacOS/firefox -screenshot $2 $3 --window-size=$4 ;;
+  esac
+}
+
+complete -W "screenshot" firefox

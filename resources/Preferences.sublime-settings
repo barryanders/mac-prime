@@ -1,0 +1,31 @@
+{
+	"bold_folder_labels": false,
+	"color_scheme": "Monokai.sublime-color-scheme",
+	"default_encoding": "UTF-8",
+	"default_line_ending": "unix",
+	"detect_indentation": true,
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": false,
+	"folder_exclude_patterns":
+	[
+		".git",
+		"node_modules"
+	],
+	"font_size": 14,
+	"highlight_line": true,
+	"hot_exit": true,
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
+	"monokai_pro_label_font_size": 14,
+	"monokai_pro_sidebar_font_size": 14,
+	"monokai_pro_small_scrollbar": true,
+	"remember_open_files": true,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"tab_size": 2,
+	"theme": "Monokai Classic.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_automatic_white_space": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false,
+}
