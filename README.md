@@ -1,6 +1,6 @@
 # Mac Prime
 
-I use **Mac Prime** to tailor my Mac. Feel free to use this as a base for your own setup.
+I use **Mac Prime** to automatically set up my Mac. Feel free to use this as a base for your own setup.
 
 ## Overview
 
