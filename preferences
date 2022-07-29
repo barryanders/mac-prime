@@ -14,11 +14,11 @@ sudo -v; while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/de
 #==============================================================================#
 
 # Set computer name (as done via System Preferences → Sharing)
-computerName="Mycroft"
-sudo scutil --set ComputerName $computerName
-sudo scutil --set HostName ${computerName,,}
-sudo scutil --set LocalHostName ${computerName,,}
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string ${computerName,,}
+COMPUTER_NAME="Mycroft"
+sudo scutil --set ComputerName $COMPUTER_NAME
+sudo scutil --set HostName ${COMPUTER_NAME,,}
+sudo scutil --set LocalHostName ${COMPUTER_NAME,,}
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string ${COMPUTER_NAME,,}
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
