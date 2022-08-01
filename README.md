@@ -2,6 +2,14 @@
 
 I use **Mac Primer** to automatically set up my Mac. Feel free to use this as a base for your own setup.
 
+To install everything (apps, dotfiles, preferences, dock, and hosts) use this one-liner. Just make sure you customize it to your liking first.
+
+```bash
+git clone https://github.com/barryanders/mac-primer.git ~/ && ~//primer.sh
+```
+
+To update everything, run `update`.
+
 ## Index
 
 - [`apps`](#apps): Lists of installable packages
@@ -123,22 +131,6 @@ Once you're done, run the [`dock`](https://github.com/barryanders/mac-primer/blo
 ## [Hosts](https://github.com/barryanders/mac-primer/blob/main/hosts)
 
 Keep track of your hosts in the [`hosts`](https://github.com/barryanders/mac-primer/blob/main/hosts) file. I use [`update hosts`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) to replace my system hosts file with this one.
-
-## Install Everything
-
-Install everything with this one-liner.
-
-```bash
-git clone https://github.com/barryanders/mac-primer.git ~/ && ~//primer.sh
-```
-
-## Update Everything
-
-Update everything with this one-liner.
-
-```bash
-update
-```
 
 ## Author
 
