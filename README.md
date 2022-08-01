@@ -32,7 +32,7 @@ To customize my command line experience, I keep a set of configurations known as
 
 ### Install Dotfiles
 
- The [dotfiles installer](https://github.com/barryanders/mac-primer/blob/main/dotfiles/install.sh) requires [`stow`](https://www.gnu.org/software/stow/) ([`brew install stow`](https://formulae.brew.sh/formula/stow)). Run this script to link the files in the [`dotfiles`](https://github.com/barryanders/mac-primer/tree/main/dotfiles) folder to your `$HOME` folder.
+ The [dotfiles installer](https://github.com/barryanders/mac-primer/blob/main/dotfiles/install.sh) requires [`stow`](https://www.gnu.org/software/stow/) ([`brew install stow`](https://formulae.brew.sh/formula/stow)). Run this script to link the files in the [dotfiles folder](https://github.com/barryanders/mac-primer/tree/main/dotfiles) to your home folder.
 
 ```bash
 ~//dotfiles/install.sh
@@ -40,13 +40,13 @@ To customize my command line experience, I keep a set of configurations known as
 
 ### Update Dotfiles
 
-The dotfiles are live because they are linked to your `$HOME` folder, but you may need to start a new CLI session for your changes to take effect (I use the [`reload`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/$) command). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to relink mine.
+The dotfiles are live because they are linked to your home folder, but you may need to start a new CLI session for your changes to take effect (I use the [`reload`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/$) command). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to relink mine.
 
 ### Customize Dotfiles
 
-#### [`.commands`](https://github.com/barryanders/mac-primer/tree/main/dotfiles/.commands) Folder
+#### [.commands Folder](https://github.com/barryanders/mac-primer/tree/main/dotfiles/.commands)
 
-The [`.commands`](https://github.com/barryanders/mac-primer/tree/main/dotfiles/.commands) folder is intended for you to add and remove custom commands in a categorical way. Keep what you want. Refer to the [`template`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/template) file for a basic example of how to create your own commands.
+The [.commands folder](https://github.com/barryanders/mac-primer/tree/main/dotfiles/.commands) is intended for you to add and remove custom commands in a categorical way. Keep what you want. Refer to the [template file](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/template) for a basic example of how to create your own commands.
 
 Here's what I've got in there for you:
 
@@ -63,7 +63,7 @@ Here's what I've got in there for you:
 - [`update`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update): Update all the things
 - [`video`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/video): Remux, encode, or merge videos
 
-#### [`.path`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.path) File
+#### [.path File](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.path)
 
 Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin` to the `$PATH`.
 
@@ -71,7 +71,7 @@ Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin`
 export PATH="/usr/local/bin:$PATH"
 ```
 
-#### `.private` File
+#### .private File
 
 Add private code that you don't want to commit to a public repository. My `.private` file looks something like this.
 
