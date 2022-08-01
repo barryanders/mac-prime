@@ -40,7 +40,7 @@ To customize my command line experience, I keep a set of configurations known as
 
 ### Update Dotfiles
 
-The dotfiles are live because they are linked to your home folder, but you may need to start a new CLI session for your changes to take effect (I use the [`reload`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/$) command). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to relink mine.
+The dotfiles are live because they are linked to from your home folder, but you may need to start a new CLI session for your changes to take effect (I use the [`reload`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/$) command). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to relink mine.
 
 ### Customize Dotfiles
 
@@ -63,7 +63,7 @@ Here's what I've got in there for you:
 - [`update`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update): Update all the things
 - [`video`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/video): Remux, encode, or merge videos
 
-#### ``.path` File
+#### `.path` File
 
 Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin` to the `$PATH`.
 
@@ -71,7 +71,7 @@ Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin`
 export PATH="/usr/local/bin:$PATH"
 ```
 
-#### ``.private` File
+#### `.private` File
 
 Add private code that you don't want to commit to a public repository. My `.private` file looks something like this.
 
