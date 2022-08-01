@@ -2,7 +2,7 @@
 
 I use **Mac Primer** to automatically set up my Mac. Feel free to use this as a base for your own setup.
 
-To install everything (`apps`, `dotfiles`, `preferences`, `dock`, and `hosts`) use this one-liner. Just make sure you customize it to your liking first.
+To install everything (`apps`, `dotfiles`, `preferences`, `dock`, and `hosts`) use this one-liner ([fork](https://github.com/barryanders/mac-primer/fork) and customize it first).
 
 ```bash
 git clone https://github.com/barryanders/mac-primer.git ~/ && ~//primer.sh
