@@ -16,7 +16,7 @@ To install my apps all at once, I use [`brewfile`](https://github.com/barryander
 
 ### Install Apps
 
-Run this script to install the packages listed in the [apps folder](https://github.com/barryanders/mac-primer/tree/main/apps).
+Run this script to install the packages listed in the Apps folder.
 
 ```bash
 ~//apps/install.sh
@@ -32,7 +32,7 @@ To customize my command line experience, I keep a set of configurations known as
 
 ### Install Dotfiles
 
- The [dotfiles installer](https://github.com/barryanders/mac-primer/blob/main/dotfiles/install.sh) requires [`stow`](https://www.gnu.org/software/stow/) ([`brew install stow`](https://formulae.brew.sh/formula/stow)). Run this script to link the files in the [dotfiles folder](https://github.com/barryanders/mac-primer/tree/main/dotfiles) to your home folder.
+ The dotfiles installer requires [GNU Stow](https://www.gnu.org/software/stow/) ([`brew install stow`](https://formulae.brew.sh/formula/stow)). Run this script to install dotfiles.
 
 ```bash
 ~//dotfiles/install.sh
@@ -44,9 +44,9 @@ The dotfiles are live because they are linked to your home folder, but you may n
 
 ### Customize Dotfiles
 
-#### [.commands Folder](https://github.com/barryanders/mac-primer/tree/main/dotfiles/.commands)
+#### `.commands` Folder
 
-The [.commands folder](https://github.com/barryanders/mac-primer/tree/main/dotfiles/.commands) is intended for you to add and remove custom commands in a categorical way. Keep what you want. Refer to the [template file](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/template) for a basic example of how to create your own commands.
+The [`.commands`](https://github.com/barryanders/mac-primer/tree/main/dotfiles/.commands) folder is intended for you to add and remove custom commands in a categorical way. Keep what you want. Refer to the [`template`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/template) file for a basic example of how to create your own commands.
 
 Here's what I've got in there for you:
 
@@ -63,7 +63,7 @@ Here's what I've got in there for you:
 - [`update`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update): Update all the things
 - [`video`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/video): Remux, encode, or merge videos
 
-#### [.path File](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.path)
+#### ``.path` File
 
 Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin` to the `$PATH`.
 
@@ -71,7 +71,7 @@ Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin`
 export PATH="/usr/local/bin:$PATH"
 ```
 
-#### .private File
+#### ``.private` File
 
 Add private code that you don't want to commit to a public repository. My `.private` file looks something like this.
 
@@ -97,7 +97,7 @@ git config --global user.signingkey "$GIT_SIGNING_KEY"
 
 There are some other dotfiles included like [`.hushlogin`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.hushlogin), [`.wgetrc`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.wgetrc), and [`.gitconfig`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.gitconfig).
 
-## Preferences
+## [Preferences](https://github.com/barryanders/mac-primer/blob/main/preferences)
 
 Use [`preferences`](https://github.com/barryanders/mac-primer/blob/main/preferences) to make adjustments you would otherwise set in the System Preferences app. Define this file and reuse it whenever you like. If your settings ever get messed up, this is a great way to restore them.
 
@@ -105,7 +105,7 @@ Use [`preferences`](https://github.com/barryanders/mac-primer/blob/main/preferen
 ~//preferences
 ```
 
-## Dock
+## [Dock](https://github.com/barryanders/mac-primer/blob/main/dock)
 
 Customize your Dock with the [`dock`](https://github.com/barryanders/mac-primer/blob/main/dock) file. Use these commands:
 
@@ -126,7 +126,7 @@ Keep track of your hosts in the [`hosts`](https://github.com/barryanders/mac-pri
 
 ## Install Everything
 
-You can install everything with this one-liner.
+Install everything with this one-liner.
 
 ```bash
 git clone https://github.com/barryanders/mac-primer.git ~/ && ~//primer.sh
@@ -134,7 +134,7 @@ git clone https://github.com/barryanders/mac-primer.git ~/ && ~//primer.sh
 
 ## Update Everything
 
-You can update everything with this one-liner.
+Update everything with this one-liner.
 
 ```bash
 update
