@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
-cd ~//packages/
+echo 'Installing Apps…'
+cd ~//apps/
 chmod +x *.sh
 
-# Brew: The missing package manager for macOS
-# https://github.com/Homebrew/brew
+# Brew: The missing package manager for macOS | https://github.com/Homebrew/brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew tap "homebrew/bundle"
 brew bundle
 brew cleanup
 brew services cleanup
 brew doctor
+
 # Switch to using brew-installed bash as default shell
 BREW_PREFIX=$(brew --prefix) # Homebrew's installed location
 if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then

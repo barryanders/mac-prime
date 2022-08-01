@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Go further with customizing your preferences: https://macos-defaults.com/
+# Go further with customizing your preferences | https://macos-defaults.com/
 mac=$(test "`uname`" == "Darwin")
 
 if [[ mac ]]; then
@@ -502,7 +502,7 @@ cp ~//resources/Preferences.sublime-settings ~/Library/Application\ Support/S
 # Hosts
 #==============================================================================#
 
-cp ~//resources/hosts /etc/hosts
+cp ~//hosts /etc/hosts
 
 #==============================================================================#
 # Kill affected applications
@@ -524,5 +524,5 @@ for app in         \
 do killall "${app}" &> /dev/null; done
 
 else
-echo "Error: Nothing happened. Sorry! you don't appear to be using macOS."
+echo "Error! Preferences were not applied. You don't appear to be using macOS."
 fi

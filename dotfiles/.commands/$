@@ -18,8 +18,8 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # `sudo` | Enable aliases to be sudoed
 alias sudo='sudo '
-# `sama` | Persistent sudo
-alias sama="sudo -v; while true; do sudo -n true; sleep 60; kill -0 \"$$\" || exit; done 2>/dev/null &"
+# `root` | Persistent sudo
+alias root="sudo -v; while true; do sudo -n true; sleep 60; kill -0 \"$$\" || exit; done 2>/dev/null &"
 
 # preserve default commands
 #---------------------------#

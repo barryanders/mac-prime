@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+function clean() {
+  case "$1" in
+
+    # `clean apps` | Remove unwanted apps that restore themselves after updates
+    "apps")
+      echo 'Removing unwanted apps…';
+      sudo rm -rf /Applications/Google\ Docs.app
+      sudo rm -rf /Applications/Google\ Sheets.app
+      sudo rm -rf /Applications/Google\ Slides.app
+      rm -rf ~/Google\ Drive
+    ;;
+
+    # `clean cache` | Remove cache files
+    "cache") echo 'Removing cache…'; rm -rf .cache ;;
+
+    # `clean clipboard` | Empty clipboard
+    "clipboard") echo 'Emptying clipboard…'; pbcopy < /dev/null ;;
+
+    # `clean logs` | Remove Apple's system logs to improve shell startup speed
+    "logs") echo 'Removing logs…'; sudo rm -rfv /private/var/log/asl/*.asl ;;
+
+    # `clean ssh` | Dedupe ssh known hosts
+    "ssh")
+      echo 'Deduping SSH known hosts…'
+      cat ~//dotfiles/.ssh/known_hosts | uniq > ~//dotfiles/.ssh/known_hosts2; mv ~//dotfiles/.ssh/known_hosts2 ~//dotfiles/.ssh/known_hosts # add "| sort" to list in abc order
+    ;;
+
+    # `clean` | Run all the clean commands
+    "")
+      clean apps
+      clean cache
+      clean clipboard
+      clean logs
+      clean ssh
+    ;;
+
+  esac
+}
+
+complete -W "apps cache clipboard logs ssh" remove
+
+function fix() {
+  case "$1" in
+
+    # `fix audio` | When audio isn't working
+    "audio") sudo pkill coreaudiod ;;
+
+    # `fix app /Applications/name.app` | When an app tells you "This app is damaged and can't be opened. You should move it to the trash."
+    "app") xattr -rc $2 ;;
+
+  esac
+}
+
+complete -W "audio app" fix

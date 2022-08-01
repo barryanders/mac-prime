@@ -7,4 +7,4 @@ dotfiles/.ssh
 dotfiles/.ssh/*_rsa*
 dotfiles/!.ssh/example_rsa*
 
-resources/hosts
+hosts

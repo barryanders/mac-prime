@@ -113,10 +113,6 @@ brew "librsvg"
 brew "libxml2"
 # Mac App Store command-line interface
 brew "mas"
-# Command-line client for Mega.co.nz
-brew "megatools"
-# Node version management
-brew "n"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Network Kanji code conversion Filter (NKF)
@@ -139,8 +135,6 @@ brew "pinentry-mac"
 brew "pup"
 # Rsync for cloud storage
 brew "rclone"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Safe, concurrent, practical language
@@ -183,8 +177,6 @@ cask "adobe-creative-cloud"
 cask "adobe-creative-cloud-cleaner-tool"
 # Two-factor authentication software
 cask "authy"
-# Web browser focusing on privacy
-cask "brave-browser"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
 # Server and cloud storage browser
@@ -221,11 +213,6 @@ cask "knockknock"
 cask "local"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
-# Warns about malware, adware and spyware
-cask "malwarebytes"
-cask "massreplaceit"
-# Syncs files between computers and MEGA Cloud drives
-cask "megasync"
 # Network monitor
 cask "netiquette"
 # Open-source software for live streaming and screen recording
@@ -240,6 +227,8 @@ cask "plex"
 cask "powershell"
 # VPN client focusing on security
 cask "protonvpn"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Scans, detects, and monitors keyboard taps
 cask "reikey"
 # Video game digital distribution service
@@ -258,8 +247,6 @@ cask "the-unarchiver"
 cask "vlc"
 # Torrent streaming application
 cask "webtorrent"
-# Desktop client for Webull Financial LLC
-cask "webull"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147

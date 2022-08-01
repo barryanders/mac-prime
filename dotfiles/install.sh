@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo 'Installing Dotfiles…'
+
 cd "$(dirname "${BASH_SOURCE}")"
 
 function install:dotfiles() {
