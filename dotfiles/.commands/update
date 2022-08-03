@@ -10,7 +10,7 @@ function update() {
     "brew")
       echo 'Updating Homebrew packages…'
       brew upgrade; brew missing; brew cleanup; brew services cleanup
-      cd ~//apps/
+      shell cd ~//apps/
       brew bundle dump --force --describe
       cd -
     ;;
@@ -30,9 +30,9 @@ function update() {
       # Cloud links :: from computer to Google Drive
       gd="/Volumes/GoogleDrive/My Drive"
       if [ -d "$gd" ]; then
-        cd "$gd"
+        shell cd "$gd"
         for src in Applications Documents Documents/Projects Games Music Pictures; do
-          cd "$gd/$src"
+          shell cd "$gd/$src"
           for dir in ./; do
             run=(
               stow --target ~/$src    # target directory
@@ -48,9 +48,9 @@ function update() {
       # NAS links :: from computer to NAS
       nas="/Volumes/Adler"
       if [ -d "$nas" ]; then
-        cd "$nas"
+        shell cd "$nas"
         for src in Documents/Computer Games Pictures; do
-          cd "$nas/$src"
+          shell cd "$nas/$src"
           for dir in ./; do
             run=(
               stow --target ~/$src    # target directory
@@ -76,7 +76,7 @@ function update() {
       echo $(text)
       echo 'Requesting root access…'
       root
-      cd ~
+      shell cd ~
       echo $(text invert)
       echo '                                                                                '
       echo ' :<update links>                                                               '
@@ -91,6 +91,7 @@ function update() {
       echo $(text)
       update apps
       update brew
+      shell cd ~
       echo $(text invert)
       echo '                                                                                '
       echo ' :<update hosts>                                                               '
