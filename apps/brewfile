@@ -35,10 +35,10 @@ brew "fd"
 brew "libtool"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
 # OpenType text shaping engine
 brew "harfbuzz"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # Secure Reliable Transport
@@ -231,6 +231,8 @@ cask "protonvpn"
 cask "raycast"
 # Scans, detects, and monitors keyboard taps
 cask "reikey"
+# Album ripper for various websites
+cask "ripme"
 # Video game digital distribution service
 cask "steam"
 # Git client
@@ -247,6 +249,8 @@ cask "the-unarchiver"
 cask "vlc"
 # Torrent streaming application
 cask "webtorrent"
+# Desktop client for Webull Financial LLC
+cask "webull"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
