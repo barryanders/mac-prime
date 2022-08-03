@@ -12,7 +12,7 @@ function update() {
       brew upgrade; brew missing; brew cleanup; brew services cleanup
       shell cd ~//apps/
       brew bundle dump --force --describe
-      cd -
+      shell cd -
     ;;
 
     # `update dock`
