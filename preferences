@@ -149,15 +149,12 @@ ln -sf /dev/null ~/Library/Preferences/com.apple.LaunchServices.QuarantineEvents
 defaults write -g NSNavRecentPlacesLimit -int 0
 
 # Logs: Number of recent items: Applications: None
-# Needs fixing: execution error: Not authorized to send Apple events to System Events.
 osascript -e 'tell application "System Events" to tell appearance preferences to set recent applications limit to 0'
 
 # Logs: Number of recent items: Documents: None
-# Needs fixing: execution error: Not authorized to send Apple events to System Events.
 osascript -e 'tell application "System Events" to tell appearance preferences to set recent documents limit to 0'
 
 # Logs: Number of recent items: Servers: None
-# Needs fixing: execution error: Not authorized to send Apple events to System Events.
 osascript -e 'tell application "System Events" to tell appearance preferences to set recent servers limit to 0'
 
 #==============================================================================#
