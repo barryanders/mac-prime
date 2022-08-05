@@ -65,9 +65,9 @@ defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 
 # Expand the following file Info panes
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-  General -bool true  \
-  MetaData -bool true \
-  OpenWith -bool true \
+  General    -bool true \
+  MetaData   -bool true \
+  OpenWith   -bool true \
   Privileges -bool true
 
 # Expand save panel by default?
@@ -224,14 +224,14 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool false
 # Dock, Mission Control, Spaces, & Hot Corners
 #==============================================================================#
 
-# Dock: Set the icon size of Dock items to 80 pixels
-defaults write com.apple.dock tilesize -int 80
+# Dock: Set the icon size of Dock items to 48 pixels
+defaults write com.apple.dock tilesize -int 48
+
+# Dock: Set magnification icon size to 48 pixels
+defaults write com.apple.dock largesize -float 48
 
 # Dock: Enable magnification?
 defaults write com.apple.dock magnification -bool false
-
-# Dock: Set magnification icon size to 80 pixels
-defaults write com.apple.dock largesize -float 80
 
 # Dock: Show indicator lights for open applications in the Dock?
 defaults write com.apple.dock show-process-indicators -bool true
