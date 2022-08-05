@@ -26,7 +26,7 @@ alias root="sudo -v; while true; do sudo -n true; sleep 60; kill -0 \"$$\" || ex
 
 function shell() {
   case "$1" in
-    "cd") builtin cd ;;
+    "cd") builtin cd "$2" ;;
     "du") du ;;
     "ls") ls ;;
     "cat") cat ;;
