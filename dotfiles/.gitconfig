@@ -84,7 +84,7 @@
 
 [gpg]
   # Path to GPG
-  program = /usr/local/bin/gpg
+  program = /opt/homebrew/bin/gpg
 
 [help]
   # Automatically correct and execute mistyped commands
@@ -94,10 +94,6 @@
   # Include summaries of merged commits in newly created merge commit messages
   log = true
   autostash = true
-
-[protocol "keybase"]
-  # Allow the kbfs filesystem
-  allow = always
 
 [push]
   # https://git-scm.com/docs/git-config#git-config-pushdefault

@@ -29,11 +29,6 @@ function shell() {
     "cd") builtin cd "$2" ;;
     "du") du ;;
     "ls") ls ;;
-    "cat") cat ;;
-    "find") find ;;
-    "grep") grep ;;
-    "sed") sed ;;
-    "top") top ;;
   esac
 }
 
@@ -42,9 +37,6 @@ function shell() {
 
 alias du="dust"
 alias ls="exa"
-alias cat="bat"
-alias find="fd"
-alias sed="sd"
 alias tree="exa -T"
 
 # navigation

@@ -1,0 +1,5 @@
+Use CMD + Shift + P for the following actions:
+
+1. Install package control
+2. Monokai Pro: select theme -> Monokai Classic
+3. Select Color Scheme -> Monokai

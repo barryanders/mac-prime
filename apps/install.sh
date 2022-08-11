@@ -9,8 +9,10 @@ chmod +x *.sh
 brew tap "homebrew/bundle"
 brew bundle
 brew cleanup
-brew services cleanup
 brew doctor
+
+# Make brew work
+eval $(/opt/homebrew/bin/brew shellenv)
 
 # Switch to using brew-installed bash as default shell
 BREW_PREFIX=$(brew --prefix) # Homebrew's installed location

@@ -1,3 +1,12 @@
+# Load the shell dotfiles, and then some:
+# ~/.path can be used to extend `$PATH`.
+# ~/.commands is where you can put custom aliases and functions.
+# ~/.private can be used for other settings you don't want to commit.
+for file in ~/.{path,exports,commands/*,private}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done;
+unset file;
+
 # Set prompt to `starship`
 eval "$(starship init bash)"
 
@@ -39,16 +48,3 @@ shopt -s histappend;
 # Add timestamps to history
 # Date/time formatting: http://www.acehints.com/2012/07/histtimeformat-how-to-see-linux.html
 HISTTIMEFORMAT="|  %F  |  %r  |  "
-
-# Tell SSH how to access gpg-agent by changing the value of SSH_AUTH_SOCK
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-
-# Load the shell dotfiles, and then some:
-# ~/.path can be used to extend `$PATH`.
-# ~/.commands is where you can put custom aliases and functions.
-# ~/.private can be used for other settings you don't want to commit.
-for file in ~/.{path,exports,commands/*,private}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file"
-done;
-unset file;
