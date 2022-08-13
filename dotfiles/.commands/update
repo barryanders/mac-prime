@@ -27,45 +27,10 @@ function update() {
     # `update links`
     "links")
       echo 'Updating links…'
-      # Cloud links :: from computer to Google Drive
-      gd="/Volumes/GoogleDrive/My Drive"
-      if [ -d "$gd" ]; then
-        shell cd "$gd"
-        for src in Applications Documents Documents/Projects Games Music Pictures; do
-          shell cd "$gd/$src"
-          for dir in ./; do
-            run=(
-              stow --target ~/$src    # target directory
-                   --restow           # prunes dead links
-                   --verbose 1 "$dir" # options 0-5
-                   # --simulate       # use for testing
-            )
-            "${run[@]}"
-          done
-        done
-      fi
-
-      # NAS links :: from computer to NAS
-      nas="/Volumes/Adler"
-      if [ -d "$nas" ]; then
-        shell cd "$nas"
-        for src in Documents/Computer Games Pictures; do
-          shell cd "$nas/$src"
-          for dir in ./; do
-            run=(
-              stow --target ~/$src    # target directory
-                   --restow           # prunes dead links
-                   --verbose 1 "$dir" # options 0-5
-                   # --simulate       # use for testing
-            )
-            "${run[@]}"
-          done
-        done
-      fi
-
-      # Other links
       ln -s /Applications/ ~/Applications/Mac
     ;;
+    # `update preferences`
+    "preferences") echo 'Updating Preferences…'; ~//preferences ;;
 
     # `update` | Run all of the updates
     "")
@@ -113,7 +78,6 @@ function update() {
       echo '                                                                                '
       echo $(text)
       softwareupdate -i -a
-      update dock
       update preferences
     ;;
 
