@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+
+source ~//dotfiles/.commands/text
 echo $(text invert)
 echo '                                                                                '
 echo ' :<mac primer>                                                                 '
@@ -18,7 +20,7 @@ echo '                                                                          
 echo ' :<install dotfiles>                                                           '
 echo '                                                                                '
 echo $(text)
-chmod +x ~//Dotfiles/install.sh
+chmod +x ~//dotfiles/install.sh
 ~//dotfiles/install.sh
 echo $(text invert)
 echo '                                                                                '
