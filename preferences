@@ -130,6 +130,9 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool false
 # Dock, Mission Control, Spaces, & Hot Corners
 #==============================================================================#
 
+# Dock: Disable dock icon bouncing?
+defaults write com.apple.dock no-bouncing -bool true
+
 # Dock: Automatically hide and show?
 defaults write com.apple.dock autohide -bool true
 
