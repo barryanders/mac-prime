@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# refer to this file for available `dock` commands
 source ~//dotfiles/.commands/dock
 
 dock clear

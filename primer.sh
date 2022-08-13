@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source ~//dotfiles/.commands/text
+
 echo $(text invert)
 echo '                                                                                '
 echo ' :<mac primer>                                                                 '

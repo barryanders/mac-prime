@@ -4,10 +4,9 @@ function update() {
   case "$1" in
 
     # `update apps`
-    "apps") echo 'Updating App Store apps…'; mas upgrade ;;
-
-    # `update brew`
-    "brew")
+    "apps")
+      echo 'Updating App Store apps…'
+      mas upgrade
       echo 'Updating Homebrew packages…'
       brew upgrade; brew missing; brew cleanup
       shell cd ~//apps/
@@ -47,22 +46,16 @@ function update() {
       echo ' :<update links>                                                               '
       echo '                                                                                '
       echo $(text)
-      update links
       update dotfiles
+      update links
+      update hosts
       echo $(text invert)
       echo '                                                                                '
       echo ' :<update apps>                                                                '
       echo '                                                                                '
       echo $(text)
       update apps
-      update brew
       shell cd ~
-      echo $(text invert)
-      echo '                                                                                '
-      echo ' :<update hosts>                                                               '
-      echo '                                                                                '
-      echo $(text)
-      update hosts
       echo $(text invert)
       echo '                                                                                '
       echo ' :<clean>                                                                      '
