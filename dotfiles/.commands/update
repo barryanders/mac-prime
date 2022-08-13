@@ -9,7 +9,7 @@ function update() {
     # `update brew`
     "brew")
       echo 'Updating Homebrew packages…'
-      brew upgrade; brew missing; brew cleanup; brew services cleanup
+      brew upgrade; brew missing; brew cleanup
       shell cd ~//apps/
       brew bundle dump --force --describe
       shell cd -

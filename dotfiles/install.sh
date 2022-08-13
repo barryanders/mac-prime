@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo 'Installing Dotfiles…'
+echo 'Installing dotfiles…'
 
 cd "$(dirname "${BASH_SOURCE}")"
 

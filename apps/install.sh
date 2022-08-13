@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo 'Installing Apps…'
+echo 'Installing apps…'
 cd ~//apps/
 chmod +x *.sh
 
