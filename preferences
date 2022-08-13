@@ -67,10 +67,6 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Input, Mouse, Keyboard, & Bluetooth
 #==============================================================================#
 
-# Input: Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-
 # Mouse: Enable Natural scrolling?
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
