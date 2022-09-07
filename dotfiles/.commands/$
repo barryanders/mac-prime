@@ -43,6 +43,7 @@ alias tree="exa -T"
 #------------#
 
 # Easier navigation
+alias ~="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
