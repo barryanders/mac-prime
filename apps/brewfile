@@ -16,14 +16,22 @@ brew "diskonaut"
 brew "dust"
 # Modern replacement for 'ls'
 brew "exa"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Command-line downloader for image-hosting site galleries and collections
+brew "gallery-dl"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Mac App Store command-line interface
 brew "mas"
+# Command-line client for Mega.co.nz
+brew "megatools"
 # Fast, highly customisable system info script
 brew "neofetch"
+# Platform built on V8 to build network applications
+brew "node"
 # Modern shell for the GitHub era
 brew "nushell"
 # Multithreaded PNG optimizer written in Rust
@@ -46,8 +54,16 @@ brew "wget"
 brew "youtube-dl"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Control every piece of your controller
+cask "8bitdo-ultimate-software"
+# View, print, and comment on PDF documents
+cask "adobe-acrobat-reader"
+# Web browser focusing on privacy
+cask "brave-browser"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
+# Tool to run Windows software
+cask "crossover"
 # Server and cloud storage browser
 cask "cyberduck"
 # Voice and text chat software
@@ -56,6 +72,8 @@ cask "discord"
 cask "dolphin"
 # Web browser
 cask "firefox"
+# Digital audio production application
+cask "fl-studio"
 # Elegant sans-serif font family, now 9 weights and italic style
 cask "font-raleway"
 # Disk space cleaner that finds and deletes duplicated and similar files
@@ -66,6 +84,8 @@ cask "google-drive"
 cask "hydrus-network"
 # Free and open-source media player
 cask "iina"
+# Vector graphics editor
+cask "inkscape"
 # File archiver
 cask "keka"
 # Open-source firewall to block unknown outgoing connections
@@ -74,6 +94,10 @@ cask "lulu"
 cask "obs"
 # Retro video game emulation
 cask "openemu"
+# Desktop virtualization software
+cask "parallels"
+# Home media player
+cask "plex"
 # Command-line shell and scripting language
 cask "powershell"
 # Control your tools with a few keystrokes
@@ -84,13 +108,14 @@ cask "steam"
 cask "sublime-merge"
 # Text editor for code, markup and prose
 cask "sublime-text"
+# Application for inspecting installer packages
+cask "suspicious-package"
 # Torrent streaming application
 cask "webtorrent"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
+mas "DaVinci Resolve", id: 571213070
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
