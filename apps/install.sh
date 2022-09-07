@@ -20,3 +20,9 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
   chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
+
+# npm: a JavaScript package manager | https://github.com/npm/cli
+for i in $(cat npmfile); do
+  npm install -g $i
+done
+wait
