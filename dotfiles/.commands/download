@@ -8,10 +8,10 @@ function download() {
     "links") wget -r --no-remove-listing -i ;;
 
     # `download music https://www.youtube.com/watch?v=id` | Download music
-    "music") shift 1; youtube-dl --extract-audio --audio-format mp3 -l "$1" ;;
+    "music") shift 1; yt-dlp --extract-audio --audio-format mp3 -l "$1" ;;
 
     # `download video https://www.youtube.com/watch?v=id` | Get mp4 with the best video and audio
-    "video") shift 1; youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' $1 ;;
+    "video") shift 1; yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' $1 ;;
 
     # `download video range https://www.youtube.com/watch?v=id 00:15:00 00:45:00`
     "video range") shift 2
@@ -26,7 +26,7 @@ function download() {
       ffmpeg
       # URL
       # input file url
-      -i $(youtube-dl -f 22 --get-url $vurl)
+      -i $(yt-dlp -f 22 --get-url $vurl)
       # Start Time
       # Seeks in this input file to position.
       # Note that in most formats it is not possible to seek exactly, so ffmpeg will seek to the closest seek point before position. When transcoding and -accurate_seek is enabled (the default), this extra segment between the seek point and position will be decoded and discarded. When doing stream copy or when -noaccurate_seek is used, it will be preserved.
