@@ -1,7 +1,10 @@
+tap "amiaopensource/amiaos"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+# New file format for still image compression
+brew "jpeg-xl"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
@@ -10,6 +13,8 @@ brew "bash-completion"
 brew "brew-cask-completion"
 # Console Matrix
 brew "cmatrix"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Terminal visual disk space navigator
 brew "diskonaut"
 # More intuitive version of du in rust
@@ -18,8 +23,12 @@ brew "dust"
 brew "exa"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
+# GitHub command-line tool
+brew "gh"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Tools and libraries to manipulate images in many formats
@@ -34,24 +43,28 @@ brew "neofetch"
 brew "node"
 # Modern shell for the GitHub era
 brew "nushell"
-# Multithreaded PNG optimizer written in Rust
-brew "oxipng"
 # Command-line tool to generate, analyze, convert and manipulate colors
 brew "pastel"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Utility that provides fast incremental file transfer
+brew "rsync"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Version control system designed to be a better CVS
 brew "subversion"
+# Generate scripting interfaces to C/C++ code
+brew "swig"
 # Manipulate and query tags on macOS files
 brew "tag"
 # Internet file retriever
 brew "wget"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Fork of youtube-dl with additional features and fixes
+brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Control every piece of your controller
@@ -86,6 +99,8 @@ cask "hydrus-network"
 cask "iina"
 # Vector graphics editor
 cask "inkscape"
+# Professional audio software for audio recording, mixing, broadcast and others
+cask "izotope-product-portal"
 # File archiver
 cask "keka"
 # Open-source firewall to block unknown outgoing connections
@@ -94,12 +109,12 @@ cask "lulu"
 cask "obs"
 # Retro video game emulation
 cask "openemu"
-# Desktop virtualization software
-cask "parallels"
 # Home media player
 cask "plex"
 # Command-line shell and scripting language
 cask "powershell"
+# VPN client focusing on security
+cask "protonvpn"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Video game digital distribution service
@@ -110,6 +125,10 @@ cask "sublime-merge"
 cask "sublime-text"
 # Application for inspecting installer packages
 cask "suspicious-package"
+# Utility to hide the notch
+cask "topnotch"
+# Client to install and activate Waves products
+cask "waves-central"
 # Torrent streaming application
 cask "webtorrent"
 # Comic reader
