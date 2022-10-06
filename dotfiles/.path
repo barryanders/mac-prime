@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
+# home
+export PATH="~/bin:$PATH"
+
 # brew
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
