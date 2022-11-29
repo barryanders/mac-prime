@@ -11,6 +11,8 @@ brew "bash"
 brew "bash-completion"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
+# Cross-platform make
+brew "cmake"
 # Console Matrix
 brew "cmatrix"
 # GNU File, Shell, and Text utilities
@@ -21,14 +23,18 @@ brew "diskonaut"
 brew "dust"
 # Modern replacement for 'ls'
 brew "exa"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Tools and libraries to manipulate images in many formats
@@ -47,8 +53,14 @@ brew "nushell"
 brew "pastel"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Safe, concurrent, practical language
+brew "rust"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -71,8 +83,12 @@ brew "zoxide"
 cask "8bitdo-ultimate-software"
 # View, print, and comment on PDF documents
 cask "adobe-acrobat-reader"
+# Collection of apps and services for photography, design, video, web, and UX
+cask "adobe-creative-cloud"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Utility that prevents the system from going to sleep
+cask "caffeine"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
 # Tool to run Windows software
@@ -87,8 +103,11 @@ cask "dolphin"
 cask "firefox"
 # Digital audio production application
 cask "fl-studio"
+cask "font-open-sans"
 # Elegant sans-serif font family, now 9 weights and italic style
 cask "font-raleway"
+# Font with a mechanical skeleton and the forms are largely geometric
+cask "font-roboto"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Client for the Google Drive storage service
@@ -105,6 +124,8 @@ cask "izotope-product-portal"
 cask "keka"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
+# Network monitor
+cask "netiquette"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Retro video game emulation
@@ -135,6 +156,7 @@ cask "webtorrent"
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
 mas "DaVinci Resolve", id: 571213070
+mas "DaVinci Resolve Studio", id: 900392332
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
