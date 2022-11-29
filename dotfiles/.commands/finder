@@ -47,7 +47,7 @@ function finder() {
     # `finder remove x` | Remove a file
     "remove") shift 1; rm -rf "$1" ;;
     # `remove:empty` | Remove empty directories in current directory
-    "remove:empty") find . -type d -empty -delete ;;
+    "remove:empty") shell find . -type f -name ".DS_Store" -print -delete; find . -type d -empty -delete ;;
     # `rename:lower` | Make all files in folder lowercase
     "rename:lower") shift 1; for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done ;;
     # `file show x` | Show a symlink without hiding the destination or show a file
