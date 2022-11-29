@@ -28,6 +28,7 @@ function shell() {
   case "$1" in
     "cd") builtin cd "$2" ;;
     "du") du ;;
+    "find") find ;;
     "ls") ls ;;
   esac
 }
