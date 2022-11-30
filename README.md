@@ -138,19 +138,8 @@ Keep track of your hosts in the [`hosts`](https://github.com/barryanders/mac-pri
 
 ## Author
 
-<table>
-  <thead>
-    <tr>
-      <th valign="middle" align="center">
-        <a href="https://barryanders.github.io"><img alt="Barry Anders" src="https://avatars.githubusercontent.com/u/91902180?v=4&s=200" width="100" height="100"></a>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td valign="middle" align="center">
-        <a href="https://barryanders.github.io"><strong>Barry Anders</strong></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<a href="https://barryanders.github.io" rel="nofollow">
+  <img alt="Barry Anders" src="https://avatars.githubusercontent.com/u/91902180?v=4&amp;s=200" style="max-width: 100%;border-radius:50%;" width="100" height="100">
+  <br>
+  <strong>Barry Anders</strong>
+</a>
