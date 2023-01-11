@@ -79,7 +79,7 @@ alias hide="f hide"
 alias lock="f lock"
 alias unlock="f unlock"
 
-complete -W "list tree count size dimensions metadata new remove remove:empty show hide lock unlock show:all hide:all lock:all unlock:all zero" finder f
+complete -W "list tree count size dimensions metadata new remove remove:empty rename:lower show hide lock unlock show:all hide:all lock:all unlock:all zero" finder f
 
 # `extract file.zip` | Extract most known archives with one command
 function extract() {
