@@ -35,18 +35,24 @@ brew "gallery-dl"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Git extension for versioning large files
+brew "git-lfs"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Multimedia framework for research and academic purposes
+brew "gpac"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Text-based web browser
+brew "lynx"
 # Mac App Store command-line interface
 brew "mas"
 # Command-line client for Mega.co.nz
 brew "megatools"
+# Read, create, and modify MP4 files
+brew "mp4v2"
 # Fast, highly customisable system info script
 brew "neofetch"
-# Platform built on V8 to build network applications
-brew "node"
 # Modern shell for the GitHub era
 brew "nushell"
 # Command-line tool to generate, analyze, convert and manipulate colors
@@ -87,8 +93,6 @@ cask "adobe-acrobat-reader"
 cask "adobe-creative-cloud"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Utility that prevents the system from going to sleep
-cask "caffeine"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
 # Tool to run Windows software
@@ -120,6 +124,8 @@ cask "iina"
 cask "inkscape"
 # Professional audio software for audio recording, mixing, broadcast and others
 cask "izotope-product-portal"
+# Tool to prevent the system from going into sleep mode
+cask "keepingyouawake"
 # File archiver
 cask "keka"
 # Open-source firewall to block unknown outgoing connections
@@ -155,13 +161,13 @@ cask "webtorrent"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
-mas "DaVinci Resolve", id: 571213070
 mas "DaVinci Resolve Studio", id: 900392332
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
 mas "Sasquatch", id: 1465346522
 mas "SonicWall Mobile Connect", id: 822514576
+mas "Soundify", id: 1636875630
 mas "Step Two", id: 1448916662
 mas "The Unarchiver", id: 425424353
 mas "Webull Desktop", id: 1334590352

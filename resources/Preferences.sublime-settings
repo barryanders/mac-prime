@@ -11,7 +11,7 @@
 		".git",
 		"node_modules"
 	],
-	"font_size": 14,
+	"font_size": 16,
 	"highlight_line": true,
 	"hot_exit": true,
 	"line_padding_bottom": 2,
@@ -28,4 +28,8 @@
 	"trim_automatic_white_space": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": false,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
 }
