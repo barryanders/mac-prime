@@ -27,8 +27,8 @@ function video() {
     # `video merge mkv` | Combine all video files in the current directory into 1
     "merge") shift 1; ffmpeg -f concat -safe 0 -i <(for f in *.mkv *.webm *.flv *.vob *.ogg *.ogv *.drc *gifv *.mng *.avi *.mov *.qt *.wmv *.yuv *.rm *.rmvb *.asf *.amv *.mp4 *.m4v *.mp *.m?v *.svi *.3gp *.flv *.f4v; do echo "file '$PWD/$f'"; done) -c copy "output.${1}" ;;
 
-    # `video scale 1280 720 input.mp4` | Scale video
-    "scale") shift 1; ffmpeg -i input.mp4 -vf scale=$1:$2 $3 ;;
+    # `video scale 1920 1080 input.mp4 output.mp4` | Scale video
+    "scale") shift 1; ffmpeg -i $3 -vf scale=$1:$2 $4 ;;
 
     # `video split 00:10:00 input.mp4` | Split video into multiple parts (00:10:00 means 10 minutes each)
     "split") shift 1; ffmpeg -i $2 -c copy -map 0 -segment_time $1 -f segment -reset_timestamps 1 $2%03d.mp4 ;;
