@@ -162,6 +162,7 @@ cask "webtorrent"
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
 mas "DaVinci Resolve Studio", id: 900392332
+mas "Draw Things", id: 6444050820
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
