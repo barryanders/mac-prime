@@ -37,6 +37,9 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Windows
 #==============================================================================#
 
+# Always show scrollbars `WhenScrolling`, `Automatic` and `Always`
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
 # Minimize windows into their application's icon?
 defaults write com.apple.dock minimize-to-application -bool true
 
@@ -79,7 +82,7 @@ defaults write -g NSNavRecentPlacesLimit -int 0
 
 # Finder: Set Home as the default location for new windows
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Stuff"
 
 # Finder: Show all filename extensions?
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true

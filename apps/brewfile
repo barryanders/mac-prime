@@ -17,6 +17,8 @@ brew "cmake"
 brew "cmatrix"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
 # Terminal visual disk space navigator
 brew "diskonaut"
 # More intuitive version of du in rust
@@ -41,8 +43,14 @@ brew "git-lfs"
 brew "gnupg"
 # Multimedia framework for research and academic purposes
 brew "gpac"
+# LLVM's OpenMP runtime library
+brew "libomp", link: true
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Image loading and rendering library
+brew "imlib2"
+# Library to render SVG files using Cairo
+brew "librsvg"
 # Text-based web browser
 brew "lynx"
 # Mac App Store command-line interface
@@ -53,8 +61,8 @@ brew "megatools"
 brew "mp4v2"
 # Fast, highly customisable system info script
 brew "neofetch"
-# Modern shell for the GitHub era
-brew "nushell"
+# Platform built on V8 to build network applications
+brew "node"
 # Command-line tool to generate, analyze, convert and manipulate colors
 brew "pastel"
 # Pinentry for GPG on Mac
@@ -112,11 +120,13 @@ cask "font-open-sans"
 cask "font-raleway"
 # Font with a mechanical skeleton and the forms are largely geometric
 cask "font-roboto"
+# Podcast MP3 encoder with chapters
+cask "forecast"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Client for the Google Drive storage service
 cask "google-drive"
-# Personal booru-style media tagger to organize your media
+# Booru-style media tagger
 cask "hydrus-network"
 # Free and open-source media player
 cask "iina"
@@ -128,22 +138,28 @@ cask "izotope-product-portal"
 cask "keepingyouawake"
 # File archiver
 cask "keka"
+# Automator software to start apps, run scripts or commands and more
+cask "lingon-x"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
+# Open-source download manager
+cask "motrix"
 # Network monitor
 cask "netiquette"
+# Cloud gaming platform
+cask "nvidia-geforce-now"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Retro video game emulation
 cask "openemu"
-# Home media player
-cask "plex"
 # Command-line shell and scripting language
 cask "powershell"
 # VPN client focusing on security
 cask "protonvpn"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Download manager for Spitfire audio libraries
+cask "spitfire-audio"
 # Video game digital distribution service
 cask "steam"
 # Git client
@@ -156,13 +172,14 @@ cask "suspicious-package"
 cask "topnotch"
 # Client to install and activate Waves products
 cask "waves-central"
-# Torrent streaming application
-cask "webtorrent"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
+mas "Crontab Creator", id: 1438725196
 mas "DaVinci Resolve Studio", id: 900392332
 mas "Draw Things", id: 6444050820
+mas "Hidden Bar", id: 1452453066
+mas "Infuse", id: 1136220934
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
@@ -171,4 +188,6 @@ mas "SonicWall Mobile Connect", id: 822514576
 mas "Soundify", id: 1636875630
 mas "Step Two", id: 1448916662
 mas "The Unarchiver", id: 425424353
+mas "Today", id: 6443714928
 mas "Webull Desktop", id: 1334590352
+mas "Xcode", id: 497799835

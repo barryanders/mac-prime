@@ -4,9 +4,7 @@ source ~//dotfiles/.commands/dock
 
 dock clear
 dock add "Firefox"
-dock add "Podcasts"
-dock add "Sasquatch"
 dock add "Sublime Text"
-dock add "Terminal"
+dock add "Draw Things"
 
 killall Dock
