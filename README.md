@@ -8,13 +8,11 @@ Use this one-liner to install everything (`apps`, `dotfiles`, `preferences`, `do
 git clone https://github.com/barryanders/mac-primer.git ~/ && ~//primer.sh
 ```
 
-To update everything...
-
-```bash
-update
-```
+After installing, I use the [`update`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to update everything.
 
 ## Index
+
+If you don't want to use the one-liner, you can pick and choose from the sections below.
 
 - [`apps`](#apps): Lists of installable packages
 - [`dotfiles`](#dotfiles): Shell commands and configurations
@@ -28,7 +26,7 @@ To install my apps, I use [`brewfile`](https://github.com/barryanders/mac-primer
 
 ### Install Apps
 
-Run this script to install the packages listed in the apps folder.
+Run [this script](https://github.com/barryanders/mac-primer/blob/main/apps/install.sh) to install the packages listed in the apps folder.
 
 ```bash
 ~//apps/install.sh
@@ -36,7 +34,7 @@ Run this script to install the packages listed in the apps folder.
 
 ### Update Apps
 
-I use the [`update brew`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to keep my apps updated.
+If you want to update your apps only, use the [`update brew`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command.
 
 ## [Dotfiles](https://github.com/barryanders/mac-primer/tree/main/dotfiles)
 
@@ -44,7 +42,7 @@ To customize my command line experience, I keep a set of configurations known as
 
 ### Install Dotfiles
 
- The dotfiles installer requires [GNU Stow](https://www.gnu.org/software/stow/) ([`brew install stow`](https://formulae.brew.sh/formula/stow)). Run this script to install dotfiles.
+The dotfiles installer requires [GNU Stow](https://www.gnu.org/software/stow/) ([`brew install stow`](https://formulae.brew.sh/formula/stow)). Run [this script](https://github.com/barryanders/mac-primer/blob/main/dotfiles/install.sh) to install dotfiles.
 
 ```bash
 ~//dotfiles/install.sh
@@ -52,7 +50,7 @@ To customize my command line experience, I keep a set of configurations known as
 
 ### Update Dotfiles
 
-The dotfiles are live because they are linked to from your home folder, but you may need to start a new CLI session for your changes to take effect (I use the [`reload`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/$) command). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to relink mine.
+After installing, the dotfiles in `~//dotfiles` have links in the home directory. You may need to start a new CLI session for your changes to take effect (I use the [`reload`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/$) command). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/update) command to relink mine.
 
 ### Customize Dotfiles
 
@@ -80,7 +78,8 @@ Here's what I've got in there for you:
 Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin` to the `$PATH`.
 
 ```bash
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/
+brew/bin:$PATH"
 ```
 
 #### `.private` File
