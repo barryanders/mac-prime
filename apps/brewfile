@@ -33,6 +33,8 @@ brew "fd"
 brew "ffmpeg"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
+# WebDriver <-> Marionette proxy
+brew "geckodriver"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -103,14 +105,14 @@ cask "adobe-creative-cloud"
 cask "brave-browser"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
-# Tool to run Windows software
-cask "crossover"
 # Server and cloud storage browser
 cask "cyberduck"
 # Voice and text chat software
 cask "discord"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
+# VPN client for secure internet access and private browsing
+cask "expressvpn"
 # Web browser
 cask "firefox"
 # Digital audio production application
@@ -154,8 +156,6 @@ cask "obs"
 cask "openemu"
 # Command-line shell and scripting language
 cask "powershell"
-# VPN client focusing on security
-cask "protonvpn"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Download manager for Spitfire audio libraries
