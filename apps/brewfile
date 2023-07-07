@@ -112,7 +112,7 @@ cask "discord"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
 # VPN client for secure internet access and private browsing
-cask "expressvpn"
+# cask "expressvpn"
 # Web browser
 cask "firefox"
 # Digital audio production application
@@ -132,8 +132,6 @@ cask "google-drive"
 cask "hydrus-network"
 # Free and open-source media player
 cask "iina"
-# Vector graphics editor
-cask "inkscape"
 # Professional audio software for audio recording, mixing, broadcast and others
 cask "izotope-product-portal"
 # Tool to prevent the system from going into sleep mode
@@ -144,6 +142,8 @@ cask "keka"
 cask "lingon-x"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
+# Finder extension for changing folder colors
+cask "manila"
 # Open-source download manager
 cask "motrix"
 # Network monitor
@@ -152,8 +152,12 @@ cask "netiquette"
 cask "nvidia-geforce-now"
 # Open-source software for live streaming and screen recording
 cask "obs"
+# Verify system files structure, run miscellaneous maintenance and more
+cask "onyx"
 # Retro video game emulation
 cask "openemu"
+# Customize and maintain app icons
+cask "pictogram"
 # Command-line shell and scripting language
 cask "powershell"
 # Control your tools with a few keystrokes
@@ -178,7 +182,6 @@ mas "Bitwarden", id: 1352778147
 mas "Crontab Creator", id: 1438725196
 mas "DaVinci Resolve Studio", id: 900392332
 mas "Draw Things", id: 6444050820
-mas "Hidden Bar", id: 1452453066
 mas "Infuse", id: 1136220934
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Remote Desktop", id: 1295203466

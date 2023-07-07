@@ -27,7 +27,7 @@ function update() {
     # `update links`
     "links")
       echo 'Updating links…'
-      ln -s /Applications/ ~/Applications/Mac
+      ln -sfn /Applications ~/Applications/Mac
     ;;
     # `update preferences`
     "preferences") echo 'Updating Preferences…'; ~//preferences ;;
