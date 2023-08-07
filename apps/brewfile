@@ -11,6 +11,8 @@ brew "bash"
 brew "bash-completion"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
@@ -109,10 +111,12 @@ cask "cleanmymac"
 cask "cyberduck"
 # Voice and text chat software
 cask "discord"
+# Data recovery software
+cask "disk-drill"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
 # VPN client for secure internet access and private browsing
-# cask "expressvpn"
+cask "expressvpn"
 # Web browser
 cask "firefox"
 # Digital audio production application
@@ -122,8 +126,6 @@ cask "font-open-sans"
 cask "font-raleway"
 # Font with a mechanical skeleton and the forms are largely geometric
 cask "font-roboto"
-# Podcast MP3 encoder with chapters
-cask "forecast"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Client for the Google Drive storage service
@@ -144,6 +146,8 @@ cask "lingon-x"
 cask "lulu"
 # Finder extension for changing folder colors
 cask "manila"
+# Minimal installer for conda
+cask "miniconda"
 # Open-source download manager
 cask "motrix"
 # Network monitor
@@ -172,10 +176,10 @@ cask "sublime-merge"
 cask "sublime-text"
 # Application for inspecting installer packages
 cask "suspicious-package"
-# Utility to hide the notch
-cask "topnotch"
 # Client to install and activate Waves products
 cask "waves-central"
+# Torrent streaming application
+cask "webtorrent"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
