@@ -1,8 +1,6 @@
 tap "amiaopensource/amiaos"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
 # New file format for still image compression
 brew "jpeg-xl"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -107,16 +105,18 @@ cask "adobe-creative-cloud"
 cask "brave-browser"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
+# Tool to run Windows software
+cask "crossover"
 # Server and cloud storage browser
 cask "cyberduck"
+# Browser for SQLite databases
+cask "db-browser-for-sqlite"
 # Voice and text chat software
 cask "discord"
 # Data recovery software
 cask "disk-drill"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
-# VPN client for secure internet access and private browsing
-cask "expressvpn"
 # Web browser
 cask "firefox"
 # Digital audio production application
@@ -197,4 +197,3 @@ mas "Step Two", id: 1448916662
 mas "The Unarchiver", id: 425424353
 mas "Today", id: 6443714928
 mas "Webull Desktop", id: 1334590352
-mas "Xcode", id: 497799835
