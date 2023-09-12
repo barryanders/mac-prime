@@ -53,6 +53,9 @@ function download() {
       "${range[@]}"
     ;;
 
+    # `download video thumbnail https://www.youtube.com/watch?v=id 00:15:00 00:45:00`
+    "video thumbnail") shift 2; yt-dlp --skip-download --write-thumbnail $1 ;;
+
     # `download https://google.com`
     "") wget ;;
   esac
@@ -60,7 +63,7 @@ function download() {
 
 alias dl="download"
 
-complete -W "links music video 'video range'" download dl
+complete -W "links music video 'video range' 'video thumbnail'" download dl
 
 alias mget="download music"
 alias vget="download video"
