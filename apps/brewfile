@@ -9,8 +9,6 @@ brew "bash"
 brew "bash-completion"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
@@ -31,6 +29,8 @@ brew "exiftool"
 brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
 # WebDriver <-> Marionette proxy
@@ -134,6 +134,8 @@ cask "google-drive"
 cask "hydrus-network"
 # Free and open-source media player
 cask "iina"
+# Tool to scan a website checking for broken links
+cask "integrity"
 # Professional audio software for audio recording, mixing, broadcast and others
 cask "izotope-product-portal"
 # Tool to prevent the system from going into sleep mode
