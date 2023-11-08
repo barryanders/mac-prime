@@ -29,8 +29,6 @@ brew "exiftool"
 brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
 # WebDriver <-> Marionette proxy
@@ -53,6 +51,8 @@ brew "imagemagick"
 brew "imlib2"
 # Library to render SVG files using Cairo
 brew "librsvg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Text-based web browser
 brew "lynx"
 # Mac App Store command-line interface

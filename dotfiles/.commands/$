@@ -36,8 +36,8 @@ function shell() {
 #----------------------------------------#
 
 alias du="dust"
-alias ls="exa"
-alias tree="exa -T"
+alias ls="eza"
+alias tree="eza -T"
 
 # navigation
 #------------#
