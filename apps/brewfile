@@ -23,8 +23,6 @@ brew "diskonaut"
 brew "dust"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # Modern, maintained replacement for ls
 brew "eza"
 # Play, record, convert, and stream audio and video
