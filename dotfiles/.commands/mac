@@ -34,12 +34,6 @@ function mac() {
     # `mac battery`
     "battery") pmset -g batt ;;
 
-    # `mac cpu:temperature` | Get CPU temperature
-    "cpu:temperature") sudo powermetrics --samplers smc |grep -i "CPU die temperature" ;;
-
-    # `mac gpu:temperature` | Get GPU temperature
-    "gpu:temperature") sudo powermetrics --samplers smc |grep -i "GPU die temperature" ;;
-
     #==============================================================================#
     # bluetooth
     #==============================================================================#
