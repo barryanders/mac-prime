@@ -21,12 +21,12 @@ brew "curl"
 brew "diskonaut"
 # More intuitive version of du in rust
 brew "dust"
-# Modern replacement for 'ls'
-brew "exa"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Modern, maintained replacement for ls
+brew "eza"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line downloader for image-hosting site galleries and collections
