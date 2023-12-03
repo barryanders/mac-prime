@@ -148,6 +148,8 @@ cask "manila"
 cask "miniconda"
 # Open-source download manager
 cask "motrix"
+# Web browser focused on privacy and on minimizing tracking and fingerprinting
+cask "mullvad-browser"
 # Network monitor
 cask "netiquette"
 # Cloud gaming platform
