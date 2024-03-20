@@ -1,12 +1,17 @@
 tap "amiaopensource/amiaos"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/services"
 # New file format for still image compression
 brew "jpeg-xl"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
+# Full-featured MP4 format and MPEG DASH library and tools
+brew "bento4"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
 # Cross-platform make
@@ -27,6 +32,8 @@ brew "exiftool"
 brew "eza"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
 # WebDriver <-> Marionette proxy
@@ -40,15 +47,19 @@ brew "git-lfs"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Multimedia framework for research and academic purposes
-brew "gpac"
+brew "gpac", link: false
 # LLVM's OpenMP runtime library
 brew "libomp", link: true
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Image loading and rendering library
 brew "imlib2"
+# Postgres C API library
+brew "libpq"
 # Library to render SVG files using Cairo
 brew "librsvg"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Text-based web browser
@@ -58,15 +69,23 @@ brew "mas"
 # Command-line client for Mega.co.nz
 brew "megatools"
 # Read, create, and modify MP4 files
-brew "mp4v2"
+brew "mp4v2", link: false
 # Fast, highly customisable system info script
 brew "neofetch"
 # Platform built on V8 to build network applications
 brew "node"
+# Libraries for security-enabled client and server applications
+brew "nss"
+# Tools for one-time password authentication systems
+brew "oath-toolkit"
 # Command-line tool to generate, analyze, convert and manipulate colors
 brew "pastel"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Python package management tool
+brew "poetry"
+# Object-relational database system
+brew "postgresql@14"
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Interpreted, interactive, object-oriented programming language
@@ -126,8 +145,6 @@ cask "font-roboto"
 cask "gemini"
 # Client for the Google Drive storage service
 cask "google-drive"
-# Booru-style media tagger
-cask "hydrus-network"
 # Free and open-source media player
 cask "iina"
 # Tool to scan a website checking for broken links
@@ -142,12 +159,8 @@ cask "keka"
 cask "lingon-x"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
-# Finder extension for changing folder colors
-cask "manila"
 # Minimal installer for conda
 cask "miniconda"
-# Open-source download manager
-cask "motrix"
 # Web browser focused on privacy and on minimizing tracking and fingerprinting
 cask "mullvad-browser"
 # Network monitor
@@ -162,12 +175,16 @@ cask "onyx"
 cask "openemu"
 # Web browser
 cask "opera"
-# Customize and maintain app icons
+# Customise and maintain app icons
 cask "pictogram"
 # Command-line shell and scripting language
 cask "powershell"
+# Peer to peer Bitorrent client
+cask "qbittorrent"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Open source virtual/remote desktop application
+cask "rustdesk"
 # Download manager for Spitfire audio libraries
 cask "spitfire-audio"
 # Video game digital distribution service
@@ -178,12 +195,12 @@ cask "sublime-merge"
 cask "sublime-text"
 # Application for inspecting installer packages
 cask "suspicious-package"
+# Charting and social-networking for investment traders
+cask "tradingview"
 # Rust-based terminal
 cask "warp"
 # Client to install and activate Waves products
 cask "waves-central"
-# Torrent streaming application
-cask "webtorrent"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
@@ -201,4 +218,3 @@ mas "Step Two", id: 1448916662
 mas "The Unarchiver", id: 425424353
 mas "Today", id: 6443714928
 mas "Vivid", id: 6443470555
-mas "Webull Desktop", id: 1334590352

@@ -30,6 +30,8 @@
 	"word_wrap": false,
 	"ignored_packages":
 	[
+		"Package Control",
 		"Vintage",
 	],
+	"index_files": false,
 }
