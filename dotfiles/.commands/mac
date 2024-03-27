@@ -35,25 +35,6 @@ function mac() {
     "battery") pmset -g batt ;;
 
     #==============================================================================#
-    # bluetooth
-    #==============================================================================#
-
-    # `mac bluetooth`
-    "bluetooth") defaults read /Library/Preferences/com.apple.Bluetooth ControllerPowerState | awk '{ if($1 != 0) {print "Bluetooth: ON"} else { print "Bluetooth: OFF" }  }' ;;
-
-    # `mac bluetooth:on`
-    "bluetooth:on")
-      echo "$(text green)Bluetooth Enabled{NC}$(text)"
-      sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 1
-    ;;
-
-    # `mac bluetooth:off`
-      "bluetooth:off")
-      echo "$(text green)Bluetooth Disabled$(text)"
-      sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
-    ;;
-
-    #==============================================================================#
     # spotlight
     #==============================================================================#
 
