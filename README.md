@@ -75,11 +75,10 @@ Here's what I've got in there for you:
 
 #### `.path` File
 
-Append to the `$PATH`. Here's an example `.path` file that adds `/usr/local/bin` to the `$PATH`.
+Append to the `$PATH`. Here's an example `.path` file.
 
 ```bash
-export PATH="/opt/
-brew/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 ```
 
 #### `.private` File
