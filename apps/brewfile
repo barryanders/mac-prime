@@ -108,7 +108,7 @@ brew "swig"
 brew "tag"
 # Internet file retriever
 brew "wget"
-# Fork of youtube-dl with additional features and fixes
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
@@ -161,8 +161,6 @@ cask "lingon-x"
 cask "lulu"
 # Minimal installer for conda
 cask "miniconda"
-# Web browser focused on privacy and on minimizing tracking and fingerprinting
-cask "mullvad-browser"
 # Network monitor
 cask "netiquette"
 # Cloud gaming platform
