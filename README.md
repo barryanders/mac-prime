@@ -66,7 +66,7 @@ Here's what I've got in there for you:
 - [`download`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/download): Download links, music, and videos
 - [`finder`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/finder): View files, get info, perform actions, extract, compress, etc.
 - [`images`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/images): Batch resizing images
-- [`mac`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/mac): A CLI for macOS - ex. Bluetooth, Spotlight, Wi-Fi, Gatekeeper
+- [`mac`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/mac): A CLI for macOS - ex. Spotlight, Wi-Fi, Gatekeeper
 - [`network`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/network): Get IP addresses and flush your dns
 - [`ringtone`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/ringtone): Turn any mp3 into a ringtone for your phone
 - [`text`](https://github.com/barryanders/mac-primer/blob/main/dotfiles/.commands/text): Format text and encode/decode in base64, binary, hex, md5, and sha1
