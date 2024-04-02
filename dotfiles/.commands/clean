@@ -39,7 +39,7 @@ function clean() {
   esac
 }
 
-complete -W "apps cache clipboard logs ssh" remove
+complete -W "apps cache clipboard logs ssh" clean
 
 function fix() {
   case "$1" in
