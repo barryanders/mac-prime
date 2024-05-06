@@ -161,8 +161,6 @@ cask "netiquette"
 cask "nvidia-geforce-now"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Verify system files structure, run miscellaneous maintenance and more
-cask "onyx"
 # Retro video game emulation
 cask "openemu"
 # Customise and maintain app icons
