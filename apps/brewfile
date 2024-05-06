@@ -60,8 +60,6 @@ brew "libpq"
 brew "librsvg"
 # Next-gen compiler infrastructure
 brew "llvm"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Text-based web browser
 brew "lynx"
 # Mac App Store command-line interface
@@ -88,10 +86,6 @@ brew "poetry"
 brew "postgresql@14"
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.8"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Safe, concurrent, practical language
@@ -159,8 +153,6 @@ cask "keka"
 cask "lingon-x"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
-# Minimal installer for conda
-cask "miniconda"
 # Network monitor
 cask "netiquette"
 # Cloud gaming platform
