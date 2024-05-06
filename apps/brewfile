@@ -149,6 +149,8 @@ cask "izotope-product-portal"
 cask "keepingyouawake"
 # File archiver
 cask "keka"
+# Tool to show what is persistently installed on the computer
+cask "knockknock"
 # Automator software to start apps, run scripts or commands and more
 cask "lingon-x"
 # Open-source firewall to block unknown outgoing connections
