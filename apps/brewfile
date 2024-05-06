@@ -112,6 +112,8 @@ cask "8bitdo-ultimate-software"
 cask "adobe-acrobat-reader"
 # Collection of apps and services for photography, design, video, web, and UX
 cask "adobe-creative-cloud"
+# Chromium based browser
+cask "arc"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
 # Tool to run Windows software
