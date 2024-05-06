@@ -171,8 +171,6 @@ cask "obs"
 cask "onyx"
 # Retro video game emulation
 cask "openemu"
-# Web browser
-cask "opera"
 # Customise and maintain app icons
 cask "pictogram"
 # Command-line shell and scripting language
