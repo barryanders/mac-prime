@@ -1,4 +1,3 @@
-tap "amiaopensource/amiaos"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
@@ -10,6 +9,8 @@ brew "openssl@3"
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Full-featured MP4 format and MPEG DASH library and tools
 brew "bento4"
 # Fish completion for brew-cask
@@ -47,7 +48,7 @@ brew "git-lfs"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Multimedia framework for research and academic purposes
-brew "gpac", link: false
+brew "gpac"
 # LLVM's OpenMP runtime library
 brew "libomp", link: true
 # Tools and libraries to manipulate images in many formats
@@ -80,6 +81,8 @@ brew "oath-toolkit"
 brew "pastel"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # Python package management tool
 brew "poetry"
 # Object-relational database system
@@ -155,6 +158,8 @@ cask "keka"
 cask "knockknock"
 # Automator software to start apps, run scripts or commands and more
 cask "lingon-x"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Network monitor
