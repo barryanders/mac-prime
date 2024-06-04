@@ -8,7 +8,7 @@ function mac() {
     #==============================================================================#
 
     # `mac info` | Get info about this Mac
-    "info") neofetch ;;
+    "info") fastfetch ;;
 
     # `mac uptime`
     "uptime") uptime ;;
