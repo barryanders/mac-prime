@@ -24,8 +24,8 @@ function video() {
       done
     ;;
 
-    # `video merge mkv` | Combine all video files in the current directory into 1
-    "merge") shift 1; ffmpeg -f concat -safe 0 -i <(for f in *.mkv *.webm *.flv *.vob *.ogg *.ogv *.drc *gifv *.mng *.avi *.mov *.qt *.wmv *.yuv *.rm *.rmvb *.asf *.amv *.mp4 *.m4v *.mp *.m?v *.svi *.3gp *.flv *.f4v; do echo "file '$PWD/$f'"; done) -c copy "output.${1}" ;;
+    # `video merge ts mkv` | Combine all ts files in the current dir into one mkv file
+    "merge") shift 1; ffmpeg -f concat -safe 0 -i <(find "$PWD" -maxdepth 1 -type f \( -iname "*.mkv" -o -iname "*.webm" -o -iname "*.flv" -o -iname "*.vob" -o -iname "*.ogg" -o -iname "*.ogv" -o -iname "*.drc" -o -iname "*.gifv" -o -iname "*.mng" -o -iname "*.avi" -o -iname "*.mov" -o -iname "*.qt" -o -iname "*.wmv" -o -iname "*.yuv" -o -iname "*.rm" -o -iname "*.rmvb" -o -iname "*.asf" -o -iname "*.amv" -o -iname "*.mp4" -o -iname "*.m4v" -o -iname "*.mp" -o -iname "*.m?v" -o -iname "*.svi" -o -iname "*.3gp" -o -iname "*.flv" -o -iname "*.f4v" -o -iname "*.ts" \) -print0 | sort -zV | while IFS= read -r -d '' f; do echo "file '$f'"; done) -c copy "output.${2}" ;;
 
     # `video scale 1920 1080 input.mp4 output.mp4` | Scale video
     "scale") shift 1; ffmpeg -i $3 -vf scale=$1:$2 $4 ;;
