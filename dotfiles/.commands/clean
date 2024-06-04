@@ -45,7 +45,7 @@ function fix() {
   case "$1" in
 
     # `fix audio` | When audio isn't working
-    "audio") sudo pkill coreaudiod ;;
+    "audio") echo "sudo pkill coreaudiod" ;;
 
     # `fix app /Applications/name.app` | When an app tells you "This app is damaged and can't be opened. You should move it to the trash."
     "app") xattr -rc $2 ;;
