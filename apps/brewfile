@@ -1,5 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/services"
 # New file format for still image compression
 brew "jpeg-xl"
@@ -9,12 +8,10 @@ brew "openssl@3"
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
-# Full-featured MP4 format and MPEG DASH library and tools
-brew "bento4"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
@@ -31,6 +28,8 @@ brew "dust"
 brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
@@ -67,10 +66,10 @@ brew "lynx"
 brew "mas"
 # Command-line client for Mega.co.nz
 brew "megatools"
+# Matroska media files manipulation tools
+brew "mkvtoolnix"
 # Read, create, and modify MP4 files
-brew "mp4v2", link: false
-# Fast, highly customisable system info script
-brew "neofetch"
+brew "mp4v2"
 # Platform built on V8 to build network applications
 brew "node"
 # Libraries for security-enabled client and server applications
@@ -174,8 +173,6 @@ cask "openemu"
 cask "pictogram"
 # Command-line shell and scripting language
 cask "powershell"
-# Peer to peer Bitorrent client
-cask "qbittorrent"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Open source virtual/remote desktop application
