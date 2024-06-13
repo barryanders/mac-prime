@@ -2,18 +2,16 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 # New file format for still image compression
 brew "jpeg-xl"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
-# Cross-platform make
-brew "cmake"
 # Console Matrix
 brew "cmatrix"
 # GNU File, Shell, and Text utilities
@@ -32,8 +30,6 @@ brew "eza"
 brew "fastfetch"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
 # WebDriver <-> Marionette proxy
@@ -42,26 +38,14 @@ brew "geckodriver"
 brew "gh"
 # Distributed revision control system
 brew "git"
-# Git extension for versioning large files
-brew "git-lfs"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Multimedia framework for research and academic purposes
-brew "gpac"
 # LLVM's OpenMP runtime library
 brew "libomp", link: true
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# Image loading and rendering library
-brew "imlib2"
-# Postgres C API library
-brew "libpq"
-# Library to render SVG files using Cairo
-brew "librsvg"
 # Next-gen compiler infrastructure
 brew "llvm"
-# Text-based web browser
-brew "lynx"
 # Mac App Store command-line interface
 brew "mas"
 # Command-line client for Mega.co.nz
@@ -76,30 +60,18 @@ brew "node"
 brew "nss"
 # Tools for one-time password authentication systems
 brew "oath-toolkit"
-# Command-line tool to generate, analyze, convert and manipulate colors
-brew "pastel"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Python package management tool
-brew "poetry"
-# Object-relational database system
-brew "postgresql@14"
-# Protocol buffers (Google's data interchange format)
-brew "protobuf"
-# Utility that provides fast incremental file transfer
-brew "rsync"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Safe, concurrent, practical language
 brew "rust"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# Version control system designed to be a better CVS
-brew "subversion"
-# Generate scripting interfaces to C/C++ code
-brew "swig"
 # Manipulate and query tags on macOS files
 brew "tag"
 # Internet file retriever
@@ -135,9 +107,7 @@ cask "firefox"
 # Digital audio production application
 cask "fl-studio"
 cask "font-open-sans"
-# Elegant sans-serif font family, now 9 weights and italic style
 cask "font-raleway"
-# Font with a mechanical skeleton and the forms are largely geometric
 cask "font-roboto"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
