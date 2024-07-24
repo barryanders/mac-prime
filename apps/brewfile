@@ -154,6 +154,7 @@ cask "warp"
 cask "waves-central"
 # Comic reader
 cask "yacreader"
+mas "Affinity Photo 2", id: 1616822987
 mas "Bitwarden", id: 1352778147
 mas "compressum", id: 6479709701
 mas "Convertum", id: 6480382704
