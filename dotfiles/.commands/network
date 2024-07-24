@@ -12,8 +12,6 @@ function network() {
     "ipv6:on") networksetup -setv6automatic "$2" ;;
     # `network dns:flush` or `flush` | Flush Directory Service cache
     "dns:flush") sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache ;;
-    # `network speed` | Run a speedtest via fast.com's fast-cli
-    "speed") fast -u ;;
   esac
 }
 
