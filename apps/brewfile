@@ -94,8 +94,6 @@ cask "cleanmymac"
 cask "crossover"
 # Server and cloud storage browser
 cask "cyberduck"
-# Browser for SQLite databases
-cask "db-browser-for-sqlite"
 # Voice and text chat software
 cask "discord"
 # Data recovery software
@@ -104,11 +102,8 @@ cask "disk-drill"
 cask "dolphin"
 # Web browser
 cask "firefox"
-# Digital audio production application
-cask "fl-studio"
 cask "font-open-sans"
 cask "font-raleway"
-cask "font-roboto"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Client for the Google Drive storage service
@@ -125,10 +120,6 @@ cask "keepingyouawake"
 cask "keka"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
-# Automator software to start apps, run scripts or commands and more
-cask "lingon-x"
-# Discover, download, and run local LLMs
-cask "lm-studio"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Network monitor
@@ -145,8 +136,6 @@ cask "pictogram"
 cask "powershell"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Open source virtual/remote desktop application
-cask "rustdesk"
 # Download manager for Spitfire audio libraries
 cask "spitfire-audio"
 # Video game digital distribution service
@@ -175,7 +164,6 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
 mas "Sasquatch", id: 1465346522
 mas "SonicWall Mobile Connect", id: 822514576
-mas "Soundify", id: 1636875630
 mas "Step Two", id: 1448916662
 mas "The Unarchiver", id: 425424353
 mas "Today", id: 6443714928
