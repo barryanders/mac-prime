@@ -155,6 +155,8 @@ cask "waves-central"
 # Comic reader
 cask "yacreader"
 mas "Bitwarden", id: 1352778147
+mas "compressum", id: 6479709701
+mas "Convertum", id: 6480382704
 mas "Crontab Creator", id: 1438725196
 mas "DaVinci Resolve Studio", id: 900392332
 mas "Draw Things", id: 6444050820
