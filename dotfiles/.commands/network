@@ -10,8 +10,10 @@ function network() {
     "ipv6:off") networksetup -setv6off "$2" ;;
     # `ipv6:on` | Turn on IPv6
     "ipv6:on") networksetup -setv6automatic "$2" ;;
-    # `network dns:flush` or `flush` | Flush Directory Service cache
-    "dns:flush") sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo dscacheutil -flushcache ;;
+    # `vpn:off` | Turn off VPN
+    "vpn:off") networksetup -setmanualwithdhcprouter Wi-Fi 192.168.1.12 ;;
+    # `vpn:on` | Turn on VPN
+    "vpn:on") networksetup -setmanualwithdhcprouter Wi-Fi 192.168.1.11 ;;
   esac
 }
 
