@@ -64,8 +64,6 @@ brew "oath-toolkit"
 brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Safe, concurrent, practical language
 brew "rust"
 # Cross-shell prompt for astronauts
@@ -155,7 +153,6 @@ cask "waves-central"
 # Comic reader
 cask "yacreader"
 mas "Affinity Photo 2", id: 1616822987
-mas "Bitwarden", id: 1352778147
 mas "compressum", id: 6479709701
 mas "Convertum", id: 6480382704
 mas "Crontab Creator", id: 1438725196
