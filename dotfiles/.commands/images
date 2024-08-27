@@ -4,7 +4,7 @@ function image() {
   case "$1" in
     # Image Resize Parameters: size (width in pixels, height is automatic), file, outputdir
     # `image resize 300 "x.jpg" out` | Optimal settings for resizing an image
-    "resize") shift 1; mogrify -path $3 -resize $1 -quality 85 -density 72 -strip $2 ;;
+    "resize") shift 1; mogrify -path $3 -resize $1 -quality 85 -density 72 $2 ;;
   esac
 }
 
