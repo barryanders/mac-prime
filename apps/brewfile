@@ -132,6 +132,8 @@ cask "openemu"
 cask "pictogram"
 # Command-line shell and scripting language
 cask "powershell"
+# VPN client focusing on security
+cask "protonvpn"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Download manager for Spitfire audio libraries
