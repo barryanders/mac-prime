@@ -122,14 +122,12 @@ cask "knockknock"
 cask "lulu"
 # Network monitor
 cask "netiquette"
-# Cloud gaming platform
-cask "nvidia-geforce-now"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Retro video game emulation
-cask "openemu"
 # Customise and maintain app icons
 cask "pictogram"
+# Home media player
+cask "plex"
 # Command-line shell and scripting language
 cask "powershell"
 # VPN client focusing on security
@@ -157,12 +155,10 @@ cask "yacreader"
 mas "Affinity Photo 2", id: 1616822987
 mas "compressum", id: 6479709701
 mas "Convertum", id: 6480382704
-mas "Crontab Creator", id: 1438725196
 mas "DaVinci Resolve Studio", id: 900392332
 mas "Draw Things", id: 6444050820
 mas "Infuse", id: 1136220934
 mas "Microsoft Excel", id: 462058435
-mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
 mas "Sasquatch", id: 1465346522
 mas "SonicWall Mobile Connect", id: 822514576
@@ -170,3 +166,4 @@ mas "Step Two", id: 1448916662
 mas "The Unarchiver", id: 425424353
 mas "Today", id: 6443714928
 mas "Vivid", id: 6443470555
+mas "Windows App", id: 1295203466
