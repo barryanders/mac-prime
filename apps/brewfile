@@ -8,14 +8,12 @@ brew "bash"
 brew "bash-completion"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Console Matrix
 brew "cmatrix"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Terminal visual disk space navigator
@@ -28,6 +26,8 @@ brew "exiftool"
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line downloader for image-hosting site galleries and collections
@@ -92,8 +92,6 @@ cask "cleanmymac"
 cask "crossover"
 # Server and cloud storage browser
 cask "cyberduck"
-# Voice and text chat software
-cask "discord"
 # Data recovery software
 cask "disk-drill"
 # Emulator to play GameCube and Wii games
@@ -122,8 +120,6 @@ cask "knockknock"
 cask "lulu"
 # Network monitor
 cask "netiquette"
-# Open-source software for live streaming and screen recording
-cask "obs"
 # Customise and maintain app icons
 cask "pictogram"
 # Home media player
@@ -144,14 +140,16 @@ cask "sublime-merge"
 cask "sublime-text"
 # Application for inspecting installer packages
 cask "suspicious-package"
+# AI image enhancer
+cask "topaz-photo-ai"
 # Charting and social-networking for investment traders
 cask "tradingview"
 # Rust-based terminal
 cask "warp"
 # Client to install and activate Waves products
 cask "waves-central"
-# Comic reader
-cask "yacreader"
+# Video communication and virtual meeting platform
+cask "zoom"
 mas "Affinity Photo 2", id: 1616822987
 mas "compressum", id: 6479709701
 mas "Convertum", id: 6480382704
