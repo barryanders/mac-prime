@@ -5,9 +5,9 @@ export EDITOR="subl -w";
 export VISUAL="vi";
 
 # Increase Bash history size. Allow 32⁴ entries; the default is 500
-# export HISTSIZE='1048576';
+export HISTSIZE='1048576';
 # Disable Bash history
-export HISTSIZE='0';
+# export HISTSIZE='0';
 export HISTFILESIZE="${HISTSIZE}";
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';

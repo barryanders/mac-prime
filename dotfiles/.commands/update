@@ -11,7 +11,6 @@ function update() {
       brew upgrade; brew missing; brew cleanup
       shell cd ~//apps/
       brew bundle dump --force --describe
-      npm update -g
       shell cd -
     ;;
 

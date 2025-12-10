@@ -13,6 +13,4 @@ function network() {
   esac
 }
 
-alias flush="network dns:flush"
-
-complete -W "ip ip:local ipv6:off ipv6:on dns:flush speed" network
+complete -W "ip ip:local ipv6:off ipv6:on" network

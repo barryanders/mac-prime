@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# brew
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="~/.cargo/bin:$PATH"
-export PATH="~/.local/bin:$PATH"
+export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:/opt/homebrew/sbin"
+export PATH="$PATH:~/.cargo/bin"
+export PATH="$PATH:~/.lmstudio/bin"
+export PATH="$PATH:~/.local/bin"

@@ -8,7 +8,7 @@ function download() {
     "links") wget -r --no-remove-listing -i ;;
 
     # `download music https://www.youtube.com/watch?v=id` | Download music
-    "music") shift 1; yt-dlp --extract-audio --audio-format mp3 -l "$1" ;;
+    "music") shift 1; yt-dlp --extract-audio --audio-format mp3 "$1" ;;
 
     # `download video https://www.youtube.com/watch?v=id` | Get mp4 with the best video and audio
     "video") shift 1; yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' $1 ;;

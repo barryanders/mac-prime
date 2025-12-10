@@ -12,6 +12,7 @@ eval "$(starship init bash)"
 
 # Add `zoxide` to shell
 eval "$(zoxide init bash)"
+_ZO_DOCTOR=0
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
@@ -39,3 +40,15 @@ shopt -s histappend;
 # Add timestamps to history
 # Date/time formatting: http://www.acehints.com/2012/07/histtimeformat-how-to-see-linux.html
 HISTTIMEFORMAT="|  %F  |  %r  |  "
+
+# Setting PATH for Python 3.10
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
+export PATH
+
+alias gam="~/bin/gam7/gam"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/Barry/.lmstudio/bin"
+# End of LM Studio CLI section
+
