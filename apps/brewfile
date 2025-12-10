@@ -1,13 +1,18 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
+tap "bionus/imgbrd-grabber"
+# Library for manipulating PNG images
+brew "libpng"
 # New file format for still image compression
 brew "jpeg-xl"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
-# Fish completion for brew-cask
-brew "brew-cask-completion"
+# Software library to render fonts
+brew "freetype"
+# Low-level library for pixel manipulation
+brew "pixman"
+# Vector graphics library with cross-device output support
+brew "cairo"
 # Console Matrix
 brew "cmatrix"
 # GNU File, Shell, and Text utilities
@@ -26,8 +31,6 @@ brew "exiftool"
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line downloader for image-hosting site galleries and collections
@@ -36,10 +39,14 @@ brew "gallery-dl"
 brew "geckodriver"
 # GitHub command-line tool
 brew "gh"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
 # Distributed revision control system
 brew "git"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # LLVM's OpenMP runtime library
 brew "libomp", link: true
 # Tools and libraries to manipulate images in many formats
@@ -50,11 +57,15 @@ brew "llvm"
 brew "mas"
 # Command-line client for Mega.co.nz
 brew "megatools"
+# Small build system for use with gyp or CMake
+brew "ninja"
+# Fast and user friendly build system
+brew "meson"
 # Matroska media files manipulation tools
 brew "mkvtoolnix"
 # Read, create, and modify MP4 files
 brew "mp4v2"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
@@ -62,8 +73,14 @@ brew "nss"
 brew "oath-toolkit"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Python version management
+brew "pyenv"
 # Safe, concurrent, practical language
 brew "rust"
 # Cross-shell prompt for astronauts
@@ -80,10 +97,6 @@ brew "yt-dlp"
 brew "zoxide"
 # Control every piece of your controller
 cask "8bitdo-ultimate-software"
-# View, print, and comment on PDF documents
-cask "adobe-acrobat-reader"
-# Collection of apps and services for photography, design, video, web, and UX
-cask "adobe-creative-cloud"
 # Chromium based browser
 cask "arc"
 # Tool to remove unnecessary files and folders from disk
@@ -92,6 +105,8 @@ cask "cleanmymac"
 cask "crossover"
 # Server and cloud storage browser
 cask "cyberduck"
+# Scans for dylib hijacking
+cask "dhs"
 # Data recovery software
 cask "disk-drill"
 # Emulator to play GameCube and Wii games
@@ -102,24 +117,30 @@ cask "font-open-sans"
 cask "font-raleway"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
-# Client for the Google Drive storage service
-cask "google-drive"
 # Free and open-source media player
 cask "iina"
 # Tool to scan a website checking for broken links
 cask "integrity"
 # Professional audio software for audio recording, mixing, broadcast and others
 cask "izotope-product-portal"
+# Remote desktop application
+cask "jump-desktop"
+# Remote desktop app
+cask "jump-desktop-connect"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
 # File archiver
 cask "keka"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Network monitor
 cask "netiquette"
+# VPN client for secure internet access and private browsing
+cask "nordvpn"
 # Customise and maintain app icons
 cask "pictogram"
 # Home media player
@@ -128,8 +149,12 @@ cask "plex"
 cask "powershell"
 # VPN client focusing on security
 cask "protonvpn"
+# HTTP debugging proxy
+cask "proxyman"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Language and framework for policy as code
+cask "sentinel"
 # Download manager for Spitfire audio libraries
 cask "spitfire-audio"
 # Video game digital distribution service
@@ -140,27 +165,28 @@ cask "sublime-merge"
 cask "sublime-text"
 # Application for inspecting installer packages
 cask "suspicious-package"
-# AI image enhancer
-cask "topaz-photo-ai"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
 # Charting and social-networking for investment traders
 cask "tradingview"
+# 3D printer and slicing GUI
+cask "ultimaker-cura"
 # Rust-based terminal
 cask "warp"
 # Client to install and activate Waves products
 cask "waves-central"
-# Video communication and virtual meeting platform
-cask "zoom"
 mas "Affinity Photo 2", id: 1616822987
 mas "compressum", id: 6479709701
 mas "Convertum", id: 6480382704
 mas "DaVinci Resolve Studio", id: 900392332
 mas "Draw Things", id: 6444050820
 mas "Infuse", id: 1136220934
+mas "Logic Pro", id: 634148309
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Word", id: 462054704
+mas "Numbers", id: 409203825
 mas "Sasquatch", id: 1465346522
 mas "SonicWall Mobile Connect", id: 822514576
-mas "Step Two", id: 1448916662
 mas "The Unarchiver", id: 425424353
 mas "Today", id: 6443714928
 mas "Vivid", id: 6443470555
