@@ -105,6 +105,8 @@ cask "affinity"
 cask "arc"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Tool to run Windows software
 cask "crossover"
 # Server and cloud storage browser
