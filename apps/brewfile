@@ -37,6 +37,8 @@ brew "ffmpeg"
 brew "gallery-dl"
 # WebDriver <-> Marionette proxy
 brew "geckodriver"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # GitHub command-line tool
 brew "gh"
 # Interpreter for PostScript and PDF
