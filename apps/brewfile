@@ -99,6 +99,8 @@ brew "yt-dlp"
 brew "zoxide"
 # Control every piece of your controller
 cask "8bitdo-ultimate-software"
+# Image editing and design software
+cask "affinity"
 # Chromium based browser
 cask "arc"
 # Tool to remove unnecessary files and folders from disk
@@ -177,7 +179,6 @@ cask "ultimaker-cura"
 cask "warp"
 # Client to install and activate Waves products
 cask "waves-central"
-mas "Affinity Photo 2", id: 1616822987
 mas "compressum", id: 6479709701
 mas "Convertum", id: 6480382704
 mas "DaVinci Resolve Studio", id: 900392332
