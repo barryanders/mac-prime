@@ -47,7 +47,7 @@ brew "gh"
 brew "ghostscript"
 # Distributed revision control system
 brew "git"
-# GNU Pretty Good Privacy (PGP) package
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
@@ -69,8 +69,6 @@ brew "meson"
 brew "mkvtoolnix"
 # Read, create, and modify MP4 files
 brew "mp4v2"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # Libraries for security-enabled client and server applications
 brew "nss"
 # Tools for one-time password authentication systems
