@@ -83,6 +83,8 @@ brew "pipx"
 brew "pkgconf"
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Safe, concurrent, practical language
 brew "rust"
 # Cross-shell prompt for astronauts
@@ -196,3 +198,4 @@ mas "The Unarchiver", id: 425424353
 mas "Today", id: 6443714928
 mas "Vivid", id: 6443470555
 mas "Windows App", id: 1295203466
+cargo "imessage-exporter"
