@@ -106,7 +106,6 @@ function extract() {
     echo "$1 - file does not exist"
   fi
 }
-
 complete extract
 
 # `compress folder` | Compress a folder using zip or 7zip
@@ -125,7 +124,6 @@ function compress() {
     zip -r "$1".zip "$1"
   fi
 }
-
 complete compress
 
 # `codecs` | Return video and audio codecs
@@ -135,3 +133,27 @@ complete codecs
 # `mergepdf -o output.pdf input{1,2,3}.pdf` | Merge PDF files, preserving hyperlinks
 alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
 complete mergepdf
+
+# `stereoize in.wav [out.wav]` | Copy left channel to both L/R (fix one-sided audio)
+function stereoize() {
+  local in="$1"
+  local out="${2:-}"
+
+  if [[ -z "$in" ]]; then
+    echo "usage: stereoize INPUT [OUTPUT]"
+    return 2
+  fi
+
+  # default output: input.st.wav (keeps extension)
+  if [[ -z "$out" ]]; then
+    local base="${in%.*}"
+    local ext="${in##*.}"
+    out="${base}.st.${ext}"
+  fi
+
+  ffmpeg -hide_banner -loglevel error -y \
+    -i "$in" \
+    -filter_complex "pan=stereo|c0=c0|c1=c0" \
+    "$out"
+}
+complete stereoize
