@@ -31,8 +31,10 @@ brew "exiftool"
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
 # Command-line downloader for image-hosting site galleries and collections
 brew "gallery-dl"
 # WebDriver <-> Marionette proxy
@@ -49,12 +51,10 @@ brew "ghostscript"
 brew "git"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
 # LLVM's OpenMP runtime library
 brew "libomp", link: true
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Mac App Store command-line interface
@@ -85,6 +85,8 @@ brew "pkgconf"
 brew "pyenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Safe, concurrent, practical language
 brew "rust"
 # Cross-shell prompt for astronauts
@@ -95,8 +97,6 @@ brew "stow"
 brew "tag"
 # Internet file retriever
 brew "wget"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Control every piece of your controller
