@@ -8,10 +8,11 @@ function update() {
       echo 'Updating App Store apps…'
       mas upgrade
       echo 'Updating Homebrew packages…'
-      brew upgrade; brew missing; brew cleanup
-      shell cd ~//apps/
-      brew bundle dump --force --describe
-      shell cd -
+      brew update
+      brew upgrade
+      brew missing || true
+      brew cleanup
+      (cd ~//apps/ && brew bundle dump --force --describe)
     ;;
 
     # `update dock`
@@ -21,7 +22,7 @@ function update() {
     "dotfiles") echo 'Updating dotfiles…'; ~//dotfiles/install.sh ;;
 
     # `update hosts`
-    "hosts") echo 'Updating hosts…'; sudo chmod -R o+rwx /etc/hosts; cp ~//hosts /etc/hosts ;;
+    "hosts") echo 'Updating hosts…'; sudo install -m 0644 ~//hosts /etc/hosts ;;
 
     # `update links`
     "links")
@@ -40,7 +41,7 @@ function update() {
       echo $(text)
       echo 'Requesting root access…'
       root
-      shell cd ~
+      builtin cd ~
       echo $(text invert)
       echo '                                                                                '
       echo ' :<update links>                                                               '
@@ -55,7 +56,7 @@ function update() {
       echo '                                                                                '
       echo $(text)
       update apps
-      shell cd ~
+      builtin cd ~
       echo $(text invert)
       echo '                                                                                '
       echo ' :<clean>                                                                      '
@@ -63,8 +64,8 @@ function update() {
       echo $(text)
       clean
       # Back up Sublime Text settings'
-      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Package\ Control.sublime-settings ~//resources/
-      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings ~//resources/
+      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Package\ Control.sublime-settings ~//resources/ 2>/dev/null || true
+      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings ~//resources/ 2>/dev/null || true
       echo $(text invert)
       echo '                                                                                '
       echo ' :<update macos>                                                               '

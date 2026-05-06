@@ -20,13 +20,17 @@ function text() {
     "encode:hex")    shift 1; echo -n "$@" | xxd -p                     ;;
     "encode:md5")    shift 1; echo -n "$@" | openssl md5                ;;
     "encode:sha1")   shift 1; echo -n "$@" | openssl sha1               ;;
+    "encode:sha256") shift 1; echo -n "$@" | openssl sha256             ;;
+    "encode:sha512") shift 1; echo -n "$@" | openssl sha512             ;;
+    "encode:url")    shift 1; python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(" ".join(sys.argv[1:])))' "$@" ;;
     # `text decode:base64 "x"` | Decoding
-    "decode:base64") shift 1; echo -n "$@" | base64 --decode            ;;
+    "decode:base64") shift 1; echo -n "$@" | base64 -D                  ;;
     "decode:binary") shift 1; echo -n "$@" | perl -lpe '$_=pack"B*",$_' ;;
     "decode:hex")    shift 1; echo -n "0x$@" | xxd -r                   ;;
+    "decode:url")    shift 1; python3 -c 'import sys, urllib.parse; print(urllib.parse.unquote(" ".join(sys.argv[1:])))' "$@" ;;
     # Reset
     "") echo -e "\033[0m" ;;
   esac
 }
 
-complete -W "black red green yellow blue magenta cyan white bold underline invert encode:base64 encode:binary encode:hex encode:md5 encode:sha1 decode:base64 decode:binary decode:hex" text
+complete -W "black red green yellow blue magenta cyan white bold underline invert encode:base64 encode:binary encode:hex encode:md5 encode:sha1 encode:sha256 encode:sha512 encode:url decode:base64 decode:binary decode:hex decode:url" text

@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-export PATH="$PATH:/opt/homebrew/bin"
-export PATH="$PATH:/opt/homebrew/sbin"
-export PATH="$PATH:~/.cargo/bin"
-export PATH="$PATH:~/.lmstudio/bin"
-export PATH="$PATH:~/.local/bin"
+# Homebrew first so 'brew' commands don't hang or use old system tools
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+
+# Language and local tools
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.lmstudio/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

@@ -21,17 +21,6 @@ alias sudo='sudo '
 # `root` | Persistent sudo
 alias root="sudo -v; while true; do sudo -n true; sleep 60; kill -0 \"$$\" || exit; done 2>/dev/null &"
 
-# preserve default commands
-#---------------------------#
-
-function shell() {
-  case "$1" in
-    "cd") builtin cd "$2" ;;
-    "du") du ;;
-    "ls") ls ;;
-  esac
-}
-
 # rust replacements for default commands
 #----------------------------------------#
 

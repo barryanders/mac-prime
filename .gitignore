@@ -1,10 +1,21 @@
-dotfiles/.gitconfig
-dotfiles/.gnupg
-dotfiles/!.gnupg/gpg-agent.conf
-dotfiles/!.gnupg/gpg.conf
+# Local-only state and secrets
+dotfiles/.bash_history
 dotfiles/.private
-dotfiles/.ssh
-dotfiles/.ssh/*_rsa*
-dotfiles/!.ssh/example_rsa*
+
+# Keep SSH/GPG material near the dotfiles if useful, but do not add private
+# machine-specific key material by accident.
+dotfiles/.ssh/*
+!dotfiles/.ssh/
+!dotfiles/.ssh/config_example
+!dotfiles/.ssh/example_rsa
+!dotfiles/.ssh/example_rsa.pub
+
+dotfiles/.gnupg/*
+!dotfiles/.gnupg/
+!dotfiles/.gnupg/gpg-agent.conf
+!dotfiles/.gnupg/gpg.conf
+
+# Personal machine state
+dotfiles/.gitconfig
 
 hosts

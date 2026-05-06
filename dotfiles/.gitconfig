@@ -74,7 +74,7 @@
   untrackedCache = true
 
 [credential]
-  helper = store
+  helper = osxkeychain
 
 [diff]
   # Detect copies as well as renames

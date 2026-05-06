@@ -2,31 +2,28 @@
 
 source ~//dotfiles/.commands/text
 
-echo $(text invert)
-echo '                                                                                '
-echo ' :<mac primer>                                                                 '
-echo '                                                                                '
-echo $(text)
+function primer:section() {
+  echo $(text invert)
+  echo '                                                                                '
+  printf ' :<%-76s>\n' "$1"
+  echo '                                                                                '
+  echo $(text)
+}
+
+primer:section "mac primer"
 echo 'Requesting root access…'
-sudo -v; while true; do sudo -n true; sleep 60; kill -0 \"$$\" || exit; done 2>/dev/null &
-echo $(text invert)
-echo '                                                                                '
-echo ' :<install apps>                                                               '
-echo '                                                                                '
-echo $(text)
+sudo -v; while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+primer:section "install apps"
 chmod +x ~//apps/install.sh
 ~//apps/install.sh
-echo $(text invert)
-echo '                                                                                '
-echo ' :<install dotfiles>                                                           '
-echo '                                                                                '
-echo $(text)
+
+primer:section "install dotfiles"
 chmod +x ~//dotfiles/install.sh
 ~//dotfiles/install.sh
-echo $(text invert)
-echo '                                                                                '
-echo ' :<install preferences>                                                        '
-echo '                                                                                '
-echo $(text)
+
+primer:section "install dock"
 ~//dock
+
+primer:section "install preferences"
 ~//preferences

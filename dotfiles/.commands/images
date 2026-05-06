@@ -4,7 +4,30 @@ function image() {
   case "$1" in
     # Image Resize Parameters: size (width in pixels, height is automatic), file, outputdir
     # `image resize 300 "x.jpg" out` | Optimal settings for resizing an image
-    "resize") shift 1; mogrify -path $3 -resize $1 -quality 85 -density 72 $2 ;;
+    "resize")
+      shift 1
+      local width="$1"
+      local input="$2"
+      local output_dir="${3:-out}"
+      local quality="${4:-82}"
+
+      if [[ -z "$width" || -z "$input" ]]; then
+        echo "usage: image resize WIDTH INPUT [OUTPUT_DIR] [QUALITY]"
+        return 2
+      fi
+
+      mkdir -p "$output_dir"
+      magick "$input" \
+        -auto-orient \
+        -resize "${width}x>" \
+        -colorspace sRGB \
+        -strip \
+        -sampling-factor 4:2:0 \
+        -interlace Plane \
+        -quality "$quality" \
+        "${output_dir}/$(basename "$input")"
+    ;;
+
   esac
 }
 
@@ -13,7 +36,16 @@ function images() {
     # Images Resize Parameters: size (width in pixels, height is automatic), outputdir
     # `images resize 300 out` | Resize in batch form
     # crush 300 out
-    "resize") shift 1; for f in "$(pwd)/*" ; do image resize $1 "${f}" $2/; done ;;
+    "resize")
+      shift 1
+      local width="$1"
+      local output_dir="${2:-out}"
+      local quality="${3:-82}"
+      mkdir -p "$output_dir"
+      for f in *.{jpg,jpeg,png,webp,tif,tiff}; do
+        [[ -f "$f" ]] && image resize "$width" "$f" "$output_dir" "$quality"
+      done
+    ;;
   esac
 }
 

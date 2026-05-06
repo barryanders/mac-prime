@@ -26,19 +26,17 @@ function finder() {
     # Get Info
     #----------#
     # `finder size x` | Get the size of a file
-    "size") shift 1; if [ dust ]; then dust --depth 0 $1; else du -sh $1; fi ;;
+    "size") shift 1; if command -v dust >/dev/null 2>&1; then dust --depth 0 "$@"; else du -sh "$@"; fi ;;
     # `file dimensions x` | Get dimensions of an image or video
     "dimensions") shift 1
-      # if video
-      if [[ -z $(ffprobe -v quiet -select_streams v:0 -show_entries stream=codec_name -print_format csv=p=0 "$file") ]]; then
-        ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 $1
-      # not video
+      if ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "$1" >/dev/null 2>&1; then
+        ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "$1"
       else
-        identify -ping -format '%w\x%h\n' $@
+        identify -ping -format '%w\x%h\n' "$@"
       fi
     ;;
     # `file metadata x` or `meta x` | Get metadata
-    "metadata") shift 1; exiftool $1 ;;
+    "metadata") shift 1; exiftool "$@" ;;
 
     # Actions
     #---------#
@@ -49,7 +47,7 @@ function finder() {
     # `remove:empty` | Remove empty directories in current directory
     "remove:empty") shift 1; find . -type f -name ".DS_Store" -print -delete; find . -type d -empty -print -delete ;;
     # `rename:lower` | Make all files in folder lowercase
-    "rename:lower") shift 1; for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done ;;
+    "rename:lower") shift 1; for f in *; do lower=$(printf "%s" "$f" | tr "[:upper:]" "[:lower:]"); [[ "$f" != "$lower" ]] && mv "$f" "$lower"; done ;;
     # `file show x` | Show a symlink without hiding the destination or show a file
     "show") shift 1; if [ -h "$1" ]; then chflags -h nohidden "$1"; else chflags nohidden "$1"; fi ;;
     # `file hide x` | Hide a symlink without hiding the destination or hide a file
@@ -83,24 +81,27 @@ complete -W "list tree count size dimensions metadata new remove remove:empty re
 
 # `extract file.zip` | Extract most known archives with one command
 function extract() {
-  if [ -f $1 ]; then
-    case $1 in
-      *.tar.bz2) tar xvjf $1                                   ;;
-      *.tar.gz)  tar xvzf $1                                   ;;
-      *.tar.xz)  tar xvJf $1                                   ;;
-      *.lzma)    unlzma $1                                     ;;
-      *.bz2)     bunzip2 $1                                    ;;
-      *.rar)     unrar x -ad $1                                ;;
-      *.gz)      gunzip $1                                     ;;
-      *.tar)     tar xvf $1                                    ;;
-      *.tbz2)    tar xvjf $1                                   ;;
-      *.tgz)     tar xvzf $1                                   ;;
-      *.zip)     unzip $1                                      ;;
-      *.Z)       uncompress $1                                 ;;
-      *.7z)      7z x $1                                       ;;
-      *.xz)      unxz $1                                       ;;
-      *.exe)     cabextract $1                                 ;;
-      *)         echo "extract: '$1' - unknown archive method" ;;
+  if [[ -z "$1" ]]; then
+    echo "usage: extract ARCHIVE"
+    return 2
+  fi
+
+  if [[ -f "$1" ]]; then
+    case "$1" in
+      *.tar.bz2 | *.tbz2) tar xvjf "$1" ;;
+      *.tar.gz | *.tgz)   tar xvzf "$1" ;;
+      *.tar.xz)           tar xvJf "$1" ;;
+      *.tar)              tar xvf "$1"  ;;
+      *.zip)              ditto -x -k "$1" . ;;
+      *.rar)              if command -v unar >/dev/null 2>&1; then unar "$1"; else unrar x -ad "$1"; fi ;;
+      *.7z)               if command -v 7zz >/dev/null 2>&1; then 7zz x "$1"; else 7z x "$1"; fi ;;
+      *.lzma)             unlzma "$1" ;;
+      *.bz2)              bunzip2 "$1" ;;
+      *.gz)               gunzip "$1" ;;
+      *.Z)                uncompress "$1" ;;
+      *.xz)               unxz "$1" ;;
+      *.exe)              cabextract "$1" ;;
+      *)                  echo "extract: '$1' - unknown archive method" ;;
     esac
   else
     echo "$1 - file does not exist"
@@ -110,21 +111,42 @@ complete extract
 
 # `compress folder` | Compress a folder using zip or 7zip
 function compress() {
-  if [ ! -z $2 ] && [ -d $2 ]; then
-    case "$1" in
-      # `compress dmg ~/src Name`
-      "dmg") hdiutil create -fs APFS -srcfolder "$1" -volname "$2" "$2.dmg" ;;
-      # `compress zip folder`
-      "zip") shift 1; zip -r "$1".zip "$1" ;;
-      # `compress 7zip folder` or `compress 7z folder`
-      "7zip" | "7z") shift 1; 7z a "$1" "$1"/* ;;
-    esac
-  else
-    # `compress folder`
-    zip -r "$1".zip "$1"
+  local kind="${1:-zip}"
+  local input="${2:-}"
+  local output="${3:-}"
+
+  if [[ "$kind" != "zip" && "$kind" != "7zip" && "$kind" != "7z" && "$kind" != "dmg" ]]; then
+    input="$kind"
+    kind="zip"
   fi
+
+  if [[ -z "$input" || ! -e "$input" ]]; then
+    echo "usage: compress [zip|7z|dmg] INPUT [OUTPUT]"
+    return 2
+  fi
+
+  case "$kind" in
+    "zip")
+      output="${output:-${input%/}.zip}"
+      ditto -c -k --sequesterRsrc --keepParent "$input" "$output"
+    ;;
+    "7zip" | "7z")
+      output="${output:-${input%/}.7z}"
+      if command -v 7zz >/dev/null 2>&1; then 7zz a "$output" "$input"; else 7z a "$output" "$input"; fi
+    ;;
+    "dmg")
+      output="${output:-${input%/}.dmg}"
+      hdiutil create -fs APFS -srcfolder "$input" -volname "$(basename "$input")" "$output"
+    ;;
+  esac
 }
-complete compress
+complete -W "zip 7z dmg" compress
+
+# `archive folder` | Compress a file or folder as zip
+function archive() {
+  compress zip "$@"
+}
+complete archive
 
 # `codecs` | Return video and audio codecs
 function codecs() { ffprobe "$1" 2>&1 >/dev/null |grep Stream.*Video | sed -e 's/.*Video: //' -e 's/[, ].*//'; ffprobe "$1" 2>&1 >/dev/null |grep Stream.*Audio | sed -e 's/.*Audio: //' -e 's/[, ].*//'; }
