@@ -119,14 +119,6 @@ for corner in tl tr bl br; do
 done
 
 #------------------------------------------------------------------------------#
-# Safari
-#------------------------------------------------------------------------------#
-# Show full URL and keep “safe downloads” off
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool false
-
-#------------------------------------------------------------------------------#
 # Terminal
 #------------------------------------------------------------------------------#
 defaults write com.apple.terminal StringEncodings -array 4
