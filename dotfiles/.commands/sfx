@@ -5,13 +5,27 @@
 
 function sfx() {
     local SOUND_DIR="$HOME//resources/sounds"
+    local PID_FILE="/tmp/sfx_loop.pid"
+
+    # Internal helper to stop any existing loop
+    _sfx_stop() {
+        if [[ -f "$PID_FILE" ]]; then
+            local pid=$(cat "$PID_FILE")
+            # Kill the process group to ensure the loop subshell and afplay are both gone
+            kill -- -"$pid" 2>/dev/null || kill "$pid" 2>/dev/null
+            rm "$PID_FILE"
+        fi
+    }
 
     # Internal helper to play a sound once
     _sfx_play() {
         [[ "$DOTFILES_SOUND" != "1" ]] && return
+        _sfx_stop
         local sound="$1"
         if [[ -f "$SOUND_DIR/$sound.wav" ]]; then
-            afplay "$SOUND_DIR/$sound.wav" &
+            # Redirect all output and disown to prevent job control messages
+            { afplay "$SOUND_DIR/$sound.wav" >/dev/null 2>&1 & } >/dev/null 2>&1
+            disown %$(jobs -l | grep "afplay" | awk '{print $1}' | tr -d '[]+') 2>/dev/null || true
         fi
     }
 
@@ -21,16 +35,27 @@ function sfx() {
         shift
         [[ "$DOTFILES_SOUND" != "1" ]] && { "$@"; return; }
         
-        local pid
-        (
-            while true; do
-                afplay "$SOUND_DIR/$sound.wav"
-            done
-        ) &
-        pid=$!
+        _sfx_stop
+
+        # Use ffplay for seamless, gapless looping in a single process
+        # Redirect all output and disown to prevent job control messages
+        { ffplay -nodisp -loop 0 -loglevel quiet "$SOUND_DIR/$sound.wav" >/dev/null 2>&1 & } >/dev/null 2>&1
+        local pid=$!
+        echo "$pid" > "$PID_FILE"
+        disown $pid 2>/dev/null
+
+        # Run the actual command
         "$@"
-        kill $pid 2>/dev/null
-        _sfx_play "affirm"
+        
+        # ZERO-LATENCY TRANSITION:
+        # We play the completion sound *immediately* before killing the loop
+        # to ensure there is no silence gap.
+        if [[ -f "$SOUND_DIR/affirm.wav" ]]; then
+            { afplay "$SOUND_DIR/affirm.wav" >/dev/null 2>&1 & } >/dev/null 2>&1
+            disown %$(jobs -l 2>/dev/null | grep "afplay" | awk '{print $1}' | tr -d '[]+') 2>/dev/null || true
+        fi
+
+        _sfx_stop
     }
 
     case "$1" in
@@ -41,17 +66,41 @@ function sfx() {
             shift
             _sfx_loop "$@"
             ;;
+        "stop")
+            _sfx_stop
+            ;;
         "attention")
+            # If we have the robot voice, use it for AI, otherwise use the HUD sound
+            if [[ -f "$SOUND_DIR/data_received.wav" ]]; then
+                _sfx_play "data_received"
+            else
+                _sfx_play "into_hud"
+            fi
+            ;;
+        "appear")
+            # Samus Appears Sequence (Sequential)
+            # 1. Prologue
+            if [[ -f "$SOUND_DIR/samus_prologue.wav" ]]; then
+                afplay "$SOUND_DIR/samus_prologue.wav"
+            fi
+            # 2. Fanfare
+            if [[ -f "$SOUND_DIR/samus_fanfare.wav" ]]; then
+                afplay "$SOUND_DIR/samus_fanfare.wav"
+            fi
+            # 3. Finish with Affirm + IntoHUD (overlapping as intended)
+            _sfx_play "affirm"
+            sleep 0.2
             _sfx_play "into_hud"
             ;;
         *)
-            echo "Usage: sfx [play|loop|attention] [sound_name|sound_name command]"
+            echo "Usage: sfx [play|loop|stop|attention|appear] [sound_name|sound_name command]"
             ;;
     esac
 }
 
-# Convenience alias for Gemini/Codex attention
+# Convenience aliases
 alias samus_attention="sfx attention"
+alias samus_appears="sfx appear"
 
 # Tab completion for sfx
 _sfx_completion() {
@@ -59,7 +108,7 @@ _sfx_completion() {
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="play loop attention"
+    opts="play loop stop attention appear"
 
     if [[ ${COMP_CWORD} -eq 1 ]]; then
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
@@ -68,8 +117,10 @@ _sfx_completion() {
 
     if [[ "$prev" == "play" || "$prev" == "loop" ]]; then
         local sound_dir="$HOME//resources/sounds"
+        # Combine existing files with the new intended names for better discovery
         local sounds=$(ls "$sound_dir"/*.wav 2>/dev/null | xargs -n1 basename | sed 's/\.wav//')
-        COMPREPLY=( $(compgen -W "${sounds}" -- ${cur}) )
+        local extra="cinema_loop ship_door visor_loop puzzle_solved item_acquisition samus_fanfare samus_prologue save_station scan_loop command_loop data_received screenshot"
+        COMPREPLY=( $(compgen -W "${sounds} ${extra}" -- ${cur}) )
         return 0
     fi
 }

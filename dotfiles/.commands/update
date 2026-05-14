@@ -24,11 +24,6 @@ function update() {
     # `update hosts`
     "hosts") echo 'Updating hosts…'; sudo install -m 0644 ~//hosts /etc/hosts ;;
 
-    # `update links`
-    "links")
-      echo 'Updating links…'
-      ln -sfn /Applications ~/Applications/Mac
-    ;;
     # `update preferences`
     "preferences") echo 'Updating Preferences…'; ~//preferences ;;
 
@@ -48,7 +43,6 @@ function update() {
       echo '                                                                                '
       echo $(text)
       update dotfiles
-      update links
       update hosts
       echo $(text invert)
       echo '                                                                                '
@@ -79,4 +73,4 @@ function update() {
   esac
 }
 
-complete -W "apps dock dotfiles hosts links preferences" update
+complete -W "apps dock dotfiles hosts preferences" update
