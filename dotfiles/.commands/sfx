@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+# Metroid Prime Sound Suite
+# Enabled/Disabled via DOTFILES_SOUND environment variable
+
+function sfx() {
+    local SOUND_DIR="$HOME//resources/sounds"
+
+    # Internal helper to play a sound once
+    _sfx_play() {
+        [[ "$DOTFILES_SOUND" != "1" ]] && return
+        local sound="$1"
+        if [[ -f "$SOUND_DIR/$sound.wav" ]]; then
+            afplay "$SOUND_DIR/$sound.wav" &
+        fi
+    }
+
+    # Internal helper to loop sound while a command is running
+    _sfx_loop() {
+        local sound="$1"
+        shift
+        [[ "$DOTFILES_SOUND" != "1" ]] && { "$@"; return; }
+        
+        local pid
+        (
+            while true; do
+                afplay "$SOUND_DIR/$sound.wav"
+            done
+        ) &
+        pid=$!
+        "$@"
+        kill $pid 2>/dev/null
+        _sfx_play "affirm"
+    }
+
+    case "$1" in
+        "play")
+            _sfx_play "$2"
+            ;;
+        "loop")
+            shift
+            _sfx_loop "$@"
+            ;;
+        "attention")
+            _sfx_play "into_hud"
+            ;;
+        *)
+            echo "Usage: sfx [play|loop|attention] [sound_name|sound_name command]"
+            ;;
+    esac
+}
+
+# Convenience alias for Gemini/Codex attention
+alias samus_attention="sfx attention"
+
+# Tab completion for sfx
+_sfx_completion() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="play loop attention"
+
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+
+    if [[ "$prev" == "play" || "$prev" == "loop" ]]; then
+        local sound_dir="$HOME//resources/sounds"
+        local sounds=$(ls "$sound_dir"/*.wav 2>/dev/null | xargs -n1 basename | sed 's/\.wav//')
+        COMPREPLY=( $(compgen -W "${sounds}" -- ${cur}) )
+        return 0
+    fi
+}
+
+complete -F _sfx_completion sfx

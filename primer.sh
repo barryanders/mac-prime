@@ -27,3 +27,6 @@ primer:section "install dock"
 
 primer:section "install preferences"
 ~//preferences
+
+# Play completion sound
+afplay ~//resources/sounds/powerup.wav 2>/dev/null &

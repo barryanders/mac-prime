@@ -73,6 +73,7 @@ function update() {
       echo $(text)
       softwareupdate -i -a
       update preferences
+      sfx play powerup
     ;;
 
   esac

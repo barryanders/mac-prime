@@ -25,3 +25,6 @@ export GPG_TTY=$(tty);
 
 # Hide the "default interactive shell is now zsh" warning on macOS
 export BASH_SILENCE_DEPRECATION_WARNING=1;
+
+# Metroid Prime Sound Effects (0 = off, 1 = on)
+export DOTFILES_SOUND=1;
