@@ -67,9 +67,9 @@ defaults write -g NSNavRecentPlacesLimit -int 0
 # Finder
 #------------------------------------------------------------------------------#
 # Ensure preferred default window target exists
-mkdir -p "${HOME}/Stuff"
+mkdir -p "${HOME}/Desktop"
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Stuff"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop"
 
 defaults write -g AppleShowAllExtensions -bool true
 defaults write com.apple.finder AppleShowAllFiles -bool false
@@ -79,6 +79,7 @@ defaults write com.apple.finder ShowSidebar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder ShowPathbar -bool true
 
+defaults write com.apple.finder CreateDesktop false
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
