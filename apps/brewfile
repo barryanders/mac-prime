@@ -32,6 +32,10 @@ brew "dust"
 brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
+# LLVM's OpenMP runtime library
+brew "libomp", link: true
+# Efficient similarity search and clustering of dense vectors
+brew "faiss"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Play, record, convert, and stream select audio and video codecs
@@ -58,8 +62,6 @@ brew "gnupg"
 brew "imagemagick"
 # New file format for still image compression
 brew "jpeg-xl"
-# LLVM's OpenMP runtime library
-brew "libomp", link: true
 # Next-gen compiler infrastructure
 brew "llvm"
 # Mac App Store command-line interface
@@ -142,6 +144,8 @@ cask "font-raleway"
 cask "gemini"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
+cask "google-chrome"
 # Free and open-source media player
 cask "iina"
 # Tool to scan a website checking for broken links
@@ -200,7 +204,6 @@ cask "warp"
 cask "waves-central"
 mas "compressum", id: 6479709701
 mas "Convertum", id: 6480382704
-mas "DaVinci Resolve Studio", id: 900392332
 mas "Draw Things", id: 6444050820
 mas "Infuse", id: 1136220934
 mas "Logic Pro", id: 634148309
