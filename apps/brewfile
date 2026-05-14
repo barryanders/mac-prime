@@ -1,18 +1,19 @@
 tap "bionus/imgbrd-grabber"
-# Library for manipulating PNG images
-brew "libpng"
-# New file format for still image compression
-brew "jpeg-xl"
+tap "drawthingsai/draw-things"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
+# Library for manipulating PNG images
+brew "libpng"
 # Software library to render fonts
 brew "freetype"
 # Low-level library for pixel manipulation
 brew "pixman"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# Cross-platform make
+brew "cmake"
 # Console Matrix
 brew "cmatrix"
 # GNU File, Shell, and Text utilities
@@ -21,6 +22,8 @@ brew "coreutils"
 brew "openssl@3"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Terminal visual disk space navigator
 brew "diskonaut"
 # More intuitive version of du in rust
@@ -53,6 +56,8 @@ brew "git"
 brew "gnupg"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# New file format for still image compression
+brew "jpeg-xl"
 # LLVM's OpenMP runtime library
 brew "libomp", link: true
 # Next-gen compiler infrastructure
@@ -75,18 +80,20 @@ brew "nss"
 brew "oath-toolkit"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Command-line shell and scripting language
+brew "powershell", link: false
 # Python version management
 brew "pyenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Safe, concurrent, practical language
 brew "rust"
 # Cross-shell prompt for astronauts
@@ -95,10 +102,14 @@ brew "starship"
 brew "stow"
 # Manipulate and query tags on macOS files
 brew "tag"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Internet file retriever
 brew "wget"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Local inference and LoRA training CLI for Draw Things
+brew "drawthingsai/draw-things/draw-things-cli"
 # Control every piece of your controller
 cask "8bitdo-ultimate-software"
 # Image editing and design software
@@ -109,6 +120,10 @@ cask "arc"
 cask "cleanmymac"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
+# Node-based image, video and audio generator
+cask "comfyui"
 # Tool to run Windows software
 cask "crossover"
 # Server and cloud storage browser
@@ -125,6 +140,8 @@ cask "font-open-sans"
 cask "font-raleway"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Free and open-source media player
 cask "iina"
 # Tool to scan a website checking for broken links
@@ -141,8 +158,6 @@ cask "keepingyouawake"
 cask "keka"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
-# Discover, download, and run local LLMs
-cask "lm-studio"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Network monitor
