@@ -33,4 +33,12 @@ function text() {
   esac
 }
 
+function section() {
+  echo $(text invert)
+  echo '                                                                                '
+  printf ' :<%s>%*s\n' "$1" $((75 - ${#1})) ""
+  echo '                                                                                '
+  echo $(text)
+}
+
 complete -W "black red green yellow blue magenta cyan white bold underline invert encode:base64 encode:binary encode:hex encode:md5 encode:sha1 encode:sha256 encode:sha512 encode:url decode:base64 decode:binary decode:hex decode:url" text

@@ -5,46 +5,68 @@ function clean() {
 
     # `clean apps` | Remove unwanted apps that restore themselves after updates
     "apps")
+      section "clean apps"
       echo 'Removing unwanted apps…';
-      sudo rm -rf /Applications/Google\ Docs.app
-      sudo rm -rf /Applications/Google\ Sheets.app
-      sudo rm -rf /Applications/Google\ Slides.app
-      rm -rf ~/Google\ Drive
+      sfx loop save_station bash -c "
+        sudo rm -rf /Applications/Google\ Docs.app
+        sudo rm -rf /Applications/Google\ Sheets.app
+        sudo rm -rf /Applications/Google\ Slides.app
+        rm -rf ~/Google\ Drive
+      "
     ;;
 
     # `clean cache` | Remove cache files
-    "cache") echo 'Removing local cache…'; rm -rf .cache ;;
+    "cache") 
+      section "clean cache"
+      echo 'Removing local cache…'; 
+      rm -rf .cache 
+      sfx play affirm
+    ;;
 
     # `clean clipboard` | Empty clipboard
-    "clipboard") echo 'Emptying clipboard…'; pbcopy < /dev/null ;;
+    "clipboard") 
+      section "clean clipboard"
+      echo 'Emptying clipboard…'; 
+      pbcopy < /dev/null 
+      sfx play affirm
+    ;;
 
     # `clean dsstore` | Remove Finder metadata files under the user's home directory (excluding Library)
     "dsstore") 
+      section "clean dsstore"
       echo 'Removing .DS_Store files in ~ (excluding Library)…'
-      find "$HOME" -path "$HOME/Library" -prune -o -type f -name ".DS_Store" -print -exec rm -f {} +
+      sfx loop save_station find "$HOME" -path "$HOME/Library" -prune -o -type f -name ".DS_Store" -print -exec rm -f {} +
     ;;
 
     # `clean logs` | Remove Apple's system logs to improve shell startup speed
-    "logs") echo 'Removing logs…'; sudo rm -rfv /private/var/log/asl/*.asl ;;
+    "logs") 
+      section "clean logs"
+      echo 'Removing logs…'; 
+      sfx loop save_station sudo rm -rfv /private/var/log/asl/*.asl 
+    ;;
 
     # `clean ssh` | Dedupe ssh known hosts
     "ssh")
+      section "clean ssh"
       echo 'Deduping SSH known hosts…'
       if [[ -f "${HOME}/.ssh/known_hosts" ]]; then
         tmp=$(mktemp)
         awk '!seen[$0]++' "${HOME}/.ssh/known_hosts" > "$tmp"
         mv "$tmp" "${HOME}/.ssh/known_hosts"
       fi
+      sfx play affirm
     ;;
 
     # `clean` | Run all the clean commands
     "")
+      section "clean"
       clean apps
       clean cache
       clean clipboard
       clean dsstore
       clean logs
       clean ssh
+      sfx play item_acquisition
     ;;
 
   esac

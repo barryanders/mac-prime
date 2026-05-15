@@ -90,7 +90,7 @@ function sfx() {
             _sfx_play --overlap "affirm"
             sleep 0.5 # Let the affirm sound start while loop is still playing
             _sfx_stop
-            sleep 1.0 # Wait for affirm to finish before into_hud
+            sleep 1.2 # Wait for affirm to finish before into_hud
             _sfx_play --overlap "into_hud"
         else
             _sfx_play --overlap "$done_sound"

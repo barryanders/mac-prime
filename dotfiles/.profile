@@ -48,7 +48,3 @@ export PATH
 
 alias gam="~/bin/gam7/gam"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/Barry/.lmstudio/bin"
-# End of LM Studio CLI section
-

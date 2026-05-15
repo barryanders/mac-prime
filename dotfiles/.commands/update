@@ -5,69 +5,70 @@ function update() {
 
     # `update apps`
     "apps")
-      echo 'Updating App Store apps…'
-      mas upgrade
-      echo 'Updating Homebrew packages…'
-      brew update
-      brew upgrade
-      brew missing || true
-      brew cleanup
-      (cd ~//apps/ && brew bundle dump --force --describe)
+      section "update apps"
+      sfx loop save_station bash -c "
+        echo 'Updating App Store apps…'
+        mas upgrade
+        echo 'Updating Homebrew packages…'
+        brew update
+        brew upgrade
+        brew missing || true
+        brew cleanup
+        (cd ~//apps/ && brew bundle dump --force --describe)
+      "
     ;;
 
     # `update dock`
-    "dock") echo 'Updating Dock…'; ~//dock ;;
+    "dock") 
+      section "update dock"
+      echo 'Updating Dock…'
+      sfx loop save_station ~//dock 
+    ;;
 
     # `update dotfiles`
-    "dotfiles") echo 'Updating dotfiles…'; ~//dotfiles/install.sh ;;
+    "dotfiles") 
+      section "update dotfiles"
+      echo 'Updating dotfiles…'
+      sfx loop save_station ~//dotfiles/install.sh
+    ;;
 
     # `update hosts`
-    "hosts") echo 'Updating hosts…'; sudo install -m 0644 ~//hosts /etc/hosts ;;
+    "hosts") 
+      section "update hosts"
+      echo 'Updating hosts…'
+      sfx loop save_station sudo install -m 0644 ~//hosts /etc/hosts
+    ;;
 
     # `update preferences`
-    "preferences") echo 'Updating Preferences…'; ~//preferences ;;
+    "preferences") 
+      section "update preferences"
+      echo 'Updating Preferences…'
+      sfx loop save_station ~//preferences
+    ;;
 
     # `update` | Run all of the updates
     "")
-      echo $(text invert)
-      echo '                                                                                '
-      echo ' :<update>                                                                     '
-      echo '                                                                                '
-      echo $(text)
+      section "update"
       echo 'Requesting root access…'
       root
       builtin cd ~
-      echo $(text invert)
-      echo '                                                                                '
-      echo ' :<update links>                                                               '
-      echo '                                                                                '
-      echo $(text)
+      
       update dotfiles
       update hosts
-      echo $(text invert)
-      echo '                                                                                '
-      echo ' :<update apps>                                                                '
-      echo '                                                                                '
-      echo $(text)
       update apps
+      
       builtin cd ~
-      echo $(text invert)
-      echo '                                                                                '
-      echo ' :<clean>                                                                      '
-      echo '                                                                                '
-      echo $(text)
       clean
+      
       # Back up Sublime Text settings'
       cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Package\ Control.sublime-settings ~//resources/ 2>/dev/null || true
       cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings ~//resources/ 2>/dev/null || true
-      echo $(text invert)
-      echo '                                                                                '
-      echo ' :<update macos>                                                               '
-      echo '                                                                                '
-      echo $(text)
+      
+      section "update macos"
       softwareupdate -i -a
+      
       update preferences
-      sfx play powerup
+      sfx play item_acquisition
     ;;
 
   esac
