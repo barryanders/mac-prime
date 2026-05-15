@@ -10,13 +10,13 @@ function download() {
   if [[ -z "$3" ]]; then params="$1"; else params="$1 $2"; fi
   case "$params" in
     # `download links ./x.txt` | Download a list of links from a file
-    "links") shift 1; sfx loop download_loop wget -r --no-remove-listing -i "$1" ;;
+    "links") shift 1; sfx loop --done=data_received download_loop wget -r --no-remove-listing -i "$1" ;;
 
     # `download music https://www.youtube.com/watch?v=id` | Download music
-    "music") shift 1; sfx loop download_loop yt-dlp --extract-audio --audio-format mp3 "$1" ;;
+    "music") shift 1; sfx loop --done=data_received download_loop yt-dlp --extract-audio --audio-format mp3 "$1" ;;
 
     # `download video https://www.youtube.com/watch?v=id` | Get mp4 with the best video and audio
-    "video") shift 1; sfx loop download_loop yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' "$1" ;;
+    "video") shift 1; sfx loop --done=data_received download_loop yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' "$1" ;;
 
     # `download video range https://www.youtube.com/watch?v=id 00:15:00 00:45:00`
     "video range") shift 2
@@ -50,7 +50,7 @@ function download() {
     "video thumbnail") shift 2; yt-dlp --skip-download --write-thumbnail "$1" ;;
 
     # `download https://google.com`
-    *) sfx loop download_loop wget "$@" ;;
+    *) sfx loop --done=data_received download_loop wget "$@" ;;
   esac
 }
 
