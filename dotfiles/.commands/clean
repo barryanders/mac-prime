@@ -18,8 +18,11 @@ function clean() {
     # `clean clipboard` | Empty clipboard
     "clipboard") echo 'Emptying clipboard…'; pbcopy < /dev/null ;;
 
-    # `clean dsstore` | Remove Finder metadata files under the current directory
-    "dsstore") echo 'Removing .DS_Store files…'; find . -type f -name ".DS_Store" -print -delete ;;
+    # `clean dsstore` | Remove Finder metadata files under the user's home directory (excluding Library)
+    "dsstore") 
+      echo 'Removing .DS_Store files in ~ (excluding Library)…'
+      find "$HOME" -path "$HOME/Library" -prune -o -type f -name ".DS_Store" -print -exec rm -f {} +
+    ;;
 
     # `clean logs` | Remove Apple's system logs to improve shell startup speed
     "logs") echo 'Removing logs…'; sudo rm -rfv /private/var/log/asl/*.asl ;;
