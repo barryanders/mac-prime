@@ -3,34 +3,67 @@
 # Metroid Prime Sound Suite
 # Enabled/Disabled via DOTFILES_SOUND environment variable
 
+# Shared configuration
+SFX_SOUND_DIR="$HOME//resources/sounds"
+SFX_PID_FILE="/tmp/sfx_loop.pid"
+
 function sfx() {
-    local SOUND_DIR="$HOME//resources/sounds"
-    local PID_FILE="/tmp/sfx_loop.pid"
+    # Internal helper to find sound path regardless of extension
+    # Sets the global-ish SFX_LAST_PATH variable
+    _get_sound_path() {
+        local sound="$1"
+        SFX_LAST_PATH=""
+        if [[ -f "$SFX_SOUND_DIR/$sound.wav" ]]; then
+            SFX_LAST_PATH="$SFX_SOUND_DIR/$sound.wav"
+        elif [[ -f "$SFX_SOUND_DIR/$sound.mp3" ]]; then
+            SFX_LAST_PATH="$SFX_SOUND_DIR/$sound.mp3"
+        fi
+    }
 
     # Internal helper to stop any existing loop
     _sfx_stop() {
-        if [[ -f "$PID_FILE" ]]; then
-            local pid=$(cat "$PID_FILE")
+        if [[ -f "$SFX_PID_FILE" ]]; then
+            local pid=$(cat "$SFX_PID_FILE")
             # Kill the process group to ensure the loop subshell and afplay are both gone
             kill -- -"$pid" 2>/dev/null || kill "$pid" 2>/dev/null
-            rm "$PID_FILE"
+            rm "$SFX_PID_FILE"
         fi
     }
 
     # Internal helper to play a sound once
     _sfx_play() {
+        local overlap=false
+        if [[ "$1" == "--overlap" ]]; then
+            overlap=true
+            shift
+        fi
         [[ "$DOTFILES_SOUND" != "1" ]] && return
-        _sfx_stop
-        local sound="$1"
-        if [[ -f "$SOUND_DIR/$sound.wav" ]]; then
+        [[ "$overlap" == "false" ]] && _sfx_stop
+        _get_sound_path "$1"
+        if [[ -n "$SFX_LAST_PATH" ]]; then
             # Redirect all output and disown to prevent job control messages
-            { afplay "$SOUND_DIR/$sound.wav" >/dev/null 2>&1 & } >/dev/null 2>&1
-            disown %$(jobs -l | grep "afplay" | awk '{print $1}' | tr -d '[]+') 2>/dev/null || true
+            { ffplay -nodisp -autoexit -loglevel quiet "$SFX_LAST_PATH" >/dev/null 2>&1 & } >/dev/null 2>&1
+            local pid=$!
+            disown $pid 2>/dev/null || true
         fi
     }
 
+    # Internal helper for the standard Affirm + IntoHUD sequence
+    _sfx_affirm_hud() {
+        _sfx_play "$@" "affirm"
+        sleep 1.2
+        _sfx_play "$@" "into_hud"
+    }
+
     # Internal helper to loop sound while a command is running
+    # Usage: _sfx_loop [--done=completion_sound] loop_sound command...
     _sfx_loop() {
+        local done_sound="_sfx_affirm_hud"
+        if [[ "$1" == --done=* ]]; then
+            done_sound="${1#--done=}"
+            shift
+        fi
+
         local sound="$1"
         shift
         [[ "$DOTFILES_SOUND" != "1" ]] && { "$@"; return; }
@@ -39,28 +72,37 @@ function sfx() {
 
         # Use ffplay for seamless, gapless looping in a single process
         # Redirect all output and disown to prevent job control messages
-        { ffplay -nodisp -loop 0 -loglevel quiet "$SOUND_DIR/$sound.wav" >/dev/null 2>&1 & } >/dev/null 2>&1
-        local pid=$!
-        echo "$pid" > "$PID_FILE"
-        disown $pid 2>/dev/null
+        _get_sound_path "$sound"
+        if [[ -n "$SFX_LAST_PATH" ]]; then
+            { ffplay -nodisp -loop 0 -loglevel quiet "$SFX_LAST_PATH" >/dev/null 2>&1 & } >/dev/null 2>&1
+            local pid=$!
+            echo "$pid" > "$SFX_PID_FILE"
+            disown $pid 2>/dev/null
+        fi
 
         # Run the actual command
         "$@"
         
-        # ZERO-LATENCY TRANSITION:
-        # We play the completion sound *immediately* before killing the loop
-        # to ensure there is no silence gap.
-        if [[ -f "$SOUND_DIR/affirm.wav" ]]; then
-            { afplay "$SOUND_DIR/affirm.wav" >/dev/null 2>&1 & } >/dev/null 2>&1
-            disown %$(jobs -l 2>/dev/null | grep "afplay" | awk '{print $1}' | tr -d '[]+') 2>/dev/null || true
+        # SMOOTH TRANSITION:
+        # We play the completion sequence *overlapping* the loop for a moment
+        # before stopping the loop to simulate a fade-out feel.
+        if [[ "$done_sound" == "_sfx_affirm_hud" ]]; then
+            _sfx_play --overlap "affirm"
+            sleep 0.5 # Let the affirm sound start while loop is still playing
+            _sfx_stop
+            sleep 1.0 # Wait for affirm to finish before into_hud
+            _sfx_play --overlap "into_hud"
+        else
+            _sfx_play --overlap "$done_sound"
+            sleep 1.2 # Allow overlap for the custom done sound
+            _sfx_stop
         fi
-
-        _sfx_stop
     }
 
     case "$1" in
         "play")
-            _sfx_play "$2"
+            shift
+            _sfx_play "$@"
             ;;
         "loop")
             shift
@@ -70,27 +112,28 @@ function sfx() {
             _sfx_stop
             ;;
         "attention")
-            # If we have the robot voice, use it for AI, otherwise use the HUD sound
-            if [[ -f "$SOUND_DIR/data_received.wav" ]]; then
+            # If we have the robot voice, use it for AI, otherwise use the HUD sequence
+            _get_sound_path "data_received"
+            if [[ -n "$SFX_LAST_PATH" ]]; then
                 _sfx_play "data_received"
             else
-                _sfx_play "into_hud"
+                _sfx_affirm_hud
             fi
             ;;
+
         "appear")
-            # Samus Appears Sequence (Sequential)
-            # 1. Prologue
-            if [[ -f "$SOUND_DIR/samus_prologue.wav" ]]; then
-                afplay "$SOUND_DIR/samus_prologue.wav"
+            # Samus Appears Sequence (Overlapping)
+            # 1. Prologue (Backgrounded)
+            _get_sound_path "samus_fanfare"
+            if [[ -n "$SFX_LAST_PATH" ]]; then
+                { ffplay -nodisp -autoexit -loglevel quiet "$SFX_LAST_PATH" >/dev/null 2>&1 & } >/dev/null 2>&1
             fi
-            # 2. Fanfare
-            if [[ -f "$SOUND_DIR/samus_fanfare.wav" ]]; then
-                afplay "$SOUND_DIR/samus_fanfare.wav"
-            fi
-            # 3. Finish with Affirm + IntoHUD (overlapping as intended)
-            _sfx_play "affirm"
-            sleep 0.2
-            _sfx_play "into_hud"
+
+            # 2. Wait so Affirm overlaps with the end of the fanfare
+            sleep 7.5
+
+            # 3. Finish with Affirm + IntoHUD
+            _sfx_affirm_hud
             ;;
         *)
             echo "Usage: sfx [play|loop|stop|attention|appear] [sound_name|sound_name command]"
@@ -117,12 +160,12 @@ _sfx_completion() {
 
     if [[ "$prev" == "play" || "$prev" == "loop" ]]; then
         local sound_dir="$HOME//resources/sounds"
-        # Combine existing files with the new intended names for better discovery
-        local sounds=$(ls "$sound_dir"/*.wav 2>/dev/null | xargs -n1 basename | sed 's/\.wav//')
-        local extra="cinema_loop ship_door visor_loop puzzle_solved item_acquisition samus_fanfare samus_prologue save_station scan_loop command_loop data_received screenshot"
-        COMPREPLY=( $(compgen -W "${sounds} ${extra}" -- ${cur}) )
+        # Combine all wav and mp3 files, strip extensions, and sort unique
+        local sounds=$(ls "$sound_dir"/*.{wav,mp3} 2>/dev/null | xargs -n1 basename | sed -E 's/\.(wav|mp3)$//' | sort -u)
+        COMPREPLY=( $(compgen -W "${sounds}" -- ${cur}) )
         return 0
     fi
+
 }
 
 complete -F _sfx_completion sfx
