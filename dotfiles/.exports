@@ -28,3 +28,10 @@ export BASH_SILENCE_DEPRECATION_WARNING=1;
 
 # Metroid Prime Sound Effects (0 = off, 1 = on)
 export DOTFILES_SOUND=1;
+
+# Metroid Prime / Ghostty terminal colors
+export CLICOLOR=1;
+export LSCOLORS="GxFxCxDxBxegedabagaced";
+
+# GNU/BSD tools that respect LS_COLORS
+export LS_COLORS='di=1;36:ln=1;34:so=1;35:pi=33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43:*.sh=1;32:*.bash=1;32:*.zsh=1;32:*.py=1;36:*.js=1;33:*.ts=1;33:*.json=38;5;214:*.toml=38;5;214:*.yml=38;5;214:*.yaml=38;5;214:*.md=38;5;111:*.txt=38;5;159:*.log=38;5;245:*.png=38;5;141:*.jpg=38;5;141:*.jpeg=38;5;141:*.gif=38;5;141:*.pdf=38;5;203:*.zip=38;5;208:*.tar=38;5;208:*.gz=38;5;208';

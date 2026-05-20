@@ -1,6 +1,9 @@
 # Local-only state and secrets
+CONTEXT.local.md
 dotfiles/.bash_history
 dotfiles/.private
+dotfiles/home/.bash_history
+dotfiles/home/.private
 
 # Keep SSH/GPG material near the dotfiles if useful, but do not add private
 # machine-specific key material by accident.
@@ -9,13 +12,18 @@ dotfiles/.ssh/*
 !dotfiles/.ssh/config_example
 !dotfiles/.ssh/example_rsa
 !dotfiles/.ssh/example_rsa.pub
+dotfiles/home/.ssh/*
+!dotfiles/home/.ssh/
 
 dotfiles/.gnupg/*
 !dotfiles/.gnupg/
 !dotfiles/.gnupg/gpg-agent.conf
 !dotfiles/.gnupg/gpg.conf
+dotfiles/home/.gnupg/*
+!dotfiles/home/.gnupg/
 
 # Personal machine state
 dotfiles/.gitconfig
+dotfiles/home/.gitconfig
 
 hosts

@@ -1,0 +1,59 @@
+font-family = JetBrains Mono
+font-size = 14
+
+background = #07191d
+foreground = #d9f8f8
+
+background-opacity = 0.46
+background-blur = true
+
+cursor-style = block
+cursor-style-blink = false
+cursor-color = #8ff7ff
+cursor-text = #07191d
+
+selection-foreground = #07191d
+selection-background = #d9b36a
+
+palette = 0=#07191d
+palette = 1=#e98267
+palette = 2=#9cebd7
+palette = 3=#d9b36a
+palette = 4=#8acde8
+palette = 5=#b8a5e6
+palette = 6=#8ef4f5
+palette = 7=#d9f8f8
+palette = 8=#33575d
+palette = 9=#ff9a80
+palette = 10=#b7f8e8
+palette = 11=#f0cc82
+palette = 12=#b2e8fa
+palette = 13=#d0c1f3
+palette = 14=#c7fcff
+palette = 15=#ffffff
+
+bold-color = bright
+faint-opacity = 0.98
+
+macos-titlebar-style = transparent
+
+window-padding-x = 20
+window-padding-y = 16
+
+copy-on-select = clipboard
+confirm-close-surface = false
+mouse-hide-while-typing = true
+
+keybind = ctrl+enter=toggle_fullscreen
+keybind = super+enter=toggle_fullscreen
+keybind = super+shift+o=toggle_background_opacity
+
+custom-shader = shaders/metroid-prime-visor.glsl
+custom-shader-animation = always
+
+bell-features = no-system,audio
+bell-audio-path = ~//resources/sounds/data_received.mp3
+bell-audio-volume = 100
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 5s

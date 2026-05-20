@@ -36,7 +36,7 @@ Run [this script](https://github.com/barryanders/mac-prime/blob/main/apps/instal
 
 ### Update Apps
 
-If you want to update your apps only, use the [`update brew`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/update) command.
+If you want to update your apps only, use the [`update apps`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/update) command.
 
 ## [Dotfiles](https://github.com/barryanders/mac-prime/tree/main/dotfiles)
 
@@ -52,7 +52,7 @@ The dotfiles installer requires [GNU Stow](https://www.gnu.org/software/stow/) (
 
 ### Update Dotfiles
 
-After installing, the dotfiles in `~//dotfiles` have links in the home directory. You may need to start a new CLI session for your changes to take effect (I use the [`reload`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/$) command). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/update) command to relink mine.
+After installing, the dotfiles in `~//dotfiles` have links in the home directory. You may need to start a new CLI session for your changes to take effect (I use the `reload` command from [`$`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/%24)). As you add or remove files, simply rerun the installer to sync your changes. Dead links get removed and new links get added. I use the [`update dotfiles`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/update) command to relink mine.
 
 ### Customize Dotfiles
 
@@ -71,6 +71,7 @@ Here's what I've got in there for you:
 - [`mac`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/mac): A CLI for macOS - ex. Spotlight, Wi-Fi, Gatekeeper
 - [`network`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/network): Get IP addresses and flush your dns
 - [`ringtone`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/ringtone): Turn any mp3 into a ringtone for your phone
+- [`sfx`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/sfx): Play Metroid Prime-inspired sound effects for feedback and long-running commands
 - [`text`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/text): Format text and encode/decode in base64, binary, hex, md5, and sha1
 - [`update`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/update): Update all the things
 - [`video`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/video): Remux, encode, or merge videos
@@ -82,6 +83,12 @@ Append to the `$PATH`. Here's an example `.path` file.
 ```bash
 export PATH="/opt/homebrew/bin:$PATH"
 ```
+
+#### `.config` Folder
+
+Use `.config` for XDG-style app configuration that should live alongside the rest of your dotfiles. For example, Ghostty can live at `dotfiles/.config/ghostty/config` and will link into `~/.config/ghostty/config`.
+
+The installer links each top-level folder inside `dotfiles/.config/` into `~/.config/`, so your existing `~/.config` directory can stay a normal directory. Only the app folders you place in `dotfiles/.config/<app>` get linked into `~/.config/<app>`.
 
 #### `.private` File
 

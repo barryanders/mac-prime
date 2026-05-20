@@ -1,3 +1,9 @@
+# Ghostty shell integration for macOS Bash.
+# This enables command-finish events and other Ghostty prompt features.
+if [ -n "${GHOSTTY_RESOURCES_DIR:-}" ] && [ -r "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash" ]; then
+  builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 # Load the shell dotfiles, and then some:
 # ~/.path can be used to extend `$PATH`.
 # ~/.commands is where you can put custom aliases and functions.
@@ -47,4 +53,3 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
 export PATH
 
 alias gam="~/bin/gam7/gam"
-

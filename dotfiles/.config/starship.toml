@@ -1,0 +1,44 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = "prime_hud"
+
+[palettes.prime_hud]
+hud_text = "#d8f4f6"
+hud_cyan = "#76f0ff"
+soft_cyan = "#a8f7ff"
+scan_teal = "#7ee6cf"
+amber = "#ffc66d"
+warning = "#ff7b5c"
+ice = "#a6dcff"
+dim = "#7ea3a8"
+
+[directory]
+style = "bold hud_cyan"
+format = "[$path]($style) "
+truncation_length = 4
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+style = "scan_teal"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "amber"
+format = "[$all_status$ahead_behind]($style) "
+
+[cmd_duration]
+min_time = 1000
+style = "dim"
+format = "[took $duration]($style) "
+
+[character]
+success_symbol = "[❯](bold scan_teal)"
+error_symbol = "[❯](bold warning)"
+vimcmd_symbol = "[❮](bold ice)"
