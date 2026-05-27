@@ -53,7 +53,7 @@
   untracked = yellow
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [core]
   editor = subl
@@ -103,6 +103,7 @@
   default = simple
 
 [user]
-	name = $GIT_AUTHOR_NAME
-	email = $GIT_AUTHOR_EMAIL
-	signingkey = $GIT_SIGNING_KEY
+  # Use local config (not tracked) for your identity:
+  # user.name = Your Name
+  # user.email = your.email@example.com
+  # user.signingkey = YOUR_SIGNING_KEY

@@ -13,12 +13,19 @@ for file in ~/.{path,exports,commands/*,private}; do
 done;
 unset file;
 
-# Set prompt to `starship`
-eval "$(starship init bash)"
+if [[ $- == *i* && -n "${GHOSTTY_RESOURCES_DIR:-}" && "${DOTFILES_GHOSTTY_FANFARE:-1}" == "1" ]] && type sfx >/dev/null 2>&1; then
+  sfx play samus_fanfare
+fi
 
-# Add `zoxide` to shell
-eval "$(zoxide init bash)"
-_ZO_DOCTOR=0
+# Set prompt helpers only for interactive shells.
+if [[ $- == *i* ]]; then
+  # Set prompt to `starship`
+  eval "$(starship init bash)"
+
+  # Add `zoxide` to shell
+  eval "$(zoxide init bash)"
+  _ZO_DOCTOR=0
+fi
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
