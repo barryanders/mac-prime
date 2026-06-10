@@ -100,8 +100,6 @@ brew "python@3.13"
 brew "rust"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Organize software neatly under a single directory tree (e.g. /usr/local)
-brew "stow"
 # Manipulate and query tags on macOS files
 brew "tag"
 # Extremely fast Python package installer and resolver, written in Rust

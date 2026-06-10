@@ -4,7 +4,7 @@ function mac() {
   case "$1" in
 
     #==============================================================================#
-    # system preferences and apple menu
+    # system settings and apple menu
     #==============================================================================#
 
     # `mac info` | Get info about this Mac

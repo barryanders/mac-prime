@@ -59,7 +59,6 @@ function clean() {
 
     # `clean` | Run all the clean commands
     "")
-      section "clean"
       clean apps
       clean cache
       clean clipboard

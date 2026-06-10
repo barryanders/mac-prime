@@ -2,7 +2,7 @@
 
 I use **Mac Prime** to automatically set up my Mac. Feel free to use this as a base for your own setup.
 
-Use this one-liner to install everything (`apps`, `dotfiles`, `preferences`, `dock`, and `hosts`). This does a lot, so you should customize everything prior to running any installers.
+Use this one-liner to install everything (`apps`, `dotfiles`, `settings`, `dock`, and `hosts`). This does a lot, so you should customize everything prior to running any installers.
 
 ```bash
 git clone https://github.com/barryanders/mac-prime.git ~/ && ~//prime.sh
@@ -18,7 +18,7 @@ If you don't want to use the one-liner, you can pick and choose from the section
 
 - [`apps`](#apps): Lists of installable packages
 - [`dotfiles`](#dotfiles): Shell commands and configurations
-- [`preferences`](#preferences): Presets for system preferences
+- [`settings`](#settings): Presets for system settings
 - [`dock`](#dock): Customize your Dock
 - [`hosts`](#hosts): Track your hosts
 
@@ -44,7 +44,7 @@ To customize my command line experience, I keep a set of configurations known as
 
 ### Install Dotfiles
 
-The dotfiles installer requires [GNU Stow](https://www.gnu.org/software/stow/) ([`brew install stow`](https://formulae.brew.sh/formula/stow)). Run [this script](https://github.com/barryanders/mac-prime/blob/main/dotfiles/install.sh) to install dotfiles.
+Run [this script](https://github.com/barryanders/mac-prime/blob/main/dotfiles/install.sh) to install dotfiles.
 
 ```bash
 ~//dotfiles/install.sh
@@ -116,12 +116,12 @@ git config --global user.signingkey "$GIT_SIGNING_KEY"
 
 There are some other dotfiles included like [`.hushlogin`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.hushlogin), [`.wgetrc`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.wgetrc), and [`.gitconfig`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.gitconfig).
 
-## [Preferences](https://github.com/barryanders/mac-prime/blob/main/preferences)
+## [Settings](https://github.com/barryanders/mac-prime/blob/main/settings)
 
-Use [`preferences`](https://github.com/barryanders/mac-prime/blob/main/preferences) to make adjustments you would otherwise set in the System Preferences app. Define this file and reuse it whenever you like. If your settings ever get messed up, this is a great way to restore them.
+Use [`settings`](https://github.com/barryanders/mac-prime/blob/main/settings) to make adjustments you would otherwise set in the System Settings app. Define this file and reuse it whenever you like. If your settings ever get messed up, this is a great way to restore them.
 
 ```bash
-~//preferences
+~//settings
 ```
 
 ## [Dock](https://github.com/barryanders/mac-prime/blob/main/dock)

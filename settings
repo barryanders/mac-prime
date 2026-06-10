@@ -2,25 +2,62 @@
 set -euo pipefail
 
 if [[ $(uname) != "Darwin" ]]; then
-  echo "Error! Preferences were not applied. You don't appear to be using macOS."
+  echo "Error! Settings were not applied. You don't appear to be using macOS."
   exit 1
 fi
 
-# Close System Settings/Preferences safely
-osascript -e 'tell application id "com.apple.systempreferences" to quit' || true
+# Close System Settings safely
+osascript -e 'try
+  tell application "System Settings" to quit
+on error
+  tell application "System Preferences" to quit
+end try' || true
 
-# Persistant sudo
+# Persistent sudo
 sudo -v; while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+sanitize_host_name() {
+  local value="$1"
+  local max_length="$2"
+  local fallback="macbook"
+
+  value="${value,,}"
+  value="${value//[^a-z0-9-]/-}"
+
+  while [[ "$value" == *"--"* ]]; do
+    value="${value/--/-}"
+  done
+
+  value="${value#-}"
+  value="${value%-}"
+
+  if [[ -z "$value" ]]; then
+    value="$fallback"
+  fi
+
+  if [[ ! "$value" =~ ^[a-z0-9] ]]; then
+    value="m-$value"
+  fi
+
+  if (( ${#value} > max_length )); then
+    value="${value:0:max_length}"
+    value="${value%-}"
+  fi
+
+  echo "$value"
+}
 
 #------------------------------------------------------------------------------#
 # System
 #------------------------------------------------------------------------------#
 COMPUTER_NAME="Holmes"
-LOWER_NAME=$(printf "%s" "$COMPUTER_NAME" | tr '[:upper:]' '[:lower:]')
+LOWER_NAME="$(sanitize_host_name "$COMPUTER_NAME" 63)"
+NETBIOS_NAME="$(sanitize_host_name "$COMPUTER_NAME" 15)"
+
 sudo scutil --set ComputerName "$COMPUTER_NAME"
 sudo scutil --set HostName "$LOWER_NAME"
 sudo scutil --set LocalHostName "$LOWER_NAME"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$LOWER_NAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$NETBIOS_NAME"
 
 # Require password immediately after sleep or screen saver
 defaults write com.apple.screensaver askForPassword -int 1
@@ -115,14 +152,15 @@ defaults write com.apple.dock showhidden -bool false
 
 # Disable all hot corners
 for corner in tl tr bl br; do
-  defaults write com.apple.dock wvous-${corner}-corner -int 0
-  defaults write com.apple.dock wvous-${corner}-modifier -int 0
+  defaults write com.apple.dock "wvous-${corner}-corner" -int 0
+  defaults write com.apple.dock "wvous-${corner}-modifier" -int 0
 done
 
 #------------------------------------------------------------------------------#
 # Terminal
 #------------------------------------------------------------------------------#
 defaults write com.apple.terminal StringEncodings -array 4
+
 # Apply theme from a local .terminal file if present
 if [[ -f "${HOME}//resources/Dracula.terminal" ]]; then
   osascript <<'EOD'
@@ -143,6 +181,7 @@ tell application "Terminal"
 end tell
 EOD
 fi
+
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 defaults write com.apple.Terminal ShowLineMarks -int 0
 
@@ -164,10 +203,14 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 #------------------------------------------------------------------------------#
 # Sublime Text
 #------------------------------------------------------------------------------#
-if compgen -G "${HOME}//resources/Package Control.sublime-settings" > /dev/null; then
-  cp "${HOME}//resources/Package Control.sublime-settings" "${HOME}/Library/Application Support/Sublime Text"/Packages/User/ 2>/dev/null || true
-  cp "${HOME}//resources/Preferences.sublime-settings" "${HOME}/Library/Application Support/Sublime Text"/Packages/User/ 2>/dev/null || true
-fi
+SUBLIME_SETTINGS_DIR="${HOME}/Library/Application Support/Sublime Text/Packages/User"
+mkdir -p "$SUBLIME_SETTINGS_DIR"
+for setting in "Package Control.sublime-settings" "Preferences.sublime-settings"; do
+  source_setting="${HOME}//resources/${setting}"
+  if [[ -f "$source_setting" ]]; then
+    cp "$source_setting" "$SUBLIME_SETTINGS_DIR/"
+  fi
+done
 
 #------------------------------------------------------------------------------#
 # Hosts
@@ -179,7 +222,7 @@ fi
 #------------------------------------------------------------------------------#
 # Restart affected services
 #------------------------------------------------------------------------------#
-for app in "cfprefsd" "Dock" "Finder" "Safari" "SystemUIServer" "Terminal"; do
+for app in cfprefsd Dock Finder SystemUIServer; do
   killall "$app" &>/dev/null || true
 done
 

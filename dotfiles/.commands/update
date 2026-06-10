@@ -1,49 +1,83 @@
 #!/usr/bin/env bash
 
+function __update_full_run() {
+  section "update dotfiles"
+  echo 'Updating dotfiles…'
+  ~//dotfiles/install.sh
+
+  section "update hosts"
+  echo 'Updating hosts…'
+  sudo install -m 0644 ~//hosts /etc/hosts
+
+  section "update apps"
+  echo 'Updating App Store apps…'
+  mas upgrade
+  echo 'Updating Homebrew packages…'
+  brew update
+  brew upgrade
+  brew missing || true
+  brew cleanup
+  (cd ~//apps/ && brew bundle dump --force --describe)
+
+  builtin cd ~
+  clean
+  section "update macos"
+  softwareupdate -i -a
+
+  # Back up Sublime Text settings
+  cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Package\ Control.sublime-settings ~//resources/ 2>/dev/null || true
+  cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings ~//resources/ 2>/dev/null || true
+  section "update settings"
+  echo 'Updating Settings…'
+  ~//settings
+}
+
+function __update_all_run() {
+  sfx loop --done=item_acquisition save_station __update_full_run
+}
+
 function update() {
   case "$1" in
 
     # `update apps`
     "apps")
       section "update apps"
-      sfx loop save_station bash -c "
-        echo 'Updating App Store apps…'
-        mas upgrade
-        echo 'Updating Homebrew packages…'
-        brew update
-        brew upgrade
-        brew missing || true
-        brew cleanup
-        (cd ~//apps/ && brew bundle dump --force --describe)
-      "
+      echo 'Updating App Store apps…'
+      mas upgrade
+      echo 'Updating Homebrew packages…'
+      brew update
+      brew upgrade
+      brew missing || true
+      brew cleanup
+      (cd ~//apps/ && brew bundle dump --force --describe)
     ;;
 
     # `update dock`
     "dock") 
       section "update dock"
       echo 'Updating Dock…'
-      sfx loop save_station ~//dock 
+      ~//dock
     ;;
 
     # `update dotfiles`
     "dotfiles") 
       section "update dotfiles"
       echo 'Updating dotfiles…'
-      sfx loop save_station ~//dotfiles/install.sh
+      ~//dotfiles/install.sh
     ;;
 
     # `update hosts`
     "hosts") 
       section "update hosts"
       echo 'Updating hosts…'
-      sfx loop save_station sudo install -m 0644 ~//hosts /etc/hosts
+      sudo install -m 0644 ~//hosts /etc/hosts
     ;;
 
-    # `update preferences`
-    "preferences") 
-      section "update preferences"
-      echo 'Updating Preferences…'
-      sfx loop save_station ~//preferences
+      # `update settings`
+    "settings")
+      section "update settings"
+      echo 'Updating Settings…'
+      ~//settings
     ;;
 
     # `update` | Run all of the updates
@@ -51,27 +85,10 @@ function update() {
       section "update"
       echo 'Requesting root access…'
       root
-      builtin cd ~
-      
-      update dotfiles
-      update hosts
-      update apps
-      
-      builtin cd ~
-      clean
-      
-      # Back up Sublime Text settings'
-      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Package\ Control.sublime-settings ~//resources/ 2>/dev/null || true
-      cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings ~//resources/ 2>/dev/null || true
-      
-      section "update macos"
-      softwareupdate -i -a
-      
-      update preferences
-      sfx play item_acquisition
+      __update_all_run
     ;;
 
   esac
 }
 
-complete -W "apps dock dotfiles hosts preferences" update
+complete -W "all apps dock dotfiles hosts settings" update

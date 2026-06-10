@@ -60,7 +60,7 @@ function install_root_dotfiles() {
     name="$(basename "$source")"
 
     case "$name" in
-      .|..|install.sh|.stow-local-ignore|.config|home|config)
+      .|..|install.sh|.config|home|config)
         continue
         ;;
     esac
