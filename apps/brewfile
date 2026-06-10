@@ -166,6 +166,8 @@ cask "lulu"
 cask "netiquette"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
+# Get up and running with large language models locally
+cask "ollama-app"
 # Customise and maintain app icons
 cask "pictogram"
 # Home media player
