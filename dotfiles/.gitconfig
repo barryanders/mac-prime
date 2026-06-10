@@ -103,7 +103,6 @@
   default = simple
 
 [user]
-  # Use local config (not tracked) for your identity:
-  # user.name = Your Name
-  # user.email = your.email@example.com
-  # user.signingkey = YOUR_SIGNING_KEY
+  # name = Your Name
+  # email = your.email@example.com
+  # signingkey = YOUR_SIGNING_KEY
