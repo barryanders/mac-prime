@@ -198,8 +198,6 @@ cask "tailscale-app"
 cask "tradingview"
 # 3D printer and slicing GUI
 cask "ultimaker-cura"
-# Rust-based terminal
-cask "warp"
 # Client to install and activate Waves products
 cask "waves-central"
 mas "compressum", id: 6479709701
