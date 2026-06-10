@@ -142,8 +142,6 @@ cask "font-raleway"
 cask "gemini"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Web browser
-cask "google-chrome"
 # Free and open-source media player
 cask "iina"
 # Tool to scan a website checking for broken links
