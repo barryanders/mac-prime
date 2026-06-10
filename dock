@@ -3,8 +3,10 @@
 source ~//dotfiles/.commands/dock
 
 dock clear
-dock add "Firefox"
+dock add "Arc"
+dock add "Codex"
+dock add "Ghostty"
 dock add "Sublime Text"
-dock add "Draw Things"
+dock add "TradingView"
 
 killall Dock
