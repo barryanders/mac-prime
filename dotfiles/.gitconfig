@@ -52,9 +52,6 @@
   deleted = red
   untracked = yellow
 
-[commit]
-	gpgsign = false
-
 [core]
   editor = subl
   # Use custom `.gitignore` and `.gitattributes`
@@ -93,6 +90,10 @@
   # Automatically correct and execute mistyped commands
   autocorrect = 1
 
+[include]
+  # Machine-specific identity and signing settings live outside the repo.
+  path = ~/.gitconfig.private
+
 [merge]
   # Include summaries of merged commits in newly created merge commit messages
   log = true
@@ -101,8 +102,3 @@
 [push]
   # https://git-scm.com/docs/git-config#git-config-pushdefault
   default = simple
-
-[user]
-  # name = Your Name
-  # email = your.email@example.com
-  # signingkey = YOUR_SIGNING_KEY

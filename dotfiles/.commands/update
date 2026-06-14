@@ -7,7 +7,11 @@ function __update_full_run() {
 
   section "update hosts"
   echo 'Updating hosts…'
-  sudo install -m 0644 ~//hosts /etc/hosts
+  if [[ -f ~//hosts ]]; then
+    sudo install -m 0644 ~//hosts /etc/hosts
+  else
+    sudo install -m 0644 ~//hosts.example /etc/hosts
+  fi
 
   section "update apps"
   echo 'Updating App Store apps…'
@@ -70,7 +74,11 @@ function update() {
     "hosts") 
       section "update hosts"
       echo 'Updating hosts…'
-      sudo install -m 0644 ~//hosts /etc/hosts
+      if [[ -f ~//hosts ]]; then
+        sudo install -m 0644 ~//hosts /etc/hosts
+      else
+        sudo install -m 0644 ~//hosts.example /etc/hosts
+      fi
     ;;
 
       # `update settings`

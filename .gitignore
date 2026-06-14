@@ -23,7 +23,8 @@ dotfiles/home/.gnupg/*
 !dotfiles/home/.gnupg/
 
 # Personal machine state
-dotfiles/.gitconfig
 dotfiles/home/.gitconfig
+.gitconfig.private
+dotfiles/.gitconfig.private
 
 hosts

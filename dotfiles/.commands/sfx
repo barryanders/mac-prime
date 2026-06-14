@@ -41,7 +41,7 @@ function sfx() {
             overlap=true
             shift
         fi
-        [[ "$DOTFILES_SOUND" != "1" ]] && return
+        [[ "${DOTFILES_SOUND:-0}" != "1" ]] && return
         [[ "$overlap" == "false" ]] && _sfx_stop
         _get_sound_path "$1"
         if [[ -n "$SFX_LAST_PATH" ]]; then
@@ -66,11 +66,24 @@ function sfx() {
     }
 
     # Internal helper to loop sound while a command is running
-    # Usage: _sfx_loop loop_sound command...
+    # Usage: _sfx_loop [--done=sound] loop_sound command...
     _sfx_loop() {
+        local done_sound=""
+
+        while [[ "$1" == --done=* ]]; do
+            done_sound="${1#--done=}"
+            shift
+        done
+
         local sound="$1"
         shift
-        [[ "$DOTFILES_SOUND" != "1" ]] && { "$@"; return; }
+
+        if [[ -z "$sound" || $# -eq 0 ]]; then
+            echo "Usage: sfx loop [--done=sound_name] sound_name command..."
+            return 2
+        fi
+
+        [[ "${DOTFILES_SOUND:-0}" != "1" ]] && { "$@"; return; }
         _sfx_stop
 
         # Use a background loop that repeatedly starts ffplay until this function ends.
@@ -91,9 +104,24 @@ function sfx() {
         fi
 
         # Run the actual command, then always stop the loop before completion audio.
+        local had_errexit=false
+        if [[ $- == *e* ]]; then
+            had_errexit=true
+            set +e
+        fi
+
         "$@"
         local status=$?
+
+        if [[ "$had_errexit" == "true" ]]; then
+            set -e
+        fi
+
         _sfx_stop
+
+        if [[ -n "$done_sound" ]]; then
+            _sfx_play "$done_sound"
+        fi
 
         return "$status"
     }
@@ -112,7 +140,7 @@ function sfx() {
             ;;
         *)
             echo "Usage: sfx [play|loop|stop] [sound_name|sound_name command]"
-            echo "Example: sfx loop save_station \"bash -lc 'echo test; sleep 3'\""
+            echo "Example: sfx loop --done=item_acquisition save_station bash -lc 'echo test; sleep 3'"
             ;;
     esac
 }

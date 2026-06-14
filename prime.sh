@@ -14,7 +14,7 @@ function __prime_full_run() {
   section "install dock"
   ~//dock
 
-section "install settings"
+  section "install settings"
   ~//settings
 }
 

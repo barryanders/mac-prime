@@ -217,6 +217,8 @@ done
 #------------------------------------------------------------------------------#
 if [[ -f "${HOME}//hosts" ]]; then
   sudo install -m 0644 "${HOME}//hosts" /etc/hosts
+elif [[ -f "${HOME}//hosts.example" ]]; then
+  sudo install -m 0644 "${HOME}//hosts.example" /etc/hosts
 fi
 
 #------------------------------------------------------------------------------#

@@ -1,0 +1,7 @@
+# Default Start
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+# Default End
+
+# Add private machine or network entries to ./hosts.
+# That file is ignored so local hostnames and IPs stay out of commits.
