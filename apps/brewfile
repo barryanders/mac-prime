@@ -114,8 +114,8 @@ brew "drawthingsai/draw-things/draw-things-cli"
 cask "8bitdo-ultimate-software"
 # Image editing and design software
 cask "affinity"
-# Chromium based browser
-cask "arc"
+# OpenAI's official browser with ChatGPT built in
+cask "chatgpt-atlas"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
 # OpenAI's coding agent that runs in your terminal
