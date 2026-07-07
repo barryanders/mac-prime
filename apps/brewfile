@@ -140,8 +140,6 @@ cask "dolphin"
 cask "firefox"
 cask "font-open-sans"
 cask "font-raleway"
-# Disk space cleaner that finds and deletes duplicated and similar files
-cask "gemini"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Free and open-source media player
