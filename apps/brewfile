@@ -125,7 +125,7 @@ cask "codex"
 # OpenAI's Codex desktop app for managing coding agents
 cask "codex-app"
 # Node-based image, video and audio generator
-cask "comfyui"
+cask "comfy"
 # Tool to run Windows software
 cask "crossover"
 # Server and cloud storage browser
