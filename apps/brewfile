@@ -109,7 +109,7 @@ brew "wget"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Local inference and LoRA training CLI for Draw Things
-brew "drawthingsai/draw-things/draw-things-cli"
+brew "drawthingsai/draw-things/draw-things-cli", trusted: true
 # Control every piece of your controller
 cask "8bitdo-ultimate-software"
 # Image editing and design software
