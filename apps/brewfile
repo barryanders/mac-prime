@@ -174,8 +174,6 @@ cask "plex"
 cask "powershell"
 # VPN client focusing on security
 cask "protonvpn"
-# HTTP debugging proxy
-cask "proxyman"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Language and framework for policy as code
