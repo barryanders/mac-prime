@@ -1,5 +1,37 @@
 #!/usr/bin/env bash
 
+function __update_sudo() {
+  if [[ "${DOTFILES_UNATTENDED:-0}" == "1" ]]; then
+    sudo -n "$@"
+  else
+    sudo "$@"
+  fi
+}
+
+function __update_root() {
+  if [[ "${DOTFILES_UNATTENDED:-0}" == "1" ]]; then
+    return 0
+  fi
+
+  root
+}
+
+function __update_macos() {
+  local available_updates
+
+  echo 'Checking macOS updates for restart requirements…'
+  available_updates="$(softwareupdate --list 2>&1 || true)"
+  echo "$available_updates"
+
+  if echo "$available_updates" | grep -qi 'Action:[[:space:]]*restart'; then
+    echo 'Skipping macOS updates because at least one available update requires a restart.'
+    echo 'Run Software Update manually when you can afford to lose remote access until local login.'
+    return 0
+  fi
+
+  __update_sudo softwareupdate -i -a
+}
+
 function __update_full_run() {
   section "update dotfiles"
   echo 'Updating dotfiles…'
@@ -8,9 +40,9 @@ function __update_full_run() {
   section "update hosts"
   echo 'Updating hosts…'
   if [[ -f ~//hosts ]]; then
-    sudo install -m 0644 ~//hosts /etc/hosts
+    __update_sudo install -m 0644 ~//hosts /etc/hosts
   else
-    sudo install -m 0644 ~//hosts.example /etc/hosts
+    __update_sudo install -m 0644 ~//hosts.example /etc/hosts
   fi
 
   section "update apps"
@@ -26,7 +58,7 @@ function __update_full_run() {
   builtin cd ~
   clean
   section "update macos"
-  softwareupdate -i -a
+  __update_macos
 
   # Back up Sublime Text settings
   cp ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Package\ Control.sublime-settings ~//resources/ 2>/dev/null || true
@@ -75,9 +107,9 @@ function update() {
       section "update hosts"
       echo 'Updating hosts…'
       if [[ -f ~//hosts ]]; then
-        sudo install -m 0644 ~//hosts /etc/hosts
+        __update_sudo install -m 0644 ~//hosts /etc/hosts
       else
-        sudo install -m 0644 ~//hosts.example /etc/hosts
+        __update_sudo install -m 0644 ~//hosts.example /etc/hosts
       fi
     ;;
 
@@ -91,8 +123,10 @@ function update() {
     # `update` | Run all of the updates
     "")
       section "update"
-      echo 'Requesting root access…'
-      root
+      if [[ "${DOTFILES_UNATTENDED:-0}" != "1" ]]; then
+        echo 'Requesting root access…'
+      fi
+      __update_root
       __update_all_run
     ;;
 
