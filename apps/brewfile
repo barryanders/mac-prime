@@ -116,6 +116,8 @@ cask "8bitdo-ultimate-software"
 cask "affinity"
 # OpenAI's official browser with ChatGPT built in
 cask "chatgpt-atlas"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
 # OpenAI's coding agent that runs in your terminal
