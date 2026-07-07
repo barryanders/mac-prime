@@ -6,6 +6,14 @@ if [[ $(uname) != "Darwin" ]]; then
   exit 1
 fi
 
+run_sudo() {
+  if [[ "${DOTFILES_UNATTENDED:-0}" == "1" ]]; then
+    sudo -n "$@"
+  else
+    sudo "$@"
+  fi
+}
+
 # Close System Settings safely
 osascript -e 'try
   tell application "System Settings" to quit
@@ -14,7 +22,9 @@ on error
 end try' || true
 
 # Persistent sudo
-sudo -v; while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+if [[ "${DOTFILES_UNATTENDED:-0}" != "1" ]]; then
+  sudo -v; while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+fi
 
 sanitize_host_name() {
   local value="$1"
@@ -54,10 +64,10 @@ COMPUTER_NAME="Holmes"
 LOWER_NAME="$(sanitize_host_name "$COMPUTER_NAME" 63)"
 NETBIOS_NAME="$(sanitize_host_name "$COMPUTER_NAME" 15)"
 
-sudo scutil --set ComputerName "$COMPUTER_NAME"
-sudo scutil --set HostName "$LOWER_NAME"
-sudo scutil --set LocalHostName "$LOWER_NAME"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$NETBIOS_NAME"
+run_sudo scutil --set ComputerName "$COMPUTER_NAME"
+run_sudo scutil --set HostName "$LOWER_NAME"
+run_sudo scutil --set LocalHostName "$LOWER_NAME"
+run_sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$NETBIOS_NAME"
 
 # Require password immediately after sleep or screen saver
 defaults write com.apple.screensaver askForPassword -int 1
@@ -122,15 +132,15 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 
-sudo chflags nohidden /Volumes
+run_sudo chflags nohidden /Volumes
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.finder WarnOnEmptyTrash -bool true
 
 # Suppress “disk not ejected properly” toasts
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES
-sudo pkill diskarbitrationd || true
+run_sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES
+run_sudo pkill diskarbitrationd || true
 
 # Avoid .DS_Store on network/USB
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -216,9 +226,9 @@ done
 # Hosts
 #------------------------------------------------------------------------------#
 if [[ -f "${HOME}//hosts" ]]; then
-  sudo install -m 0644 "${HOME}//hosts" /etc/hosts
+  run_sudo install -m 0644 "${HOME}//hosts" /etc/hosts
 elif [[ -f "${HOME}//hosts.example" ]]; then
-  sudo install -m 0644 "${HOME}//hosts.example" /etc/hosts
+  run_sudo install -m 0644 "${HOME}//hosts.example" /etc/hosts
 fi
 
 #------------------------------------------------------------------------------#
