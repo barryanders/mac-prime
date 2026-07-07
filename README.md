@@ -10,6 +10,16 @@ git clone https://github.com/barryanders/mac-prime.git ~/ && ~//prime.sh
 
 After installing, I use the [`update`](https://github.com/barryanders/mac-prime/blob/main/dotfiles/.commands/update) command to update everything.
 
+To keep the machine updated automatically, install the nightly launchd job:
+
+```sh
+~//scripts/install-nightly-update.sh
+```
+
+This schedules `update` for 3:00 AM every night and installs a narrow sudoers rule so the privileged parts can run without a password.
+
+Nightly runs do not install macOS updates that advertise `Action: restart` in `softwareupdate --list`; those are skipped so remote access is not lost before a local login.
+
 For commands that are useful but not worth permanently installing as shell functions, see [`RECIPES.md`](./RECIPES.md). These are meant to be copied, adapted, or run by AI as needed.
 
 ## Index
