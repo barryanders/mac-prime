@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+function __clean_sudo() {
+  if [[ "${DOTFILES_UNATTENDED:-0}" == "1" ]]; then
+    sudo -n "$@"
+  else
+    sudo "$@"
+  fi
+}
+
+function __clean_apps_run() {
+  __clean_sudo rm -rf /Applications/Google\ Docs.app
+  __clean_sudo rm -rf /Applications/Google\ Sheets.app
+  __clean_sudo rm -rf /Applications/Google\ Slides.app
+  rm -rf ~/Google\ Drive
+}
+
 function clean() {
   case "$1" in
 
@@ -7,12 +22,7 @@ function clean() {
     "apps")
       section "clean apps"
       echo 'Removing unwanted apps…';
-      sfx loop save_station bash -c "
-        sudo rm -rf /Applications/Google\ Docs.app
-        sudo rm -rf /Applications/Google\ Sheets.app
-        sudo rm -rf /Applications/Google\ Slides.app
-        rm -rf ~/Google\ Drive
-      "
+      sfx loop save_station __clean_apps_run
     ;;
 
     # `clean cache` | Remove cache files
@@ -42,7 +52,7 @@ function clean() {
     "logs") 
       section "clean logs"
       echo 'Removing logs…'; 
-      sfx loop save_station sudo rm -rfv /private/var/log/asl/*.asl 
+      sfx loop save_station __clean_sudo rm -rfv /private/var/log/asl/*.asl
     ;;
 
     # `clean ssh` | Dedupe ssh known hosts
@@ -78,7 +88,7 @@ function fix() {
 
     # `fix audio` | When audio isn't working
     "audio") 
-      sudo pkill coreaudiod
+      __clean_sudo pkill coreaudiod
       sfx play override
       ;;
 
