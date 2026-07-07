@@ -3,10 +3,10 @@
 source ~//dotfiles/.commands/dock
 
 dock clear
-dock add "Arc"
+dock add "ChatGPT Atlas"
 dock add "Codex"
 dock add "Ghostty"
-dock add "Sublime Text"
 dock add "TradingView"
+dock add "Sublime Text"
 
 killall Dock
